@@ -2,21 +2,21 @@
   class="container-fluid vh-100 d-flex align-items-center justify-content-center"
 >
   <a
-    class="home-btn d-flex align-items-center d-none d-md-inline-block"
+    class="home-btn d-flex align-items-center d-none d-md-flex rounded-5"
     routerLink="/home"
   >
     <i class="fas fa-home me-2"></i> Home
   </a>
   <div class="row w-100 align-items-center justify-content-center px-3">
     <div
-      class="col-lg-4 col-md-6 col-sm-10 bg-white text-dark rounded-2 shadow-lg login-card"
+      class="col-lg-4 col-md-6 col-sm-6 bg-white text-dark rounded-2 shadow-lg login-card"
     >
-      <div class="text-center mb-2">
+      <div class="text-center">
         <img src="assets/icons/logo.png" alt="Logo" height="50" />
       </div>
-      <h5 class="text-center fw-bold text-weight-800">Sign in</h5>
+      <h5 class="text-center fw-bold text-weight-800">Create Account</h5>
       <p class="text-muted text-center">
-        Sign in with your account to continue.
+        Fill in the details to create a new account.
       </p>
       <form>
         <div class="mb-2">
@@ -31,37 +31,48 @@
           </mat-form-field>
         </div>
 
-        <div class="mb-2 position-relative">
+        <div>
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Password</mat-label>
             <input
               matInput
-              [type]="passwordFieldType"
+              type="password"
               placeholder="Enter your password"
               required
-              id="password"
             />
           </mat-form-field>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <div class="form-check d-flex align-items-center">
-            <input
-              type="checkbox"
-              class="form-check-input me-2 mb-1"
-              id="rememberMe"
-            />
-            <label for="rememberMe" class="form-check-label">Remember me</label>
-          </div>
-          <a href="#" class="text-primary">Forgot password?</a>
+        <div>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Choose Seller</mat-label>
+            <mat-select required>
+              <mat-option value="seller1">Individual</mat-option>
+              <mat-option value="seller2">Company</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
+
+        <div>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>National ID</mat-label>
+            <input
+              id="nation-id"
+              matInput
+              type="text"
+              placeholder="Enter your National ID"
+              required
+            />
+          </mat-form-field>
+        </div>
+
         <button
           mat-raised-button
           color="primary"
           class="d-flex btn-shadow py-4 rounded w-100 d-flex justify-content-center align-items-center"
           type="submit"
         >
-          <span class="me-3">Sign In</span>
+          <span class="me-2">Create Account</span>
           <span>
             <img
               src="assets/icons/right-up.png"
@@ -71,25 +82,28 @@
           </span>
         </button>
       </form>
+
       <div class="text-center my-2">
         <span class="text-muted">OR</span>
       </div>
+
       <div class="d-grid gap-3">
-        <button class="btn border text-color rounded shadow-sm bg-custom">
+        <button class="btn border text-color rounded py-2 shadow-sm bg-custom">
           <i class="fab fa-google me-2"></i> Continue with Google
         </button>
-        <button class="btn border text-color rounded py-3 shadow-sm bg-custom">
+        <button class="btn border text-color rounded py-2 shadow-sm">
           <i class="fab fa-facebook me-2"></i> Continue with Facebook
         </button>
-        <button class="btn border text-color rounded py-3 shadow-sm bg-custom">
+        <button class="btn border text-color rounded py-2 shadow-sm">
           <i class="fab fa-apple me-2"></i> Continue with Apple
         </button>
       </div>
+
       <p class="text-center mt-4 text-muted">
-        Not signed up? <a href="#" class="text-primary">Create an account</a>.
+        Already have an account? <a href="#" class="text-primary">Sign in</a>.
       </p>
     </div>
-    <div class="col-lg-6 d-none d-lg-block pe-5" id="left">
+    <div class="col-lg-6 d-none d-lg-block pe-5">
       <h1 class="display-4 fw-bold text-light custom-header-text">
         Your Trusted Partner<br />
         in Property Solutions
