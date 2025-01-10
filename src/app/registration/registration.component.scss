@@ -2,18 +2,18 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
   overflow-x: hidden;
+  height: 100%;
 }
 
 .container-fluid {
   display: flex;
   height: 100vh;
   align-items: center;
-  overflow: hidden;
   justify-content: center;
   flex-wrap: wrap;
   padding: 0;
+  overflow: hidden;
   background: linear-gradient(
     to bottom right,
     rgba(1, 90, 208, 0.9),
@@ -25,7 +25,7 @@ body {
   background: linear-gradient(to bottom, #ffffff, #f8f9fa);
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  padding: 1rem;
+  padding: 2rem;
   width: 100%;
   max-width: 400px;
 }
@@ -42,6 +42,7 @@ body {
   color: #007bff;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   z-index: 100;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -67,9 +68,8 @@ body {
   line-height: 1.2;
   color: white;
   margin-right: 2rem;
-  margin-left: 120px;
+  margin-left: 140px;
 }
-
 .text-color {
   color: rgba(0, 47, 109, 1);
 }
@@ -78,14 +78,11 @@ body {
   padding: 12px 12px;
 }
 
-.hover-bg-custom:hover {
-  background: rgba(0, 47, 109, 1) !important;
-  color: white;
-}
-
+/* Responsive Adjustments */
 @media (max-width: 767px) {
   .home-btn {
-    display: none;
+    top: 15px;
+    right: 15px;
   }
 
   .login-card {
@@ -96,7 +93,7 @@ body {
   .custom-header-text {
     font-size: 40px;
     text-align: center;
-    margin-left: 0;
+    margin-right: 0;
   }
 
   .col-lg-6 {
@@ -109,5 +106,11 @@ body {
 
   .row {
     justify-content: center;
+  }
+
+  .home-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
   }
 }

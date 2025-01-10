@@ -1,0 +1,28 @@
+.verification-container {
+  background: linear-gradient(
+    to bottom right,
+    rgba(1, 90, 208, 0.9),
+    rgba(0, 47, 109, 0.9)
+  );
+  background-size: cover;
+}
+
+.card {
+  border-radius: 15px;
+  max-width: 900px;
+  background: white;
+}
+
+.custom-button {
+  width: 45%;
+}
+
+.custom-heading {
+  color: rgba(31, 72, 127, 1);
+  font-size: 2rem;
+  border: 1px solid rgb(23, 82, 159);
+  padding: 3px;
+  display: inline-block;
+  line-height: 1.2;
+  width: 7%;
+}
