@@ -1,6 +1,107 @@
-/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  .custom-header-text {
+    font-family: "Alice", serif;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: white;
+    margin-right: 2rem;
+    margin-left: 140px;
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 100vh; /* Ensures the container covers the full viewport height */
+    background: linear-gradient(to bottom right, rgba(1, 90, 208, 0.9), rgba(0, 47, 109, 0.9)),
+    url('assets/images/background_img.png');
+    background-size: cover; /* Ensures the gradient covers the entire container */
+  }
+  
+  
+  .login-card {
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+  
+  .home-btn {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      background: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #002F6D ;
+      display: inline-flex;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .home-btn i {
+      font-size: 16px;
+      color: #002F6D ;
+    }
+    
+    .home-btn:hover {
+      background: #002F6D ;
+      color: white;
+    }
+    
+    .home-btn:hover i {
+      color: white;
+    }
+    
+    .text-color {
+      color: rgba(0, 47, 109, 1);
+    }
+    
+    .bg-custom {
+      padding: 12px 12px;
+    }
+    
+    .hover-bg-custom:hover {
+      background: rgba(0, 47, 109, 1) !important;
+      color: white;
+    }
+  
+    .mat-mdc-raised-button:not(:disabled) {
+    background: #002F6D;
+  }
+
+  .form-check-input:checked {
+    background-color: #002F6D;
+    border-color: #002F6D;
+  }
+ 
+  .text-primary {
+     color: #002F6D  !important;
+  }
+
+  .text-secondary {
+    color: #181A20 !important ;
+  }
+  a {
+    text-decoration: none !important;
+  }
+}
+
