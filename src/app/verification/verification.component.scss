@@ -1,9 +1,7 @@
 .verification-container {
-  background: linear-gradient(
-    to bottom right,
-    rgba(1, 90, 208, 0.9),
-    rgba(0, 47, 109, 0.9)
-  );
+  background: linear-gradient(to bottom right,
+      rgba(1, 90, 208, 0.9),
+      rgba(0, 47, 109, 0.9));
   background-size: cover;
 }
 
@@ -24,5 +22,18 @@
   padding: 3px;
   display: inline-block;
   line-height: 1.2;
-  width: 7%;
+  width: auto;
+}
+
+.verification-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(142, 142, 142, 1);
+  line-height: 0.4rem;
+}
+
+@media (max-width: 767px) {
+  .verification-text {
+    line-height: normal !important;
+  }
 }
