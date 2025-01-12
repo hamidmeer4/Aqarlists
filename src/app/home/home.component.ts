@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   selectedTab: string = 'buy';
   searchQuery: string = '';
+  apartmentTypes = [
+    { img: 'assets/images/categories1.png', name: 'House', properties: 22 },
+    { img: 'assets/images/categories2.png', name: 'Apartments', properties: 22 },
+    { img: 'assets/images/categories3.png', name: 'Office', properties: 22 },
+    { img: 'assets/images/categories4.png', name: 'Villa', properties: 22 },
+    { img: 'assets/images/categories1.png', name: 'Townhome', properties: 22 }
+  ];
 
   cities = [
     { name: 'New York', properties: 12, image: './assets/images/rounded.png' },
@@ -84,6 +91,46 @@ export class HomeComponent {
     },
   ];
 
+  customers = [
+    { img: 'assets/images/img.png', name: 'Marvin McKinney', role: 'Designer' },
+    { img: 'assets/images/img1.png', name: 'Ralph Edwards', role: 'Designer' },
+    { img: 'assets/images/img.png', name: 'Annette Black', role: 'Designer' },
+    { img: 'assets/images/img1.png', name: 'Jane Cooper', role: 'Designer' }
+  ];
+
+
+  testimonials = [
+    {
+      title: 'Great Work',
+      text: '“Amazing design, easy to customize and a design quality superlative account on its cloud platform for the optimized performance. And we didn’t on our original designs.”',
+      img: 'assets/images/img.png',
+      name: 'Leslie Alexander',
+      company: 'Nintendo'
+    },
+    {
+      title: 'Awesome Design',
+      text: '“Amazing design, easy to customize and a design quality superlative account on its cloud platform for the optimized performance. And we didn’t on our original designs.”',
+      img: 'assets/images/img1.png',
+      name: 'Floyd Miles',
+      company: 'Bank of America'
+    },
+    {
+      title: 'Perfect Quality',
+      text: '“Amazing design, easy to customize and a design quality superlative account on its cloud platform for the optimized performance. And we didn’t on our original designs.”',
+      img: 'assets/images/img.png',
+      name: 'Dianne Russell',
+      company: 'Facebook'
+    },
+    {
+      title: 'Awesome Design',
+      text: '“Amazing design, easy to customize and a design quality superlative account on its cloud platform for the optimized performance. And we didn’t on our original designs.”',
+      img: 'assets/images/img1.png',
+      name: 'Floyd Miles',
+      company: 'Bank of America'
+    },
+  ];
+
+
   buttons = [
     { label: 'House', active: true },
     { label: 'Villa', active: false },
@@ -109,4 +156,15 @@ export class HomeComponent {
       `Searching for ${this.searchQuery} in ${this.selectedTab} tab.`
     );
   }
+
+  currentTestimonialIndex = 0;
+
+  previous() {
+    this.currentTestimonialIndex = (this.currentTestimonialIndex > 0) ? this.currentTestimonialIndex - 1 : this.testimonials.length - 1;
+  }
+
+  next() {
+    this.currentTestimonialIndex = (this.currentTestimonialIndex < this.testimonials.length - 1) ? this.currentTestimonialIndex + 1 : 0;
+  }
+
 }
