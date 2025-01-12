@@ -1,0 +1,207 @@
+<div class="hero-section position-relative text-white">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container text-center position-relative">
+    <p class="hero-subtitle lead">THE BEST WAY TO</p>
+    <h1 class="hero-title display-4 fw-bold">Find Your Dream Home</h1>
+    <p class="hero-subtitle lead">
+      We have more than 7,800 apartments, places & plots
+    </p>
+    <div class="tabs w-100 text-start">
+      <ul class="nav bg-white rounded-top d-inline-flex py-2 px-3">
+        <li class="nav-item">
+          <a class="nav-link buy-tab active" href="#">Buy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link auction-tab" href="#">Auction</a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="search-bar bg-white rounded-bottom-3 top-right shadow p-3 d-flex justify-content-center"
+    >
+      <div class="row g-0 align-items-center w-100">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-9 position-relative">
+          <input
+            type="text"
+            class="form-control search-input ps-5 rounded-4"
+            placeholder="Enter an address, neighborhood, city or ZIP code"
+            [(ngModel)]="searchQuery"
+          />
+          <img
+            src="assets/icons/home2.png"
+            alt="Home Icon"
+            class="placeholder-icon position-absolute"
+          />
+        </div>
+        <div
+          class="col-12 col-sm-2 col-md-4 col-lg-3 d-flex justify-content-center mt-2 mt-sm-0"
+        >
+          <div class="d-flex justify-content-between w-100">
+            <button
+              class="btn rounded-pill d-flex align-items-center justify-content-center"
+            >
+              <img
+                src="assets/icons/settings.png"
+                alt="settings"
+                width="30"
+                height="30"
+                class="me-2"
+              />
+              <p class="hero-subtitle buy-tab mb-0">Advance</p>
+            </button>
+            <button
+              class="btn btn-primary search-btn w-100 rounded-pill d-flex justify-content-center align-items-center"
+              (click)="onSearch()"
+            >
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="my-3">
+  <div class="container" style="width: 100%">
+    <section>
+      <h2 style="font-family: Poppins">Properties By Cities</h2>
+      <div class="d-flex justify-content-between align-items-center">
+        <p
+          class="mb-4"
+          style="
+            font-family: Poppins;
+            font-size: 14px;
+            font-weight: 400;
+            margin: -15px 0px 0px;
+          "
+        >
+          Aliquam lacinia diam quis lacus euismod
+        </p>
+        <a href="#" class="view-more-link text-decoration-none text-color">
+          See All Cities <i class="fas fa-arrow-alt-circle-right"></i>
+        </a>
+      </div>
+      <div id="cityCarousel" class="carousel slide" data-bs-ride="carousel">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#cityCarousel"
+          data-bs-slide="prev"
+        >
+          <span
+            class="carousel-control-prev-icon arrow-icon"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#cityCarousel"
+          data-bs-slide="next"
+        >
+          <span
+            class="carousel-control-next-icon arrow-icon"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="d-flex justify-content-start align-items-center">
+              <div
+                *ngFor="let city of cities"
+                class="d-flex justify-content-center mx-0 my-3"
+              >
+                <div class="card">
+                  <div class="circle-image">
+                    <img
+                      [src]="city.image"
+                      class="card-img-top"
+                      [alt]="city.name"
+                    />
+                  </div>
+                  <div class="card-body text-center">
+                    <span class="custom-style">{{ city.name }}</span>
+                    <p>{{ city.properties }} properties</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="container mt-4">
+    <h2>Properties For Sale</h2>
+    <div class="d-flex justify-content-between align-items-center">
+      <p
+        class="mb-4"
+        style="
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 400;
+          margin: -45px 0px 0px;
+        "
+      >
+        Aliquam lacinia diam quis lacus euismod
+      </p>
+      <div
+        class="btn-group mt-4"
+        role="group"
+        aria-label="Property Type Buttons"
+      >
+        <button
+          *ngFor="let button of buttons"
+          type="button"
+          class="btn property-btn"
+          [class.active]="button.active"
+          (click)="onButtonClick(button)"
+        >
+          {{ button.label }}
+        </button>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-1" *ngFor="let property of properties">
+          <div class="card property-card">
+            <div class="property-image">
+              <img
+                [src]="property.image"
+                [alt]="property.name"
+                class="img-fluid card-img-top"
+              />
+              <div class="badge-container">
+                <span
+                  class="badge badge-primary featured-badge d-inline-block"
+                  *ngIf="property.featured"
+                  >Featured</span
+                >
+                <span
+                  class="badge badge-danger for-sale-badge"
+                  *ngIf="property.sale"
+                  >For Sale</span
+                >
+              </div>
+            </div>
+            <div
+              class="card-body text-center bg-white d-flex justify-content-between w-100 me-2"
+              style="position: relative; bottom: 100px"
+            >
+              <div class="d-flex flex-column text-start">
+                <span class="card-title">{{ property.name }}</span>
+                <p class="card-text text-muted">{{ property.location }}</p>
+              </div>
+              <p class="card-price rounded py-3 px-2">
+                SAR {{ property.price }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

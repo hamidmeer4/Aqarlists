@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { VerificationComponent } from './verification/verification.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { VerificationComponent } from './verification/verification.component';
     LoginComponent,
     RegistrationComponent,
     VerificationComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
