@@ -17,3 +17,19 @@
   outline: none;
   box-shadow: 0px 0px 8px #003580;
 }
+
+.logo-outside{
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .route-button {
+    width: 25% !important;
+  }
+  .image-inside {
+    display: none !important;
+  }
+  .logo-outside{
+    display: block !important;
+  }
+}

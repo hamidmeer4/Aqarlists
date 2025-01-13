@@ -1,15 +1,25 @@
 <header class="header-container shadow-sm">
-  <div class="d-flex justify-content-center py-3">
-    <div class="d-flex align-items-center gap-3">
-      <a class="d-flex align-items-center text-decoration-none mx-4">
+  <nav class="navbar navbar-expand-md">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center text-decoration-none mx-4 logo-outside">
         <img src="assets/icons/logo.png" alt="Logo" class="header-logo me-2" />
       </a>
-      <a class="btn btn-round px-4 mt-4">Home</a>
-      <a class="btn btn-round px-4 mt-4">For Sale</a>
-      <a class="btn btn-round px-4 mt-4">Agent</a>
-      <a class="btn btn-round px-4 mt-4">Companies</a>
-      <a class="btn btn-round px-4 mt-4">Properties</a>
-      <a routerLink='/login' class="btn btn-round px-4 mt-4"> <i class="fa-regular fa-circle-user mx-1"></i>Login / Register</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <a class="navbar-brand d-flex align-items-center text-decoration-none mx-4 image-inside">
+          <img src="assets/icons/logo.png" alt="Logo" class="header-logo me-2" />
+        </a>
+        <div class="navbar-nav">
+          <a class="btn btn-round px-4 mt-4 route-button">Home</a>
+          <a class="btn btn-round px-4 mt-4 route-button">For Sale</a>
+          <a class="btn btn-round px-4 mt-4 route-button">Agent</a>
+          <a class="btn btn-round px-4 mt-4 route-button">Companies</a>
+          <a class="btn btn-round px-4 mt-4 route-button">Properties</a>
+          <a routerLink='/login' class="btn btn-round px-4 mt-4 route-button"> <i class="fa-regular fa-circle-user mx-1"></i>Login / Register</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </nav>
 </header>

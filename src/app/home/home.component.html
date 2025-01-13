@@ -86,7 +86,7 @@
     </section>
   </div>
   <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center property-main">
       <div class="mx-3">
         <h2>Properties For Sale</h2>
         <p style="
@@ -117,7 +117,7 @@
                     class="fa-solid fa-bolt fa-sm"></i> Featured</span>
                 <span class="badge badge-danger for-sale-badge" *ngIf="property.sale">For Sale</span>
               </div>
-              <div class="text-center bg-white d-flex gap-flex me-2 ms-2 px-3 rounded"
+              <div class="text-center bg-white d-flex gap-flex me-2 ms-2 px-3 rounded property"
                 style="position: relative; bottom: 100px">
                 <div class="text-start p-2">
                   <span class="card-title">{{ property.name }}</span>
@@ -300,12 +300,12 @@
     </div>
 
     <div class="text-start mt-5">
-      <h2>People Love Living With Realton</h2>
+      <h2>People Love Living With Realton.</h2>
       <p class="text-muted">Aliquam lacinia diam quis lacus euismod</p>
     </div>
 
     <div class="row">
-      <div class="col-md-3 mb-4" *ngFor="let testimonial of testimonials">
+      <div class="col-md-3  mb-4" *ngFor="let testimonial of testimonials">
         <div class="card card-testimonial h-100">
           <div class="card-body">
             <h5 class="card-title card-title-testimonial text-start">{{ testimonial.title }}</h5>

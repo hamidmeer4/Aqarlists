@@ -106,6 +106,15 @@ body {
   .gray {
     color: #717171;
   }
+
+  @media (max-width: 576px) {
+    .home-btn
+    {
+      position: relative !important;
+      right: auto !important;
+      top: auto !important;
+    }
+  }
 }
 
 .color-white {
