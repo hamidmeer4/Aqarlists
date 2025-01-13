@@ -139,7 +139,7 @@
   <div class="row w-100">
     <div class="col-lg-8 d-flex justify-content-center align-items-center seller-body">
       <div class="">
-        <h2 class="fw-bold mb-4">Let's Find The Right <br> Selling Option For You</h2>
+        <h2 class="fw-bold mb-4 ms-3">Let's Find The Right <br> Selling Option For You</h2>
         <div class="mb-4">
           <div class="d-flex align-items-center">
             <div class="me-3">
@@ -246,8 +246,8 @@
     <div class="p-4 customer-right-section"
       style="background-color: #F7F7F7; width: 50%;  border-top-left-radius: 20px; border-bottom-left-radius: 20px">
       <div class="customer">
-        <p class="p-2">200+ Exclusive Customers</p>
-        <div *ngFor="let customer of customers" class="d-flex align-items-center p-2">
+        <p class="p-3"> <span class="fw-bold">200+</span> Exclusive Customers</p>
+        <div *ngFor="let customer of customers" class="d-flex align-items-center p-3">
           <img [src]="customer.img" class="rounded-circle me-3" alt="Customer Image" width="50">
           <div>
             <h6 class="mb-0" style="color:#181A20;">{{ customer.name }}</h6>
