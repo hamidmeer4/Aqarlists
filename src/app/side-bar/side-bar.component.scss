@@ -1,0 +1,43 @@
+.card {
+  max-width: 350px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(24, 26, 32, 0.12);
+  border: none !important;
+}
+
+h5,
+h6 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px !important;
+}
+
+.btn {
+  padding-left: 0.63rem !important;
+  padding-right: 0.63rem !important;
+}
+
+.reset-filters {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.reset-filters i.fa-undo {
+  border-radius: 50%;
+  background-color: lightgray;
+  padding: 4px;
+}
+
+.reset-filters:hover {
+  color: #002F6D;
+}
+
+@media (max-width: 768px) {
+  .side-bar {
+    width: auto !important;
+    max-width: none !important;
+  }
+}

@@ -1,0 +1,136 @@
+<app-header></app-header>
+<div class="mapouter">
+    <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0"
+            marginwidth="0"
+            src="https://maps.google.com/maps?width=1920&amp;height=500&amp;hl=en&amp;q=madina&amp;t=&amp;z=19&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
+            href="https://sprunkiplay.com/">Sprunki Game</a></div>
+    <style>
+        .mapouter {
+            position: relative;
+            text-align: right;
+            width: 100%;
+            height: 500px;
+        }
+
+        .gmap_canvas {
+            overflow: hidden;
+            background: none !important;
+            width: 100%;
+            height: 500px;
+        }
+
+        .gmap_iframe {
+            height: 500px !important;
+        }
+    </style>
+</div>
+<div style="background: #F7F7F7;">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-end mb-5">
+            <div style="max-width: 500px !important;">
+                <h2>We'd Love To Hear From You.</h2>
+                <p class="w-75">
+                    We are here to answer any question you may have. As a partner of corporates, realton has more than
+                    9,000 offices of all sizes and all potential of session.
+                </p>
+            </div>
+        </div>
+
+        <div class="card contact-card p-5 rounded-4 shadow">
+            <h2>Have questions? Get in touch!</h2>
+            <form>
+                <div class="form-group">
+                    <label for="firstName" class="fw-bold">First Name</label>
+                    <input type="text" class="form-control rounded-3" id="firstName" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="fw-bold">Last Name</label>
+                    <input type="text" class="form-control rounded-3" id="lastName" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="fw-bold">Email</label>
+                    <input type="email" class="form-control rounded-3" id="email" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="message" class="fw-bold">Message</label>
+                    <textarea class="form-control rounded-3" id="message" rows="3"
+                        placeholder="There are many variations of passages."></textarea>
+                </div>
+                <button mat-raised-button color="primary"
+                    class="d-flex btn-shadow py-4 rounded w-100 d-flex justify-content-center align-items-center"
+                    type="submit">
+                    <span class="me-3">Sign In</span>
+                    <span>
+                        <img src="assets/icons/right-up.png" alt="arrow" style="width: 20px; height: 20px" />
+                    </span>
+                </button>
+            </form>
+        </div>
+        <div class="mt-5">
+            <div class=" text-center mt-5 office-header">
+                <h2>Visit Our Office</h2>
+                <p>Realton has more than 9,000 offices of all sizes and all potential of session.</p>
+            </div>
+            <div class="d-flex justify-content-center gap-5 office-gap">
+                <div class="card text-center rounded-4 shadow location-card">
+                    <div class="card-body">
+                        <img src="assets/images/eiffel-tower.png" alt="Paris Icon" class="mb-3"
+                            style="width: 120px; height: 120px;" />
+                        <h4 class="card-title fw-bold">Paris</h4>
+                        <p class="card-text">1301 2nd Ave, Seattle, WA 98101<br><span class="fw-bold">(755)
+                                905-2321</span></p>
+                        <a href="#" class="btn btn-link">Open Google Map</a>
+                    </div>
+                </div>
+                <div class="card text-center rounded-4 shadow location-card">
+                    <div class="card-body">
+                        <img src="assets/images/big-ben.png" alt="London Icon" class="mb-3"
+                            style="width: 120px; height: 120px;" />
+                        <h4 class="card-title fw-bold">London</h4>
+                        <p class="card-text">1301 2nd Ave, Seattle, WA 98101<br><span class="fw-bold">(755)
+                                905-2321</span></p>
+                        <a href="#" class="btn btn-link">Open Google Map</a>
+                    </div>
+                </div>
+                <div class="card text-center rounded-4 shadow location-card">
+                    <div class="card-body">
+                        <img src="assets/images/statue-of-liberty.png" alt="New York Icon" class="mb-3"
+                            style="width: 120px; height: 120px;" />
+                        <h4 class="card-title fw-bold">New York</h4>
+                        <p class="card-text">1301 2nd Ave, Seattle, WA 98101<br><span class="fw-bold">(755)
+                                905-2321</span></p>
+                        <a href="#" class="btn btn-link">Open Google Map</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card rounded-4 shadow p-5">
+            <div class="d-flex justify-content-evenly contact-detail">
+                <div>
+                    <h2 class="fw-bold">Need Help? Talk To Our Expert.</h2>
+                    <p>Talk to our experts or Browse through more properties.</p>
+                </div>
+
+
+                <div class="d-flex p-4">
+                    <button mat-stroked-button
+                        class="d-flex btn-shadow py-4 rounded-4  d-flex justify-content-center align-items-center mx-2">
+                        <span class="me-3">Contact Us</span>
+                        <span>
+                            <img src="assets/icons/right-up1.png" alt="arrow" style="width: 20px; height: 20px" />
+                        </span></button>
+
+
+                    <button mat-raised-button color="primary"
+                        class="d-flex btn-shadow py-4 rounded-4  d-flex justify-content-center align-items-center"
+                        type="submit">
+                        <i class="fa-solid fa-phone fa-lg mx-2"></i>
+                        <span>920 851 9087</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -16,6 +16,13 @@ import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { ForSaleComponent } from './for-sale/for-sale.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import {MatSliderModule} from '@angular/material/slider';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { BubblePaginationDirective } from './bubble-pagination-directive.directive';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { ContactComponent } from './contact/contact.component';
 import { AgentComponent } from './agent/agent.component';
 import { CompaniesComponent } from './companies/companies.component';
 
@@ -28,6 +35,11 @@ import { CompaniesComponent } from './companies/companies.component';
     HomeComponent,
     FooterComponent,
     HeaderComponent,
+    ForSaleComponent,
+    SideBarComponent,
+    BubblePaginationDirective,
+    PaginatorComponent,
+    ContactComponent,
     AgentComponent,
     CompaniesComponent,
   ],
@@ -42,6 +54,8 @@ import { CompaniesComponent } from './companies/companies.component';
     MatSelectModule,
     MatCardModule,
     MatButtonModule,  
+    MatSliderModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

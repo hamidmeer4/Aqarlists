@@ -1,0 +1,66 @@
+.container {
+    form {
+        .form-group {
+            margin-bottom: 15px;
+        }
+    }
+    .card {
+        margin: 20px 0;
+    }
+
+    .contact-card {
+        max-width: 409px !important;
+        border: none !important;
+        position: absolute !important;
+        top: 40% !important;
+        left: 10% !important;
+    }
+
+    footer {
+        margin-top: 50px;
+        text-align: center;
+
+        button {
+            margin-top: 15px;
+        }
+    }
+
+    .location-card {
+        border: none !important;
+    }
+
+    a {
+        color: #181A20 !important;
+    }
+
+    .office-header {
+        margin-top: 170Px !important;
+    }
+
+    @media (max-width: 1024px) {
+        .contact-card {
+            top: 27% !important;
+            left: 5% !important;
+        }
+
+        .office-header {
+            margin-top: 100Px !important;
+        }
+
+    }
+
+    @media (max-width: 768px) {
+        .contact-card {
+            position: relative !important;
+            top: 0% !important;
+            left: 0% !important;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .office-gap,
+        .contact-detail {
+            display: block !important;
+        }
+    }
+}
