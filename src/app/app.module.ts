@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -22,6 +23,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { BubblePaginationDirective } from './bubble-pagination-directive.directive';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ContactComponent } from './contact/contact.component';
+import { AgentComponent } from './agent/agent.component';
+import { CompaniesComponent } from './companies/companies.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import { ContactComponent } from './contact/contact.component';
     BubblePaginationDirective,
     PaginatorComponent,
     ContactComponent,
+    AgentComponent,
+    CompaniesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,7 @@ import { ContactComponent } from './contact/contact.component';
     MatIconModule,
     MatInputModule,
     MatSelectModule,
+    MatCardModule,
     MatButtonModule,  
     MatSliderModule,
     MatPaginatorModule
