@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { VerificationComponent } from './verification/verification.component';
 import { ForSaleComponent } from './for-sale/for-sale.component';
 import { ContactComponent } from './contact/contact.component';
+import { AgentComponent } from './agent/agent.component';
+import { CompaniesComponent } from './companies/companies.component';
 
 const routes: Routes = [
  {path:'', component:LoginComponent},
@@ -14,7 +16,9 @@ const routes: Routes = [
  {path:'home', component:HomeComponent},
  {path:'verification', component: VerificationComponent},
  {path:'for-sale', component: ForSaleComponent},
- {path:'contact',component:ContactComponent}
+ {path:'contact',component:ContactComponent},
+ {path:'agent',component: AgentComponent},
+ {path:'Companies',component:CompaniesComponent}
  
 ]
 
