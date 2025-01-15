@@ -1,0 +1,90 @@
+.container {
+  overflow: hidden;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 210px;
+  object-fit: cover;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #6c757d;
+}
+
+.card-flex {
+  flex: 0 0 40%;
+  /* Flex-grow: 0, Flex-shrink: 0, Flex-basis: 40% */
+  margin-right: 2%;
+  /* Right margin */
+  margin-bottom: 2%;
+  /* Bottom margin */
+}
+
+.property-price {
+  position: relative;
+  bottom: 80% !important;
+  height: 40px;
+  /* Adjust height as needed */
+  width: 140px;
+  /* Adjust width as needed */
+  background-color: white;
+  /* White background */
+  color: black;
+  padding: 5px;
+  /* Optional: padding inside the box */
+  border-radius: 5px;
+  /* Optional: rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Optional: subtle shadow for effect */
+  display: flex;
+  align-items: center;
+  /* Vertically center content */
+  justify-content: center;
+  /* Horizontally center content */
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 150px;
+  }
+
+  .sale-card {
+    display: block !important;
+  }
+
+  .sale-card-main {
+    display: block !important;
+  }
+
+  .sale-header {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card-flex {
+    flex: 1 0 40% !important;
+  }
+
+}
+
+h2 {
+  margin: 0 0 0 !important;
+}

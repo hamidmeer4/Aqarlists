@@ -1,0 +1,140 @@
+<div class="card p-5 ms-4 mt-2 mb-4 side-bar">
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-primary w-50 mb-3 d-md-none" type="button" data-bs-toggle="collapse"
+      data-bs-target="#filterForm" aria-expanded="false" aria-controls="filterForm"
+      style="text-align: center; padding: 10px; line-height: 1.5;">
+      <i class="fa-solid fa-sliders me-2"></i>
+    </button>
+  </div>
+  <div class="collapse d-md-block" id="filterForm">
+    <h5 class="mb-4">Find your home</h5>
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="What are you looking for?" />
+    </div>
+
+    <div class="mb-3">
+      <h6>Listing Status</h6>
+      <div>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" name="listingStatus" id="buy" />
+          <label for="buy" class="form-check-label mb-2">Buy</label>
+        </div>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" name="listingStatus" id="auction" checked />
+          <label for="auction" class="form-check-label mb-2">Auction</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <h6>Property Type</h6>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="houses" />
+        <label for="houses" class="form-check-label mb-2">Houses</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input me-2 mb-1" id="apartments" checked />
+        <label for="apartments" class="form-check-label mb-2">Apartments</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="office" />
+        <label for="office" class="form-check-label mb-2">Office</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="villa" />
+        <label for="villa" class="form-check-label mb-2">Villa</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="townhome" />
+        <label for="townhome" class="form-check-label mb-2">Townhome</label>
+      </div>
+    </div>
+
+    <div class="">
+      <h6>Price Range</h6>
+    </div>
+    <mat-slider min="200" max="500" class="mb-3 w-100">
+      <input value="0" matSliderStartThumb>
+      <input value="400" matSliderEndThumb>
+    </mat-slider>
+
+    <div class="mb-3">
+      <h6>Bedrooms</h6>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-dark active">Any</button>
+        <button type="button" class="btn btn-outline-dark">1+</button>
+        <button type="button" class="btn btn-outline-dark">2+</button>
+        <button type="button" class="btn btn-outline-dark">3+</button>
+        <button type="button" class="btn btn-outline-dark">4+</button>
+        <button type="button" class="btn btn-outline-dark">5+</button>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <h6>Bathrooms</h6>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-dark active">Any</button>
+        <button type="button" class="btn btn-outline-dark">1+</button>
+        <button type="button" class="btn btn-outline-dark">2+</button>
+        <button type="button" class="btn btn-outline-dark">3+</button>
+        <button type="button" class="btn btn-outline-dark">4+</button>
+        <button type="button" class="btn btn-outline-dark">5+</button>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <h6>Location</h6>
+      <select class="form-select">
+        <option selected>All Cities</option>
+        <option>City 1</option>
+        <option>City 2</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <h6>Area</h6>
+      <select class="form-select">
+        <option selected>All Areas</option>
+        <option>Area 1</option>
+        <option>Area 2</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <h6>Square Feet</h6>
+      <div class="d-flex justify-content-between">
+        <input type="number" class="form-control me-2" placeholder="Min." />
+        <input type="number" class="form-control" placeholder="Max" />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <h6>Year Built</h6>
+      <div class="d-flex justify-content-between">
+        <input type="number" class="form-control me-2" placeholder="2019" />
+        <input type="number" class="form-control" placeholder="2022" />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <p class="hero-subtitle d-flex gap-3 align-items-center buy-tab ms-2">
+        <i class="fa-solid fa-sliders fa-xl"></i> Other Features
+      </p>
+    </div>
+    <button mat-raised-button color="primary"
+      class="d-flex btn-shadow py-4 rounded w-100 d-flex justify-content-center align-items-center" type="submit">
+      <span><i class="fa-solid fa-magnifying-glass p-2"></i> </span>
+      <span class="me-3">Search</span>
+    </button>
+    <div class="d-flex justify-content-around mt-3">
+      <div class="reset-filters">
+        <i class="fas fa-undo"></i>
+        <small>Reset all filters</small>
+      </div>
+      <div class="reset-filters">
+        <span style="color: #E59819; font-size: 20px;">&#9733;</span>
+        <small>Save Search</small>
+      </div>
+    </div>
+  </div>
+</div>
