@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <h1
+    class="fw-semibold display-5 lh-sm text-start"
+    style="font-family: 'Poppins'"
+  >
+    Agents
+  </h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item active" aria-current="page">Agent</li>
+    </ol>
+  </nav>
+  <div class="row g-3 align-items-center mb-4 mt-4">
+    <div class="col-12 col-md-6">
+      <input
+        type="text"
+        class="form-control ps-3 rounded-pill py-3"
+        placeholder="Enter agency name"
+      />
+    </div>
+    <div class="col-12 col-md-3">
+      <select id="cities" class="form-select py-3 rounded-pill">
+        <option *ngFor="let city of cities" value="">{{ city }}</option>
+      </select>
+    </div>
+    <div
+      class="col-12 col-md-3 d-flex justify-content-md-end align-items-center" 
+    >
+      <mat-icon class="me-2">sort</mat-icon>
+      <span> <span class="gray">Sort by</span> Newest</span>
+    </div>
+  </div>
+  <div class="row g-3">
+    <div class="col-6 col-md-4 col-lg-3" *ngFor="let agent of filteredAgents()">
+      <div class="card h-100 shadow-sm">
+        <span class="badge badge-primary featured-badge d-inline-block"
+          >6 Property</span
+        >
+        <img src="{{ agent.image }}" alt="Agent photo" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="fw-semibold fs-6 text-start mb-1">{{ agent.name }}</h5>
+          <p
+            class="fs-6 text-start mb-0"
+            style="
+              font-family: DM Sans;
+              font-size: 15px;
+              font-weight: 400;
+              line-height: 28px;
+            "
+          >
+            {{ agent.role }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
