@@ -1,0 +1,36 @@
+.about-us {
+  position: absolute;
+  color: white;
+  top: 20%;
+  left: 18%;
+}
+
+.about-us h1 {
+  font-size: 3rem;
+}
+
+.icon-wrapper {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon-wrapper i {
+  font-size: 24px;
+}
+
+.seller-container {
+  background-color: rgba(0, 0, 0, 0.07);
+  border-radius: 12px !important;
+  margin-top: 25px !important;
+}
+
+@media (max-width: 600px) {
+
+  .office-gap,
+  .contact-detail {
+    display: block !important;
+  }
+}
