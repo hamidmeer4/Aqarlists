@@ -21,16 +21,19 @@ const routes: Routes = [
  {path:'for-sale', component: ForSaleComponent},
  {path:'contact',component:ContactComponent},
  {path:'agent',component: AgentComponent},
- {path:'Companies',component:CompaniesComponent},
+ {path:'companies',component:CompaniesComponent},
  {path:'listed-properties', component: ListedPropertiesComponent},
- {path:'FAQ', component:FaqComponent},
+ {path:'fAQ', component:FaqComponent},
  {path:'about', component:AboutComponent}
 
  
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    scrollPositionRestoration: 'enabled',
+  }),
+],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
