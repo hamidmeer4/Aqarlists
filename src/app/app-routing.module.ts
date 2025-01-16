@@ -10,6 +10,7 @@ import { AgentComponent } from './agent/agent.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { ListedPropertiesComponent } from './listed-properties/listed-properties.component';
 import { FaqComponent } from './faq/faq.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
  {path:'', component:LoginComponent},
@@ -20,15 +21,19 @@ const routes: Routes = [
  {path:'for-sale', component: ForSaleComponent},
  {path:'contact',component:ContactComponent},
  {path:'agent',component: AgentComponent},
- {path:'Companies',component:CompaniesComponent},
+ {path:'companies',component:CompaniesComponent},
  {path:'listed-properties', component: ListedPropertiesComponent},
- {path:'FAQ', component:FaqComponent}
+ {path:'fAQ', component:FaqComponent},
+ {path:'about', component:AboutComponent}
 
  
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    scrollPositionRestoration: 'enabled',
+  }),
+],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

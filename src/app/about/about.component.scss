@@ -1,0 +1,66 @@
+.custom-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 45px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.about-us {
+  position: absolute;
+  color: white;
+  top: 20%;
+  left: 18%;
+}
+
+.about-us h1 {
+  font-size: 3rem;
+}
+
+.icon-wrapper {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon-wrapper i {
+  font-size: 24px;
+}
+.flex-item {
+  align-items: start;
+}
+
+
+.seller-container {
+  background-color: rgba(0, 0, 0, 0.07);
+  border-radius: 12px !important;
+  margin-top: 25px !important;
+}
+.space-reoving {
+  position: relative;
+  bottom: 9px;
+}
+.space-reduce-in-icon {
+  position: relative;
+  bottom: 13px;
+}
+.icon-width {
+  font-size: 2em;
+  line-height: 1em;
+}
+
+@media (max-width: 600px) {
+
+  .office-gap,
+  .contact-detail {
+    display: block !important;
+  }
+}
+
+.third-div {
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+}

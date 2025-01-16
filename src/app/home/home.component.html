@@ -6,31 +6,48 @@
     <p class="hero-subtitle lead">
       We have more than 7,800 apartments, places & plots
     </p>
-    <div class="tabs w-100 text-start position-relative " style="left: 162px;">
+    <div class="tabs w-100 text-start position-relative" style="left: 162px">
       <ul class="nav bg-white rounded-top d-inline-flex py-2 px-3">
         <li class="nav-item">
-          <a class="nav-link buy-tab active" >Buy</a>
+          <a class="nav-link buy-tab active">Buy</a>
         </li>
         <li class="nav-item">
           <a class="nav-link auction-tab">Auction</a>
         </li>
       </ul>
     </div>
-    <div class="bg-white rounded-bottom-3 top-right shadow p-3 d-flex justify-content-center w-75">
+    <div
+      class="bg-white rounded-bottom-3 top-right shadow p-3 d-flex justify-content-center w-75"
+    >
       <div class="row g-0 align-items-center w-100">
         <div class="col-12 col-sm-10 col-md-8 col-lg-9 position-relative">
-          <input type="text" class="form-control search-input ps-5 rounded-4"
-            placeholder="Enter an address, neighborhood, city or ZIP code" [(ngModel)]="searchQuery" />
-          <img src="assets/icons/home2.png" alt="Home Icon" class="placeholder-icon position-absolute" />
+          <input
+            type="text"
+            class="form-control search-input ps-5 rounded-4"
+            placeholder="Enter an address, neighborhood, city or ZIP code"
+            [(ngModel)]="searchQuery"
+          />
+          <img
+            src="assets/icons/home2.png"
+            alt="Home Icon"
+            class="placeholder-icon position-absolute"
+          />
         </div>
-        <div class="col-12 col-sm-2 col-md-4 col-lg-3 d-flex  justify-content-center mt-2 mt-sm-0">
-          <div class="d-flex  gap-flex justify-content-between w-100">
-            <div class="mt-2 ms-4 ">
-              <p class="hero-subtitle d-flex gap-3 align-items-center buy-tab ms-2"><i
-                  class="fa-solid fa-sliders fa-xl"></i> Advance</p>
+        <div
+          class="col-12 col-sm-2 col-md-4 col-lg-3 d-flex justify-content-center mt-2 mt-sm-0"
+        >
+          <div class="d-flex gap-flex justify-content-between w-100">
+            <div class="mt-2 ms-4">
+              <p
+                class="hero-subtitle d-flex gap-3 align-items-center buy-tab ms-2"
+              >
+                <i class="fa-solid fa-sliders fa-xl"></i> Advance
+              </p>
             </div>
-            <button class="btn  search-btn w-100 rounded-pill d-flex justify-content-center align-items-center"
-              (click)="onSearch()">
+            <button
+              class="btn search-btn w-100 rounded-pill d-flex justify-content-center align-items-center"
+              (click)="onSearch()"
+            >
               <mat-icon>search</mat-icon>
             </button>
           </div>
@@ -43,35 +60,65 @@
   <div class="container mt-5">
     <section>
       <h2 style="font-family: Poppins" class="mx-3">Properties By Cities</h2>
-      <div class="d-flex  gap-flex justify-content-between align-items-center">
-        <p class="mb-4 mx-3" style="
+      <div class="d-flex gap-flex justify-content-between align-items-center">
+        <p
+          class="mb-4 mx-3"
+          style="
             font-family: Poppins;
             font-size: 14px;
             font-weight: 400;
             margin: -15px 0px 0px;
-          ">
+          "
+        >
           Aliquam lacinia diam quis lacus euismod
         </p>
-        <a  class="text-primary me-5">
+        <a class="text-primary me-5">
           See all cities <i class="fas fa-arrow-alt-circle-right"></i>
         </a>
       </div>
       <div id="cityCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-control-prev rounded-circle"
-          style="width: 50px; height: 50px; border: 1px solid white; background: white; color: black;  cursor: pointer;">
+        <div
+          class="carousel-control-prev rounded-circle"
+          style="
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+            background: white;
+            color: black;
+            cursor: pointer;
+          "
+        >
           <i class="fa-solid fa-chevron-right fa-rotate-180 fa-2xl"></i>
         </div>
-        <div class="carousel-control-next rounded-circle"
-          style="width: 50px; height: 50px; border: 1px solid white; background: white; color: black;  cursor: pointer;">
+        <div
+          class="carousel-control-next rounded-circle"
+          style="
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+            background: white;
+            color: black;
+            cursor: pointer;
+          "
+        >
           <i class="fa-solid fa-chevron-right fa-2xl"></i>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="d-flex gap-flex justify-content-start align-items-center">
-              <div *ngFor="let city of cities" class="d-flex gap-flex justify-content-center mx-0 my-3">
-                <div class="card property-card ">
+            <div
+              class="d-flex gap-flex justify-content-start align-items-center"
+            >
+              <div
+                *ngFor="let city of cities"
+                class="d-flex gap-flex justify-content-center mx-0 my-3"
+              >
+                <div class="card property-card">
                   <div class="circle-image">
-                    <img [src]="city.image" class="card-img-top" [alt]="city.name" />
+                    <img
+                      [src]="city.image"
+                      class="card-img-top"
+                      [alt]="city.name"
+                    />
                   </div>
                   <div class="card-body text-center">
                     <span class="custom-style">{{ city.name }}</span>
@@ -85,40 +132,66 @@
       </div>
     </section>
   </div>
-  <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center property-main">
+  <div class="container my-4">
+    <div
+      class="d-flex justify-content-between align-items-center property-main"
+    >
       <div class="mx-3">
         <h2>Properties For Sale</h2>
-        <p style="
-      font-family: Poppins;
-      font-size: 14px;
-      font-weight: 400;
-      margin: -15px 0px 0px;
-    ">
+        <p
+          style="
+            font-family: Poppins;
+            font-size: 14px;
+            font-weight: 400;
+            margin: -15px 0px 0px;
+          "
+        >
           Aliquam lacinia diam quis lacus euismod
         </p>
       </div>
-      <div class="btn-group mt-4 me-3" role="group" aria-label="Property Type Buttons">
-        <button *ngFor="let button of buttons" type="button" class="btn property-btn" [class.active]="button.active"
-          (click)="onButtonClick(button)">
+      <div
+        class="btn-group mt-4 me-3"
+        role="group"
+        aria-label="Property Type Buttons"
+      >
+        <button
+          *ngFor="let button of buttons"
+          type="button"
+          class="btn property-btn"
+          [class.active]="button.active"
+          (click)="onButtonClick(button)"
+        >
           {{ button.label }}
         </button>
       </div>
     </div>
 
-    <div class="container mt-5">
+    <div class="container my-5">
       <div class="row">
         <div class="col-md-6 col-lg-4 mb-1" *ngFor="let property of properties">
           <div class="card property-card">
             <div class="property-image">
-              <img [src]="property.image" [alt]="property.name" class="img-fluid card-img-top" />
+              <img
+                [src]="property.image"
+                [alt]="property.name"
+                class="img-fluid card-img-top"
+              />
               <div class="badge-container">
-                <span class="badge badge-primary featured-badge d-inline-block" *ngIf="property.featured"><i
-                    class="fa-solid fa-bolt fa-sm"></i> Featured</span>
-                <span class="badge badge-danger for-sale-badge" *ngIf="property.sale">For Sale</span>
+                <span
+                  class="badge badge-primary featured-badge d-inline-block"
+                  *ngIf="property.featured"
+                  ><i class="fa-solid fa-bolt fa-sm"></i> Featured</span
+                >
+                <span
+                  class="badge badge-danger for-sale-badge"
+                  *ngIf="property.sale"
+                  >For Sale</span
+                >
               </div>
-              <div class="text-center bg-white d-flex gap-flex me-2 ms-2 px-3 rounded property"
-                style="position: relative; bottom: 100px">
+              <div
+                class="text-center bg-white d-flex gap-flex me-2 ms-2 px-3 rounded property"
+                style="position: relative; bottom: 100px"
+              >
                 <div class="text-start p-2">
                   <span class="card-title">{{ property.name }}</span>
                   <p class="card-text text-muted">{{ property.location }}</p>
@@ -135,82 +208,116 @@
   </div>
 </div>
 
-<div class="container d-flex align-items-center justify-content-center seller-container">
+<div
+  class="container d-flex align-items-center justify-content-center seller-container"
+>
   <div class="row w-100">
-    <div class="col-lg-8 d-flex justify-content-center align-items-center seller-body">
-      <div class="">
-        <h2 class="fw-bold mb-4 ms-3">Let's Find The Right <br> Selling Option For You</h2>
+    <div
+      class="col-lg-7 d-flex justify-content-center align-items-center seller-body third-div"
+    >
+      <div class="py-4">
+        <h2 class="fw-bold mb-4 ms-3">
+          Let's Find The Right <br />
+          Selling Option For You
+        </h2>
         <div class="mb-4">
           <div class="d-flex align-items-center">
             <div class="me-3">
-              <span class="badge bg-light text-primary rounded-circle p-3">
-                <i class="fa-regular fa-circle-user fa-xl" style="color: #072b69;"></i>
+              <span class="badge bg-light text-primary rounded-circle p-3 mb-3">
+                <i
+                  class="fa-solid fa-circle-user fa-xl"
+                  style="color: #072b69"
+                ></i>
               </span>
             </div>
-            <div>
-              <p class="fw-bold mb-1">Discover Your Dream Home</p>
-              <p class="mb-0">Explore a wide range of properties tailored to your <br> needs, from cozy apartments to
-                luxurious estates.</p>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <div class="d-flex align-items-center">
-            <div class="me-3">
-              <span class="badge bg-light text-primary rounded-circle p-3">
-                <i class="fa-solid fa-key fa-rotate-180 fa-xl" style="color: #072b69;"></i>
-              </span>
-            </div>
-            <div>
-              <p class="fw-bold mb-1">Seamless Buying and Selling Experience</p>
-              <p class="mb-0">Find expert guidance and tools to simplify your real <br> estate transactions and make
-                informed decisions.</p>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <div class="d-flex align-items-center">
-            <div class="me-3">
-              <span class="badge bg-light text-primary rounded-circle p-3">
-                <i class="fa-solid fa-sack-dollar fa-xl" style="color: #072b69;"></i>
-              </span>
-            </div>
-            <div>
-              <p class="fw-bold mb-1">Invest in Your Future</p>
-              <p class="mb-0">Access premium listings and investment <br> opportunities that promise value and growth.
+            <div class="">
+              <p class="fw-bold mt-1">Discover Your Dream Home</p>
+              <p class="mb-0 gray space-reoving">
+                Explore a wide range of properties tailored to your <br />
+                needs, from cozy apartments to luxurious estates.
               </p>
             </div>
           </div>
         </div>
-        <a class="btn btn-dark">Learn More
+        <div class="mb-4">
+          <div class="d-flex align-items-center">
+            <div class="me-3">
+              <span class="badge bg-light text-primary rounded-circle p-3 mb-3">
+                <i
+                  class="fa-solid fa-key fa-rotate-180 fa-xl"
+                  style="color: #072b69"
+                ></i>
+              </span>
+            </div>
+            <div>
+              <p class="fw-bold mb-1">Seamless Buying and Selling Experience</p>
+              <p class="mb-0 gray">
+                Find expert guidance and tools to simplify your real <br />
+                estate transactions and make informed decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center">
+            <div class="me-3">
+              <span class="badge bg-light text-primary rounded-circle p-3 mb-3">
+                <i
+                  class="fa-solid fa-sack-dollar fa-xl"
+                  style="color: #072b69"
+                ></i>
+              </span>
+            </div>
+            <div>
+              <p class="fw-bold mb-1">Invest in Your Future</p>
+              <p class="mb-0 gray">
+                Access premium listings and investment <br />
+                opportunities that promise value and growth.
+              </p>
+            </div>
+          </div>
+        </div>
+        <a class="btn btn-dark" style="background-color: #002f6d"
+          >Learn More
           <span>
-            <img src="assets/icons/right-up.png" alt="arrow" style="width: 20px; height: 20px" />
+            <img
+              src="assets/icons/right-up.png"
+              alt="arrow"
+              style="width: 20px; height: 20px"
+            />
           </span>
         </a>
       </div>
     </div>
-    <div class="col-lg-4 d-none d-lg-block" style="padding: 0px !important;">
-      <img src="assets/images/seller.png" alt="House Image" class="img-fluid">
+    <div class="col-lg-4 d-none d-lg-block" style="padding: 0px !important">
+      <img
+        src="assets/images/seller.png"
+        alt="House Image"
+        class="img-fluid"
+        style="position: relative; left: 28%; height: 80vh"
+      />
     </div>
   </div>
 </div>
-<div class="d-flex flex-wrap justify-content-center align-items-center gap-4 py-5">
-  <div class="text-center flex-grow-1" style="max-width: 200px;">
+<div
+  class="d-flex flex-wrap justify-content-center align-items-center gap-4 py-5"
+>
+  <div class="text-center flex-grow-1" style="max-width: 200px">
     <h2 class="fw-bold">4M</h2>
     <p class="text-muted">Award Winning</p>
   </div>
-  <div class="text-center flex-grow-1" style="max-width: 200px;">
+  <div class="text-center flex-grow-1" style="max-width: 200px">
     <h2 class="fw-bold">12K</h2>
     <p class="text-muted">Property Ready</p>
   </div>
-  <div class="text-center flex-grow-1" style="max-width: 200px;">
+  <div class="text-center flex-grow-1" style="max-width: 200px">
     <h2 class="fw-bold">20M</h2>
     <p class="text-muted">Happy Customer</p>
   </div>
 </div>
 
 <div class="container">
-  <hr style="border-top: 1px solid #DDDDDD; margin: 0 auto;">
+  <hr style="border-top: 1px solid #dddddd; margin: 0 auto" />
 </div>
 
 <div class="container my-5 w-75">
@@ -219,16 +326,22 @@
       <h2 class="fw-bold">Explore Apartment Types</h2>
       <p>Get some inspirations from 1800+ skills</p>
     </div>
-    <div class="d-flex justify-content-center position-absolute"
-      style="top: 22px; left: 66%; transform: translateX(-50%);">
-      <button class="btn btn-outline-secondary me-2" (click)="previous()">&#8592;</button>
-      <button class="btn btn-outline-secondary" (click)="next()">&#8594;</button>
+    <div
+      class="d-flex justify-content-center position-absolute"
+      style="top: 22px; left: 66%; transform: translateX(-50%)"
+    >
+      <button class="btn btn-outline-secondary me-2" (click)="previous()">
+        &#8592;
+      </button>
+      <button class="btn btn-outline-secondary" (click)="next()">
+        &#8594;
+      </button>
     </div>
     <div class="row">
-      <div class=" col-lg-2 mb-4" *ngFor="let type of apartmentTypes">
+      <div class="col-lg-2 mb-4" *ngFor="let type of apartmentTypes">
         <div class="card apartmentTypes-card">
           <div class="card-img-container">
-            <img [src]="type.img" alt="{{ type.name }}" class="card-img">
+            <img [src]="type.img" alt="{{ type.name }}" class="card-img" />
           </div>
           <div class="card-body-apartment">
             <h5 class="card-title fw-bold">{{ type.name }}</h5>
@@ -240,50 +353,86 @@
   </div>
 </div>
 
-
 <div class="container my-5">
-  <div class="d-flex customer-main" style="border-radius: 24px;">
-    <div class="p-4 customer-right-section"
-      style="background-color: #F7F7F7; width: 50%;  border-top-left-radius: 20px; border-bottom-left-radius: 20px">
+  <div class="d-flex customer-main" style="border-radius: 24px">
+    <div
+      class="p-4 customer-right-section"
+      style="
+        background-color: #f7f7f7;
+        width: 50%;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+      "
+    >
       <div class="customer">
-        <p class="p-3"> <span class="fw-bold">200+</span> Exclusive Customers</p>
-        <div *ngFor="let customer of customers" class="d-flex align-items-center p-3">
-          <img [src]="customer.img" class="rounded-circle me-3" alt="Customer Image" width="50">
+        <p class="p-3"><span class="fw-bold">200+</span> Exclusive Customers</p>
+        <div
+          *ngFor="let customer of customers"
+          class="d-flex align-items-center p-3"
+        >
+          <img
+            [src]="customer.img"
+            class="rounded-circle me-3"
+            alt="Customer Image"
+            width="50"
+          />
           <div>
-            <h6 class="mb-0" style="color:#181A20;">{{ customer.name }}</h6>
+            <h6 class="mb-0" style="color: #181a20">{{ customer.name }}</h6>
             <small class="text-muted">{{ customer.role }}</small>
           </div>
         </div>
       </div>
       <div class="customer-image w-25">
-        <img src="assets/images/pexels-zachtheshoota.png" alt="House" class="img-fluid rounded">
-        <h6 class="mb-0 p-2" style="color:#181A20;">Guy Hawkins</h6>
+        <img
+          src="assets/images/pexels-zachtheshoota.png"
+          alt="House"
+          class="img-fluid rounded"
+        />
+        <h6 class="mb-0 p-2" style="color: #181a20">Guy Hawkins</h6>
         <small class="text-muted p-2">Broker</small>
       </div>
     </div>
-
-    <!-- Right Section (50%) -->
-    <div class="p-4 customer-left-section "
-      style="background-color: #F7F7F7; width: 50%; border-top-right-radius: 20px; border-bottom-right-radius: 20px">
-      <h4 class="fw-bold mt-5">Trusted By Best <br> Exclusive Customers</h4>
-      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br> eiusmod tempor
-        incididunt.</p>
+    <div
+      class="p-4 customer-left-section"
+      style="
+        background-color: #f7f7f7;
+        width: 50%;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+      "
+    >
+      <h4 class="fw-bold mt-5">
+        Trusted By Best <br />
+        Exclusive Customers
+      </h4>
+      <p class="text-muted">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br />
+        eiusmod tempor incididunt.
+      </p>
       <ul class="list-unstyled">
         <li class="d-flex align-items-center mb-2 customer-list py-2">
           <i class="fa-solid fa-circle-check me-2"></i> Find excellent deals
         </li>
         <li class="d-flex align-items-center mb-2 customer-list py-2">
-          <i class="fa-solid fa-circle-check me-2"></i>Friendly host & Fast support
+          <i class="fa-solid fa-circle-check me-2"></i>Friendly host & Fast
+          support
         </li>
-        <li class="d-flex align-items-center  customer-list py-2">
+        <li class="d-flex align-items-center customer-list py-2">
           <i class="fa-solid fa-circle-check me-2"></i> List your own property
         </li>
       </ul>
-      <button mat-raised-button color="primary"
-        class="d-flex btn-shadow mt-4 rounded d-flex justify-content-center align-items-center py-4">
+      <button
+        mat-raised-button
+        color="primary"
+        class="d-flex btn-shadow mt-4 rounded d-flex justify-content-center align-items-center py-4"
+      >
         Get Started
         <span>
-          <img src="assets/icons/right-up.png" alt="arrow" style="width: 20px; height: 20px" />
+          <img
+            src="assets/icons/right-up.png"
+            alt="arrow"
+            style="width: 20px; height: 20px"
+          />
         </span>
       </button>
     </div>
@@ -292,11 +441,16 @@
 
 <div class="container my-5 text-center">
   <div class="position-relative">
-    <!-- Buttons before heading -->
-    <div class="d-flex justify-content-center position-absolute"
-      style="top: 10px; left: 66%; transform: translateX(-50%);">
-      <button class="btn btn-outline-secondary me-2" (click)="previous()">&#8592;</button>
-      <button class="btn btn-outline-secondary" (click)="next()">&#8594;</button>
+    <div
+      class="d-flex justify-content-center position-absolute"
+      style="top: 10px; left: 66%; transform: translateX(-50%)"
+    >
+      <button class="btn btn-outline-secondary me-2" (click)="previous()">
+        &#8592;
+      </button>
+      <button class="btn btn-outline-secondary" (click)="next()">
+        &#8594;
+      </button>
     </div>
 
     <div class="text-start mt-5">
@@ -305,23 +459,32 @@
     </div>
 
     <div class="row">
-      <div class="col-md-3  mb-4" *ngFor="let testimonial of testimonials">
+      <div class="col-md-3 mb-4" *ngFor="let testimonial of testimonials">
         <div class="card card-testimonial h-100">
           <div class="card-body">
-            <h5 class="card-title card-title-testimonial text-start">{{ testimonial.title }}</h5>
+            <h5 class="card-title card-title-testimonial text-start">
+              {{ testimonial.title }}
+            </h5>
             <blockquote class="blockquote text-start">
               <p>{{ testimonial.text }}</p>
               <div>
-                <span style="color: #E59819;">&#9733;</span>
-                <span style="color: #E59819;">&#9733;</span>
-                <span style="color: #E59819;">&#9733;</span>
-                <span style="color: #E59819;">&#9733;</span>
-                <span style="color: #E59819;">&#9733;</span>
+                <span style="color: #e59819">&#9733;</span>
+                <span style="color: #e59819">&#9733;</span>
+                <span style="color: #e59819">&#9733;</span>
+                <span style="color: #e59819">&#9733;</span>
+                <span style="color: #e59819">&#9733;</span>
               </div>
             </blockquote>
-            <hr style="border-top: 1px solid #DDDDDD; width: 90%; margin: 0 auto;">
+            <hr
+              style="border-top: 1px solid #dddddd; width: 90%; margin: 0 auto"
+            />
             <div class="d-flex align-items-center mt-4">
-              <img [src]="testimonial.img" class="rounded-circle me-3" alt="User Image" width="50">
+              <img
+                [src]="testimonial.img"
+                class="rounded-circle me-3"
+                alt="User Image"
+                width="50"
+              />
               <div>
                 <h6 class="mb-0">{{ testimonial.name }}</h6>
                 <small>{{ testimonial.company }}</small>
@@ -339,28 +502,54 @@
     <p class="text-muted mb-4">Trusted by the world's best</p>
     <div class="row justify-content-center align-items-center">
       <div class="col-4 col-sm-2 mt-2">
-        <img src="assets/images/amazon.png" alt="Amazon Logo" class="img-fluid logo-img" />
+        <img
+          src="assets/images/amazon.png"
+          alt="Amazon Logo"
+          class="img-fluid logo-img"
+        />
       </div>
       <div class="col-4 col-sm-2 my-3">
-        <img src="assets/images/amd.png" alt="AMD Logo" class="img-fluid logo-img" />
+        <img
+          src="assets/images/amd.png"
+          alt="AMD Logo"
+          class="img-fluid logo-img"
+        />
       </div>
       <div class="col-4 col-sm-2 my-3">
-        <img src="assets/images/cisco.png" alt="Cisco Logo" class="img-fluid logo-img" />
+        <img
+          src="assets/images/cisco.png"
+          alt="Cisco Logo"
+          class="img-fluid logo-img"
+        />
       </div>
       <div class="col-4 col-sm-2 my-3">
-        <img src="assets/images/dropcam.png" alt="Dropcam Logo" class="img-fluid logo-img" />
+        <img
+          src="assets/images/dropcam.png"
+          alt="Dropcam Logo"
+          class="img-fluid logo-img"
+        />
       </div>
       <div class="col-4 col-sm-2 my-3">
-        <img src="assets/images/logitech.png" alt="Logitech Logo" class="img-fluid logo-img" />
+        <img
+          src="assets/images/logitech.png"
+          alt="Logitech Logo"
+          class="img-fluid logo-img"
+        />
       </div>
       <div class="col-4 col-sm-2 my-3">
-        <img src="assets/images/Spotify.png" alt="Spotify Logo" class="img-fluid logo-img" />
+        <img
+          src="assets/images/Spotify.png"
+          alt="Spotify Logo"
+          class="img-fluid logo-img"
+        />
       </div>
     </div>
   </div>
 </div>
-<div class="container get-started-container mx-auto d-flex align-items-center bg-light mt-4 p-5"
-  style="border-radius: 24px;">
+<div
+  class="container get-started-container mx-auto d-flex align-items-center bg-light mt-4 p-5"
+  style="border-radius: 24px"
+>
   <div class="">
     <div class="d-flex justify-content-between align-items-center">
       <div class="text-center text-md-start w-50">
@@ -369,18 +558,29 @@
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt.
         </p>
-        <button mat-raised-button color="primary"
-          class="d-flex btn-shadow py-4 rounded d-flex justify-content-center align-items-center">
+        <button
+          mat-raised-button
+          color="primary"
+          class="d-flex btn-shadow py-4 rounded d-flex justify-content-center align-items-center"
+        >
           Get Started
           <span>
-            <img src="assets/icons/right-up.png" alt="arrow" style="width: 20px; height: 20px" />
+            <img
+              src="assets/icons/right-up.png"
+              alt="arrow"
+              style="width: 20px; height: 20px"
+            />
           </span>
         </button>
       </div>
       <div class="w-50 text-end d-none d-lg-block">
-        <img src="assets/images/pexels-zachtheshoota.png" alt="House" class="img-fluid rounded move-up-image">
+        <img
+          src="assets/images/pexels-zachtheshoota.png"
+          alt="House"
+          class="img-fluid rounded move-up-image"
+        />
       </div>
     </div>
   </div>
 </div>
-<app-footer></app-footer> 
+<app-footer></app-footer>

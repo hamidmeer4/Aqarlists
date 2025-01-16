@@ -27,6 +27,7 @@ import { AgentComponent } from './agent/agent.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { ListedPropertiesComponent } from './listed-properties/listed-properties.component';
 import { FaqComponent } from './faq/faq.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { FaqComponent } from './faq/faq.component';
     CompaniesComponent,
     ListedPropertiesComponent,
     FaqComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

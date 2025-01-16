@@ -1,0 +1,336 @@
+<app-header></app-header>
+<div>
+  <div class="about-us">
+    <h1 class="fw-bold">About Us</h1>
+    <span>Home / About Us</span>
+  </div>
+  <img
+    src="assets/images/businessman-hold-house.png"
+    class="img-fluid w-100"
+    alt="Responsive image"
+  />
+</div>
+<div style="background: #f7f7f7">
+  <div class="container d-flex p-5 text-center">
+    <div class="w-50 text-center mt-5">
+      <h1
+        class="fw-bold mb-4 text-start"
+        style="
+          font-family: Poppins, sans-serif;
+          font-size: 30px;
+          font-weight: 600;
+          line-height: 45px;
+          letter-spacing: 0.02em;
+        "
+      >
+        We're on a Mission to Change <br />
+        View of Real Estate Field.
+      </h1>
+    </div>
+    <div class="w-50 mt-5">
+      <div class="text-center">
+        <p class="gray mb-5 text-start">
+          It doesn’t matter how organized you are — a surplus of toys will
+          always ensure your house is a mess waiting to happen. Fortunately,
+          getting kids on board with the idea of ditching their stuff is a lot
+          easier than it sounds. <br /><br />
+
+          Maecenas quis viverra metus, et efficitur ligula. Nam congue augue et
+          ex congue, sed luctus lectus congue. Integer convallis condimentum
+          sem. Duis elementum tortor eget condimentum tempor. Praesent
+          sollicitudin lectus ut pharetra pulvinar.
+        </p>
+        <div class="d-flex justify-content-around flex-wrap">
+          <div class="flex-item text-start">
+            <div class="text-start">
+              <i
+                class="fa-solid fa-house-user fa-lg icon-width"
+                style="width: 45px; height: 45px"
+              ></i>
+            </div>
+
+            <h3 class="fw-bold">Modern Villa</h3>
+            <p class="gray space-reduce-in-icon">
+              Nullam sollicitudin blandit<br />Nullam maximus.
+            </p>
+          </div>
+
+          <div class="flex-item text-start">
+            <div class="text-start">
+              <i
+                class="fa-regular fa-credit-card fa-lg icon-width"
+                style="width: 45px; height: 45px"
+              ></i>
+            </div>
+            <h3 class="fw-bold">Secure Payment</h3>
+            <p class="gray space-reduce-in-icon">
+              Nullam sollicitudin blandit<br />Nullam maximus.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container justify-content-center align-items-center">
+    <img
+      src="assets/images/panoramic-view.png"
+      alt="Centered Image"
+      class="img-fluid"
+    />
+  </div>
+
+  <div
+    class="d-flex flex-wrap justify-content-center align-items-center gap-4 py-5"
+  >
+    <div class="text-center flex-grow-1" style="max-width: 200px">
+      <h2
+        class="fw-semibold text-center"
+        style="font-family: Poppins; font-size: 35px; line-height: 63px"
+      >
+        4M
+      </h2>
+      <p
+        class="text-center gray"
+        style="
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 26px;
+        "
+      >
+      Awward Winning
+      </p>
+    </div>
+    <div class="text-center flex-grow-1" style="max-width: 200px">
+      <h2 class="fw-semibold text-center" style="font-family: Poppins; font-size: 35px; line-height: 63px">12K</h2>
+      <p class="text-center gray" style="
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 26px;
+    ">Property Ready</p>
+    </div>
+    <div class="text-center flex-grow-1" style="max-width: 200px">
+      <h2 class="fw-semibold text-center" style="font-family: Poppins; font-size: 35px; line-height: 63px">20M</h2>
+      <p class=" text-center gray" style="
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 26px;">Happy Customer</p>
+    </div>
+  </div>
+
+  <div class="container my-5 mt-3">
+    <h2 class="text-center fw-bold custom-heading">Our Exclusive Agents</h2>
+    <p class="text-center gray" style="
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px; 
+    margin-top: -1%">
+      Aliquam lacinia diam quis lacus euismod
+    </p>
+    <div class="row justify-content-center">
+      <div
+        class="col-6 col-md-4 col-lg-2 text-center"
+        *ngFor="let agent of agents"
+      >
+        <div class="card shadow border-0 my-4">
+          <img [src]="agent.image" class="card-img-top" alt="Agent Image" />
+          <div class="card-body">
+            <h5 class="card-title text-start fs-6 fw-bold">{{ agent.name }}</h5>
+            <p class="text-start gray mb-0">{{ agent.role }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="container d-flex align-items-center justify-content-center seller-container"
+  >
+    <div class="row w-100">
+      <div
+        class="col-lg-7 d-flex justify-content-center align-items-center seller-body third-div"
+      >
+        <div class="py-4">
+          <h2 class="fw-bold mb-4 ms-3">
+            Let's Find The Right <br />
+            Selling Option For You
+          </h2>
+          <div class="mb-4">
+            <div class="d-flex align-items-center">
+              <div class="me-3">
+                <span
+                  class="badge bg-light text-primary rounded-circle p-3 mb-3"
+                >
+                  <i
+                    class="fa-solid fa-circle-user fa-xl"
+                    style="color: #072b69"
+                  ></i>
+                </span>
+              </div>
+              <div class="">
+                <p class="fw-bold mt-1">Discover Your Dream Home</p>
+                <p class="mb-0 gray space-reoving">
+                  Explore a wide range of properties tailored to your <br />
+                  needs, from cozy apartments to luxurious estates.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex align-items-center">
+              <div class="me-3">
+                <span
+                  class="badge bg-light text-primary rounded-circle p-3 mb-3"
+                >
+                  <i
+                    class="fa-solid fa-key fa-rotate-180 fa-xl"
+                    style="color: #072b69"
+                  ></i>
+                </span>
+              </div>
+              <div>
+                <p class="fw-bold mb-1">
+                  Seamless Buying and Selling Experience
+                </p>
+                <p class="mb-0 gray">
+                  Find expert guidance and tools to simplify your real <br />
+                  estate transactions and make informed decisions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex align-items-center">
+              <div class="me-3">
+                <span
+                  class="badge bg-light text-primary rounded-circle p-3 mb-3"
+                >
+                  <i
+                    class="fa-solid fa-sack-dollar fa-xl"
+                    style="color: #072b69"
+                  ></i>
+                </span>
+              </div>
+              <div>
+                <p class="fw-bold mb-1">Invest in Your Future</p>
+                <p class="mb-0 gray">
+                  Access premium listings and investment <br />
+                  opportunities that promise value and growth.
+                </p>
+              </div>
+            </div>
+          </div>
+          <a class="btn " style="background-color: #072b69; color: #f7f7f7;"
+            >Learn More
+            <span>
+              <img
+                src="assets/icons/right-up.png"
+                alt="arrow"
+                style="width: 20px; height: 20px"
+              />
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 d-none d-lg-block" style="padding: 0px !important">
+        <img
+          src="assets/images/imageBuilding.png"
+          alt="House Image"
+          class="img-fluid"
+          style="position: relative; left: 28%; height: 80vh"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center mb-5 mt-4">
+    <div class="trusted-by-container text-center py-4">
+      <p class="gray mb-4">Trusted by the world's best</p>
+      <div class="row justify-content-center align-items-center gx-5 gy-5">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <img
+            src="assets/images/amazon.png"
+            alt="Amazon Logo"
+            class="img-fluid logo-img"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <img
+            src="assets/images/amd.png"
+            alt="AMD Logo"
+            class="img-fluid logo-img"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <img
+            src="assets/images/cisco.png"
+            alt="Cisco Logo"
+            class="img-fluid logo-img"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <img
+            src="assets/images/dropcam.png"
+            alt="Dropcam Logo"
+            class="img-fluid logo-img"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <img
+            src="assets/images/logitech.png"
+            alt="Logitech Logo"
+            class="img-fluid logo-img"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <img
+            src="assets/images/Spotify.png"
+            alt="Spotify Logo"
+            class="img-fluid logo-img"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="container card rounded-4 shadow p-5 mb-5">
+    <div class="d-flex justify-content-evenly contact-detail">
+      <div>
+        <h2 class="fw-bold">Need Help? Talk To Our Expert.</h2>
+        <p class="gray">
+          Talk to our experts or Browse through more properties.
+        </p>
+      </div>
+      <div class="d-flex p-4">
+        <button
+          mat-stroked-button
+          class="d-flex btn-shadow py-4 rounded-4 d-flex justify-content-center align-items-center mx-2"
+        >
+          <span class="me-3">Contact Us</span>
+          <span>
+            <img
+              src="assets/icons/right-up1.png"
+              alt="arrow"
+              style="width: 20px; height: 20px"
+            />
+          </span>
+        </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="d-flex btn-shadow py-4 rounded-4 d-flex justify-content-center align-items-center"
+          type="submit"
+        >
+          <i class="fa-solid fa-phone fa-lg mx-2"></i>
+          <span>920 851 9087</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
