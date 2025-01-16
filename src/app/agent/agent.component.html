@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div style="background: #F7F7F7">
+<div style="background: #f7f7f7">
   <div class="container">
     <h1
       class="fw-semibold display-5 lh-sm text-start pt-2"
@@ -27,14 +27,17 @@
         </select>
       </div>
       <div
-        class="col-12 col-md-3 d-flex justify-content-md-end align-items-center" 
+        class="col-12 col-md-3 d-flex justify-content-md-end align-items-center"
       >
         <mat-icon class="me-2">sort</mat-icon>
         <span> <span class="gray">Sort by</span> Newest</span>
       </div>
     </div>
     <div class="row g-3">
-      <div class="col-6 col-md-4 col-lg-3" *ngFor="let agent of filteredAgents()">
+      <div
+        class="col-6 col-md-4 col-lg-3"
+        *ngFor="let agent of filteredAgents()"
+      >
         <div class="card h-100 shadow rounded-4 agent-card">
           <span class="badge badge-primary featured-badge d-inline-block"
             >6 Property</span
@@ -60,4 +63,4 @@
   </div>
 </div>
 <app-paginator></app-paginator>
-<app-footer></app-footer> 
+<app-footer></app-footer>
