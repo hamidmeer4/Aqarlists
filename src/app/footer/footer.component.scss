@@ -1,5 +1,6 @@
 .footer-container {
   background: #002F6D !important;
+  position: relative !important;
 }
 
 .popular-search-title {
@@ -29,4 +30,10 @@ ul li:hover {
 
 .Privacy {
   color: #BEBDBD;
+}
+
+.scroll-to-top-button {
+  position: absolute;
+  top: -55px;
+  right: 10px;
 }

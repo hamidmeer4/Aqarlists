@@ -133,8 +133,8 @@ body {
  
 .g-bubble-container {
   display: flex;
-  gap: 10px;
-  padding: 8px !important;
+  gap: 31px;
+  padding: 17px !important;
 }
 
 .g-bubble {
@@ -176,12 +176,20 @@ mat-paginator {
       top: auto !important;
     }
   }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .mat-mdc-paginator-range-actions
      {
         position: relative !important;
         right: 40% !important;
      }
+     .main-card {
+      display: block !important;
+    }
+    .g-bubble-container {
+      display: flex;
+      gap: 0px !important;
+      padding: 0px !important;
+    }
     }
     
 }

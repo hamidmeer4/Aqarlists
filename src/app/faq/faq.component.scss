@@ -1,0 +1,24 @@
+.accordion-button {
+    font-weight: bold;
+}
+
+.accordion-body {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #002F6D !important;
+    color: white !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+
+    .contact-detail {
+        display: block !important;
+    }
+}

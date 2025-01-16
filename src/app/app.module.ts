@@ -25,6 +25,8 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { ContactComponent } from './contact/contact.component';
 import { AgentComponent } from './agent/agent.component';
 import { CompaniesComponent } from './companies/companies.component';
+import { ListedPropertiesComponent } from './listed-properties/listed-properties.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { CompaniesComponent } from './companies/companies.component';
     ContactComponent,
     AgentComponent,
     CompaniesComponent,
+    ListedPropertiesComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
