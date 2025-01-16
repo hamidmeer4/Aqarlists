@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div style="background: #F7F7F7;">
+    <div class="container d-flex justify-content-center main-card">
+        <div>
+            <div class="mx-4 mt-3 mb-4 tex sale-header">
+                <h2>Find your nearest properties</h2>
+                <p>Home / Nearest Property</p>
+            </div>
+            <app-side-bar></app-side-bar>
+        </div>
+        <div class="mapouter mt-5 p-5">
+            <div class="d-flex flex-wrap sale-card">
+                <div *ngFor="let property of properties; let i = index" class="card mb-4 card-flex">
+                    <img [src]="property.image" class="card-img-top img-fluid" alt="Property Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-start">{{ property.name }}</h5>
+                        <p class="card-text text-start">{{ property.location }}</p>
+                        <div class="d-flex gap-5">
+                            <span><i class="fas fa-bed"></i> {{ property.bed }} bed</span>
+                            <span><i class="fas fa-bath"></i> {{ property.bath }} bath</span>
+                            <span><i class="fas fa-expand"></i> {{ property.size }} sqft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gmap_canvas mt-3 rounded-4 shadow"><iframe class="gmap_iframe" width="100%" frameborder="0"
+                    scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://maps.google.com/maps?width=600&amp;height=1220&amp;hl=en&amp;q=madina&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
+                    href="https://sprunkiplay.com">Sprunki</a></div>
+            <style>
+                .mapouter {
+                    position: relative;
+                    text-align: right;
+                    width: 100%;
+                    height: 1220px;
+                }
+
+                .gmap_canvas {
+                    overflow: hidden;
+                    background: none !important;
+                    width: 100%;
+                    height: 1220px;
+                }
+
+                .gmap_iframe {
+                    height: 1220px !important;
+                }
+            </style>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
