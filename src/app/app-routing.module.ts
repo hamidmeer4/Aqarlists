@@ -11,6 +11,8 @@ import { CompaniesComponent } from './companies/companies.component';
 import { ListedPropertiesComponent } from './listed-properties/listed-properties.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
+import { ComparePropertiesComponent } from './compare-properties/compare-properties.component';
+import { ComparePropertiesDetailComponent } from './compare-properties-detail/compare-properties-detail.component';
 
 const routes: Routes = [
  {path:'', component:LoginComponent},
@@ -24,9 +26,9 @@ const routes: Routes = [
  {path:'companies',component:CompaniesComponent},
  {path:'listed-properties', component: ListedPropertiesComponent},
  {path:'fAQ', component:FaqComponent},
- {path:'about', component:AboutComponent}
-
- 
+ {path:'about', component:AboutComponent},
+ {path:'compare-properties', component:ComparePropertiesComponent},
+ {path:'compare-properties-detail', component:ComparePropertiesDetailComponent}
 ]
 
 @NgModule({
