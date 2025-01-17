@@ -1,0 +1,59 @@
+.compare-properties {
+  position: absolute;
+  color: white;
+  top: 20%;
+  left: 18%;
+}
+
+.card-img-container {
+  width: 200px !important;
+  height: 180px !important;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.card-body-apartment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+//   .table-bordered>:not(caption)>*>* {
+//     border: none !important;
+//   }
+.d-flex {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+.table-container {
+  flex: 1;
+  min-width: 300px;
+  width: 100%;
+}
+
+.table-responsive {
+  overflow-x: auto !important;
+}
+
+@media (max-width: 1200px) {
+  .table-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .table-card {
+    display: block !important;
+  }
+
+  .table-container {
+    width: 100%;
+  }
+}
