@@ -40,23 +40,15 @@
   position: relative;
   bottom: 80% !important;
   height: 40px;
-  /* Adjust height as needed */
   width: 140px;
-  /* Adjust width as needed */
   background-color: white;
-  /* White background */
   color: black;
   padding: 5px;
-  /* Optional: padding inside the box */
   border-radius: 5px;
-  /* Optional: rounded corners */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Optional: subtle shadow for effect */
   display: flex;
   align-items: center;
-  /* Vertically center content */
   justify-content: center;
-  /* Horizontally center content */
 }
 
 /* Add responsive design */

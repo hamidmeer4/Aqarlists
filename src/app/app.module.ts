@@ -33,6 +33,7 @@ import { ComparePropertiesDetailComponent } from './compare-properties-detail/co
 import {MatTableModule} from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ThirdPartyDetailComponent } from './third-party-detail/third-party-detail.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AboutComponent,
     ComparePropertiesComponent,
     ComparePropertiesDetailComponent,
+    ThirdPartyDetailComponent,
   ],
   imports: [
     BrowserModule,
