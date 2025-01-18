@@ -28,11 +28,13 @@ import { CompaniesComponent } from './companies/companies.component';
 import { ListedPropertiesComponent } from './listed-properties/listed-properties.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
+import { InteriorApartmentComponent } from './interior-apartment/interior-apartment.component';
 import { ComparePropertiesComponent } from './compare-properties/compare-properties.component';
 import { ComparePropertiesDetailComponent } from './compare-properties-detail/compare-properties-detail.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     ListedPropertiesComponent,
     FaqComponent,
     AboutComponent,
+    InteriorApartmentComponent,
     ComparePropertiesComponent,
     ComparePropertiesDetailComponent,
   ],
@@ -72,6 +75,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatTableModule,
     MatCheckboxModule,
     MatToolbarModule,
+    MatIconModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
