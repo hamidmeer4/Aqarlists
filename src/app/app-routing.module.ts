@@ -13,6 +13,7 @@ import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
 import { ComparePropertiesComponent } from './compare-properties/compare-properties.component';
 import { ComparePropertiesDetailComponent } from './compare-properties-detail/compare-properties-detail.component';
+import { ThirdPartyDetailComponent } from './third-party-detail/third-party-detail.component';
 
 const routes: Routes = [
  {path:'', component:LoginComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
  {path:'fAQ', component:FaqComponent},
  {path:'about', component:AboutComponent},
  {path:'compare-properties', component:ComparePropertiesComponent},
- {path:'compare-properties-detail', component:ComparePropertiesDetailComponent}
+ {path:'compare-properties-detail', component:ComparePropertiesDetailComponent},
+ {path:'third-party-detail', component:ThirdPartyDetailComponent}
 ]
 
 @NgModule({

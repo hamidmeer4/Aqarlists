@@ -11,6 +11,9 @@ body {
   padding: 0;
   height: 100%;
   font-family: "Poppins",serif !important;
+  h1{
+    font-family: "Poppins",serif !important;
+  }
   h2{
     font-family: "Poppins",serif !important;
   }
@@ -26,11 +29,15 @@ body {
   h6{
     font-family: "Poppins",serif !important;
   }
+  small{
+    font-family: "Poppins",serif !important;
+  }
   
   p{
     font-family: 'Poppins' !important;
     font-size: 14px;
     font-weight: 400;
+    line-height: 26px !important;
   }
   .custom-header-text {
     font-family: "Alice", serif;
