@@ -14,6 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { ComparePropertiesComponent } from './compare-properties/compare-properties.component';
 import { ComparePropertiesDetailComponent } from './compare-properties-detail/compare-properties-detail.component';
 import { ThirdPartyDetailComponent } from './third-party-detail/third-party-detail.component';
+import { InteriorApartmentComponent } from './interior-apartment/interior-apartment.component';
 
 const routes: Routes = [
  {path:'', component:LoginComponent},
@@ -30,7 +31,8 @@ const routes: Routes = [
  {path:'about', component:AboutComponent},
  {path:'compare-properties', component:ComparePropertiesComponent},
  {path:'compare-properties-detail', component:ComparePropertiesDetailComponent},
- {path:'third-party-detail', component:ThirdPartyDetailComponent}
+ {path:'third-party-detail', component:ThirdPartyDetailComponent},
+ {path:'interior-apartment', component:InteriorApartmentComponent},
 ]
 
 @NgModule({
