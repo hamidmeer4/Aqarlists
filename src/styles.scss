@@ -3,42 +3,66 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap');
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "Poppins",serif !important;
   h1{
     font-family: "Poppins",serif !important;
   }
+
   h2{
     font-family: "Poppins",serif !important;
   }
-  h3{
-    font-family: "Poppins",serif !important;
+
+  h3 {
+    font-family: "Poppins", serif !important;
   }
-  h4{
-    font-family: "Poppins",serif !important;
+
+  h4 {
+    font-family: "Poppins", serif !important;
   }
-  h5{
-    font-family: "Poppins",serif !important;
+
+  h5 {
+    font-family: "Poppins", serif !important;
   }
-  h6{
-    font-family: "Poppins",serif !important;
+
+  h6 {
+    font-family: "Poppins", serif !important;
   }
   small{
     font-family: "Poppins",serif !important;
   }
-  
-  p{
+
+  .btn-primary {
+    background-color: #002F6D;
+    color: white;
+    border: none;
+
+  }
+
+  .btn-primary:hover {
+    background-color: #023c88;
+  }
+
+  p {
     font-family: 'Poppins' !important;
     font-size: 14px;
     font-weight: 400;
     line-height: 26px !important;
   }
+
   .custom-header-text {
     font-family: "Alice", serif;
     font-size: 80px;
@@ -54,13 +78,13 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    min-height: 100vh; /* Ensures the container covers the full viewport height */
+    min-height: 100vh;
     background: linear-gradient(to bottom right, rgba(1, 90, 208, 0.9), rgba(0, 47, 109, 0.9)),
-    url('assets/images/background_img.png');
-    background-size: cover; /* Ensures the gradient covers the entire container */
+      url('assets/images/background_img.png');
+    background-size: cover;
   }
-  
-  
+
+
   .login-card {
     background: linear-gradient(to bottom, #ffffff, #f8f9fa);
     border-radius: 15px;
@@ -71,51 +95,51 @@ body {
     margin-top: 5vh;
     margin-bottom: 5vh;
   }
-  
+
   .home-btn {
-      position: absolute;
-      top: 30px;
-      right: 40px;
-      background: white;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #002F6D ;
-      display: inline-flex;
-      align-items: center;
-      z-index: 100;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    .home-btn i {
-      font-size: 16px;
-      color: #002F6D ;
-    }
-    
-    .home-btn:hover {
-      background: #002F6D ;
-      color: white;
-    }
-    
-    .home-btn:hover i {
-      color: white;
-    }
-    
-    .text-color {
-      color: rgba(0, 47, 109, 1);
-    }
-    
-    .bg-custom {
-      padding: 12px 12px;
-    }
-    
-    .hover-bg-custom:hover {
-      background: rgba(0, 47, 109, 1) !important;
-      color: white;
-    }
-  
-    .mat-mdc-raised-button:not(:disabled) {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #002F6D;
+    display: inline-flex;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .home-btn i {
+    font-size: 16px;
+    color: #002F6D;
+  }
+
+  .home-btn:hover {
+    background: #002F6D;
+    color: white;
+  }
+
+  .home-btn:hover i {
+    color: white;
+  }
+
+  .text-color {
+    color: rgba(0, 47, 109, 1);
+  }
+
+  .bg-custom {
+    padding: 12px 12px;
+  }
+
+  .hover-bg-custom:hover {
+    background: rgba(0, 47, 109, 1) !important;
+    color: white;
+  }
+
+  .mat-mdc-raised-button:not(:disabled) {
     background: #002F6D;
   }
 
@@ -123,85 +147,88 @@ body {
     background-color: #002F6D;
     border-color: #002F6D;
   }
- 
+
   .text-primary {
-     color: #002F6D  !important;
+    color: #002F6D !important;
   }
 
   .text-secondary {
-    color: #181A20 !important ;
+    color: #181A20 !important;
   }
+
   a {
     text-decoration: none !important;
   }
+
   .gray {
     color: #717171;
   }
- 
-.g-bubble-container {
-  display: flex;
-  gap: 31px;
-  padding: 17px !important;
-}
 
-.g-bubble {
-  border-radius: 50%;
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  cursor: pointer;
-}
+  .g-bubble-container {
+    display: flex;
+    gap: 31px;
+    padding: 17px !important;
+  }
 
-.g-bubble:hover {
-  background-color: #b6b6b6;
-  color: white;
-}
+  .g-bubble {
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+  }
 
-.g-bubble__active {
-  background-color: #002F6D ;
-  color: white;
-}
+  .g-bubble:hover {
+    background-color: #b6b6b6;
+    color: white;
+  }
 
-mat-paginator {
-  background: transparent !important;
-}
+  .g-bubble__active {
+    background-color: #002F6D;
+    color: white;
+  }
 
-.mat-mdc-paginator-range-label {
-  position:  relative !important;
-  top: 35px !important;
-  left: 50% !important;
-  color: black !important;
-}
+  mat-paginator {
+    background: transparent !important;
+  }
+
+  .mat-mdc-paginator-range-label {
+    position: relative !important;
+    top: 35px !important;
+    left: 50% !important;
+    color: black !important;
+  }
+
   @media (max-width: 576px) {
-    .home-btn
-    {
+    .home-btn {
       position: relative !important;
       right: auto !important;
       top: auto !important;
     }
   }
+
   @media (max-width: 768px) {
-    .mat-mdc-paginator-range-actions
-     {
-        position: relative !important;
-        right: 40% !important;
-     }
-     .main-card {
+    .mat-mdc-paginator-range-actions {
+      position: relative !important;
+      right: 40% !important;
+    }
+
+    .main-card {
       display: block !important;
     }
+
     .g-bubble-container {
       display: flex;
       gap: 0px !important;
       padding: 0px !important;
     }
-    }
-    
+  }
+
 }
 
 .color-white {
   color: white;
 }
-

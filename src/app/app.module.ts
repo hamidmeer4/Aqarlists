@@ -28,12 +28,14 @@ import { CompaniesComponent } from './companies/companies.component';
 import { ListedPropertiesComponent } from './listed-properties/listed-properties.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
+import { InteriorApartmentComponent } from './interior-apartment/interior-apartment.component';
 import { ComparePropertiesComponent } from './compare-properties/compare-properties.component';
 import { ComparePropertiesDetailComponent } from './compare-properties-detail/compare-properties-detail.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ThirdPartyDetailComponent } from './third-party-detail/third-party-detail.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { ThirdPartyDetailComponent } from './third-party-detail/third-party-deta
     ListedPropertiesComponent,
     FaqComponent,
     AboutComponent,
+    InteriorApartmentComponent,
     ComparePropertiesComponent,
     ComparePropertiesDetailComponent,
     ThirdPartyDetailComponent,
@@ -74,6 +77,8 @@ import { ThirdPartyDetailComponent } from './third-party-detail/third-party-deta
     MatTableModule,
     MatCheckboxModule,
     MatToolbarModule,
+    MatIconModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
