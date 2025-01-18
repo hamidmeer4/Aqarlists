@@ -22,9 +22,6 @@
   text-align: center;
 }
 
-//   .table-bordered>:not(caption)>*>* {
-//     border: none !important;
-//   }
 .d-flex {
   display: flex;
   gap: 2rem;
@@ -56,4 +53,17 @@
   .table-container {
     width: 100%;
   }
+
+  .contact-detail {
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+ .p-4 {
+ display: block !important;
+ }
+ .contact {
+  margin-bottom: 15px !important;
+ }
 }
