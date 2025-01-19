@@ -1,0 +1,11 @@
+header li {
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+@media (max-width: 992px) {
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row !important;
+  }
+}
