@@ -35,6 +35,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ThirdPartyDetailComponent } from './third-party-detail/third-party-detail.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
@@ -64,6 +65,7 @@ import { MatTabsModule } from '@angular/material/tabs';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgxChartsModule,
     AppRoutingModule,
     FormsModule,
     MatFormFieldModule,
@@ -81,6 +83,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTabsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

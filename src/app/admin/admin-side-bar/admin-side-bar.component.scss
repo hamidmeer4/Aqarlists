@@ -1,0 +1,23 @@
+.sidebar {
+  .nav-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin: 1rem 0 0.5rem 1rem;
+    color: #6c757d;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: #495057;
+
+    &.active {
+      background-color: #002F6D;
+      color: #fff;
+    }
+  }
+}
+
+.toggle-button {
+  background: #002F6D !important;
+  color: white !important;
+}
