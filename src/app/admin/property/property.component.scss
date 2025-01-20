@@ -1,0 +1,10 @@
+@media (max-width: 1024px) {
+  .card-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .custom-card {
+    flex: 0 0 33.33%; 
+  }
+}

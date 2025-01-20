@@ -13,6 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MessagesComponent } from './messages/messages.component';
 import { FormsModule } from '@angular/forms';
+import { PropertyComponent } from './property/property.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { ReviewComponent } from './review/review.component';
 
 
 @NgModule({
@@ -23,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     AdminSideBarComponent,
     DashboardComponent,
     VerticaleChartComponent,
-    MessagesComponent
+    MessagesComponent,
+    PropertyComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +37,9 @@ import { FormsModule } from '@angular/forms';
     NgxChartsModule,
     MatTabsModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatDividerModule
 
   ]
 })
