@@ -11,6 +11,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { VerticaleChartComponent } from './dashboard/verticale-chart/verticale-chart.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MessagesComponent } from './messages/messages.component';
+import { FormsModule } from '@angular/forms';
 import { PropertyComponent } from './property/property.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -25,6 +27,7 @@ import { ReviewComponent } from './review/review.component';
     AdminSideBarComponent,
     DashboardComponent,
     VerticaleChartComponent,
+    MessagesComponent,
     PropertyComponent,
     ReviewComponent
   ],
@@ -34,6 +37,7 @@ import { ReviewComponent } from './review/review.component';
     NgxChartsModule,
     MatTabsModule,
     MatIconModule,
+    FormsModule,
     MatCardModule,
     MatDividerModule
 
