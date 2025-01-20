@@ -11,6 +11,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { VerticaleChartComponent } from './dashboard/verticale-chart/verticale-chart.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MessagesComponent } from './messages/messages.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,14 +22,16 @@ import { MatTabsModule } from '@angular/material/tabs';
     AdminFooterComponent,
     AdminSideBarComponent,
     DashboardComponent,
-    VerticaleChartComponent
+    VerticaleChartComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     NgxChartsModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
 
   ]
 })

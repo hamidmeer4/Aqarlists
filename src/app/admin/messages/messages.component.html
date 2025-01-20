@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <h1>Howdy, Ali!</h1>
+  <p>We are glad to see you again!</p>
+  <div class="d-flex flex-column">
+    <div class="row flex-grow-1 gap-4">
+      <div class="col-md-3 card p-3 border-0 rounded-3 shadow  scrollable" style="height: 75vh;  overflow-y: auto;">
+        <div class="mb-3 mt-2">
+          <input type="text" class="form-control rounded-3 shadow-sm border-0" placeholder="Search" />
+        </div>
+        <ul class="list-group">
+          <li *ngFor="let contact of contacts"
+            class="list-group-item d-flex justify-content-between align-items-center border-0 px-2 py-3"
+            [class.active]="contact.active" (click)="selectContact(contact)">
+            <div class="d-flex align-items-center">
+              <img src="../../../assets/svg/user.svg" class="rounded-circle me-3" alt="avatar" width="40" height="40" />
+              <div>
+                <h6 class="mb-0">{{ contact.name }}</h6>
+                <small class="text-muted">{{ contact.role }}</small>
+              </div>
+            </div>
+            <span *ngIf="contact.unread" class="badge bg-primary rounded-pill">{{ contact.unread }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8 d-flex card rounded-3 border-0 scrollable" style="height: 75vh;  overflow-y: auto;">
+        <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+          <div>
+            <h5 class="mb-0">{{ selectedContact?.name }}</h5>
+            <small class="text-muted">{{ selectedContact?.status }}</small>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary">Delete Conversation</button>
+        </div>
+
+        <div class="flex-grow-1 p-3 overflow-auto">
+          <div *ngFor="let message of messages" class="mb-3">
+            <div [class.text-end]="message.sender === 'you'" class="mb-2">
+              <div class="mb-3">
+                <img src="../../../assets/svg/user.svg" class="rounded-circle me-3" alt="avatar" width="40"
+                  height="40" />
+                <small class="text-muted text-end">
+                  {{ message.time }}
+                </small>
+              </div>
+              <div class="d-inline-block p-2 rounded-3" [ngClass]="{
+                  'bg-light text-dark': message.sender === 'you',
+                  'bg-custom text-white': message.sender !== 'you'
+                }" style="max-width: 75%;">
+                {{ message.text }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 border-top">
+          <div class="input-group">
+            <input type="text" class="form-control border-0 rounded-3 message" placeholder="Type a message"
+              [(ngModel)]="newMessage" />
+            <button class="btn btn-primary round-5" type="button" (click)="sendMessage()">
+              <span class="me-3"> Send Message</span>
+              <span>
+                <img src="../../../assets/icons/right-up.png" alt="arrow" style="width: 20px; height: 20px" />
+              </span> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

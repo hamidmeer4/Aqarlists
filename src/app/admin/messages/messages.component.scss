@@ -1,0 +1,43 @@
+.container-fluid {
+  height: 100%;
+}
+
+.overflow-auto {
+  overflow-y: auto;
+}
+
+.active {
+  background-color: white !important;
+  color: black;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.bg-custom {
+  background-color: #F1FCFA !important;
+  color: black !important;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #F1FCFA;
+  border-radius: 5px;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #d9f4ec;
+}
+
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: #F1FCFA transparent;
+}
