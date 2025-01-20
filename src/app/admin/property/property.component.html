@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <h2
+    class="mb-2"
+    style="font-family: Poppins; font-size: 30px; font-weight: 600"
+  >
+    My Properties
+  </h2>
+  <p class="gray mb-4">We are glad to see you again!</p>
+
+  <div class="col-12 sale-card rounded">
+    <div class="card border-0 p-2">
+      <div class="row">
+        <div
+          *ngFor="let property of properties; let i = index"
+          class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+        >
+          <div
+            class="card card-flex custom-card"
+            style="border: 1px solid rgb(202, 202, 202); position: relative"
+          >
+            <img
+              [src]="property.image"
+              class="card-img-top img-fluid"
+              alt="Property Image"
+            />
+            <div
+              class="property-price position-absolute"
+              style="
+                top: 10px;
+                left: 12px;
+                background-color: white;
+                color: #000000;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-weight: bold;
+              "
+            >
+              <p class="m-0">SAR {{ property.price }} / mo</p>
+            </div>
+            <i
+              class="fa-solid fa-trash-can position-absolute"
+              style="
+                top: 10px;
+                right: 10px;
+                background-color: white;
+                color: #000000;
+                padding: 7px 10px;
+                border-radius: 10%;
+                cursor: pointer;
+              "
+            ></i>
+
+            <div class="card-body">
+              <div>
+                <h5
+                  class="card-title text-start"
+                  style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin-bottom: 2px;
+                  "
+                >
+                  {{ property.name }}
+                </h5>
+                <p class="card-text text-start">{{ property.location }}</p>
+              </div>
+
+              <div class="d-flex flex-wrap gap-2 my-3">
+                <span class="me-lg-3"
+                  ><i class="fas fa-bed"></i> {{ property.bed }} bed</span
+                >
+                <span class="me-lg-3"
+                  ><i class="fas fa-bath"></i> {{ property.bath }} bath</span
+                >
+                <span class="me-lg-3"
+                  ><i class="fas fa-expand"></i> {{ property.size }} sqft</span
+                >
+              </div>
+              <hr style="border: 1px solid #dddddd" />
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="btn text-dark border btn-sm">For Sell</a>
+                <div
+                  class="d-flex gap-3 flex-wrap justify-content-end justify-content-md-between align-items-center"
+                  style="max-width: 100%"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i>
+                  <i class="fa-regular fa-clone fa-lg"></i>
+                  <i class="fa-regular fa-heart fa-lg rounded"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
