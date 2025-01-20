@@ -6,7 +6,7 @@
     <p class="hero-subtitle lead">
       We have more than 7,800 apartments, places & plots
     </p>
-    <div class="tabs w-100 text-start position-relative" style="left: 162px">
+    <div class="tabs w-100 text-start position-relative">
       <ul class="nav bg-white rounded-top d-inline-flex py-2 px-3">
         <li class="nav-item">
           <a class="nav-link buy-tab active">Buy</a>
@@ -192,7 +192,7 @@
                 class="text-center bg-white d-flex gap-flex me-2 ms-2 px-3 rounded property"
                 style="position: relative; bottom: 100px"
               >
-                <div class="text-start p-2">
+                <div class="text-start p-2 card-title-text">
                   <span class="card-title">{{ property.name }}</span>
                   <p class="card-text text-muted">{{ property.location }}</p>
                 </div>
@@ -294,7 +294,7 @@
         src="assets/images/seller.png"
         alt="House Image"
         class="img-fluid"
-        style="position: relative; left: 28%; height: 80vh"
+        style="position: relative; left: 28%; height: 100vh"
       />
     </div>
   </div>
@@ -389,10 +389,10 @@ class="d-flex flex-wrap justify-content-center align-items-center gap-4 py-5"
       "
     >
       <div class="customer">
-        <p class="p-3"><span class="fw-bold">200+</span> Exclusive Customers</p>
+        <p class="pt-3 ps-3"><span class="fw-bold">200+</span> Exclusive Customers</p>
         <div
           *ngFor="let customer of customers"
-          class="d-flex align-items-center p-3"
+          class="d-flex align-items-center p-2"
         >
           <img
             [src]="customer.img"
@@ -401,18 +401,21 @@ class="d-flex flex-wrap justify-content-center align-items-center gap-4 py-5"
             width="50"
           />
           <div>
-            <h6 class="mb-0" style="color: #181a20">{{ customer.name }}</h6>
+            <h6 class="mb-0 fw-bold" style="color: #181a20">{{ customer.name }}</h6>
             <small class="text-muted">{{ customer.role }}</small>
           </div>
         </div>
       </div>
-      <div class="customer-image w-25">
-        <img
-          src="assets/images/pexels-zachtheshoota.png"
+      <div class="customer-image" style="width: 30%; height: 280px;">
+        <div class="p-2">
+          <img
+          src="assets/images/customer.png"
           alt="House"
           class="img-fluid rounded"
+          style="height: 175px;"
         />
-        <h6 class="mb-0 p-2" style="color: #181a20">Guy Hawkins</h6>
+        </div>
+        <h6 class="mb-0 p-2 fw-bold" style="color: #181a20">Guy Hawkins</h6>
         <small class="text-muted p-2">Broker</small>
       </div>
     </div>
@@ -490,7 +493,7 @@ class="d-flex flex-wrap justify-content-center align-items-center gap-4 py-5"
               {{ testimonial.title }}
             </h5>
             <blockquote class="blockquote text-start">
-              <p>{{ testimonial.text }}</p>
+              <p class="fw-bold">{{ testimonial.text }}</p>
               <div>
                 <span style="color: #e59819">&#9733;</span>
                 <span style="color: #e59819">&#9733;</span>

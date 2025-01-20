@@ -113,7 +113,7 @@
     margin-bottom: 15px;
   }
   .for-sale-badge {
-    left: 50% !important;
+    left: 55% !important;
   }
   .property {
     bottom: 130px !important;
@@ -123,13 +123,16 @@
   }
 }
 
-@media (min-width: 1201px) and (max-width: 1400px) {
+@media (max-width: 1400px) {
   .tabs {
     left: 140px !important;
   }
   .carousel-control-next {
-    left: 99% !important;
+    left: 97% !important;
   }
+  .carousel-control-prev {
+    left: -3% !important;
+    }
   .for-sale-badge {
     left: 40% !important;
   }
@@ -143,7 +146,44 @@
     margin-top: 15px !important;
     margin-bottom: 15px !important;
   }
+  .card-price {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .property {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
 }
+
+@media (max-width: 1199px) {
+  .carousel-control-next {
+    left: 98% !important;
+  }
+  .carousel-control-prev {
+    left: -3%;
+    }
+  .card-price {
+    margin-top: 0px !important;
+    border: none !important;
+  }
+  .card-title-text {
+    padding: 0px !important;
+    margin-left: 2px !important;
+    margin-top: 2px !important;
+  }
+  .for-sale-badge {
+    left: 50% !important;
+  }
+  .card-img-container {
+    height: 95px !important;
+  }
+  .tabs {
+    left: 117px !important;
+  }
+}
+
 
 @media (max-width: 992px) {
   .hero-title {
@@ -298,7 +338,7 @@
 .for-sale-badge {
   position: absolute;
   top: 10px;
-  left: 32%;
+  left: 32% ;
   background-color: rgb(255, 255, 255);
   color: #0b4679;
   padding: 10px 10px;
@@ -378,7 +418,7 @@
 
 .card-img-container {
   width: 100%;
-  height: 150px;
+  height: 129px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -387,8 +427,6 @@
 
 .card-img {
   max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
 }
 
 .card-body-apartment {
@@ -416,9 +454,10 @@
 .customer-image {
   position: relative;
   left: 65%;
-  bottom: 9%;
+  bottom: 18%;
   background: #fff;
   border-radius: 10%;
+  z-index: 10005 !important;
 }
 
 .bg-white {
