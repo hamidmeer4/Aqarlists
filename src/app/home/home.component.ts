@@ -42,7 +42,7 @@ export class HomeComponent {
 
   properties = [
     {
-      name: 'Equestrian Family Home',
+      name: 'Sky Pool Villa House',
       location: 'California City, CA, USA',
       price: 14000,
       image: './assets/images/property1.png',
@@ -82,7 +82,7 @@ export class HomeComponent {
       sale: false,
     },
     {
-      name: 'Sky Pool Villa House',
+      name: 'Equestrian Family Home',
       location: 'California City, CA, USA',
       price: 12000,
       image: './assets/images/property5.png',
