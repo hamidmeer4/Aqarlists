@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <h1>Users</h1>
+  <p>Manage all user individuals & Companies</p>
+  <div class="d-flex justify-content-start">
+    <button
+      class="btn btn-outline-dark btn-toggle p-2"
+      [ngClass]="{ active: selectedButton === 'individuals' }"
+      (click)="selectButton('individuals')"
+    >
+      Individuals
+    </button>
+    <button
+      class="btn btn-outline-dark btn-toggle ms-2 p-2"
+      [ngClass]="{ active: selectedButton === 'companies' }"
+      (click)="selectButton('companies')"
+    >
+      Companies
+    </button>
+  </div>
+  <div class="card border-0 mt-4 mb-2 rounded-4">
+    <div class="example-table-container p-4">
+      <table mat-table [dataSource]="dataSource" matSort class="example-table">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-4">
+            No.
+          </th>
+          <td mat-cell *matCellDef="let element" class="p-4">
+            {{ element.position }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-4">
+            Name
+          </th>
+          <td mat-cell *matCellDef="let element" class="p-4">
+            {{ element.name }}
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-4">
+            Weight
+          </th>
+          <td mat-cell *matCellDef="let element" class="p-4">
+            {{ element.weight }}
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-4">
+            Symbol
+          </th>
+          <td mat-cell *matCellDef="let element" class="p-4">
+            {{ element.symbol }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-4">
+            Actions
+          </th>
+          <td mat-cell *matCellDef="let element" class="p-4">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_82_7664)">
+                <path
+                  d="M3.04297 2.89405L15.2484 2.875C15.9806 2.90675 16.1475 3.82472 15.5369 4.18121L3.50113 4.23382C2.28449 4.34811 1.45707 5.0511 1.35818 6.30107V24.6388C1.45253 25.7318 2.26544 26.5473 3.36142 26.6416H21.7027C22.7007 26.5627 23.3684 26.0311 23.6733 25.0814C23.8964 20.9669 23.7114 16.8133 23.7694 12.6843C23.8656 11.8697 25.1031 11.9032 25.1294 12.7541L25.1321 24.7748C24.9879 26.4584 23.734 27.8136 22.042 28.0004H3.09014C1.48247 27.849 0.15242 26.5219 0 24.9109L0.00272179 5.89742C0.220465 4.30548 1.45525 3.10449 3.04297 2.89405Z"
+                  fill="black"
+                />
+                <path
+                  d="M24.7728 0.0396216C27.4202 -0.372196 28.9871 2.51597 27.3014 4.53697L18.5363 13.2922L13.5717 15.5944C12.8777 15.7731 12.229 15.1299 12.4077 14.4306L14.7103 9.46699L23.431 0.735358C23.7594 0.463232 24.3491 0.104932 24.7728 0.0396216ZM25.114 1.39844C24.8191 1.43472 24.5623 1.59074 24.3473 1.78667L16.2636 9.86883C16.2001 9.94775 16.2563 9.9804 16.2972 10.0403C16.6755 10.5909 17.5746 11.1732 17.9992 11.7402L18.1707 11.7066L26.3406 3.50923C27.06 2.55861 26.2934 1.25512 25.1149 1.39935L25.114 1.39844ZM14.264 13.7385L16.8433 12.5502L15.4525 11.1596L14.264 13.7385Z"
+                  fill="black"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_82_7664">
+                  <rect width="28" height="28" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data found</td>
+        </tr>
+      </table>
+
+      <mat-paginator
+        class="paginator"
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </div>
+</div>
