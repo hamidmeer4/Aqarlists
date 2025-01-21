@@ -20,6 +20,8 @@ import { ReviewComponent } from './review/review.component';
 import { AddPropertyComponent } from './add-property/add-property.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ProfileComponent } from './profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MessagesComponent,
     PropertyComponent,
     ReviewComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDividerModule,
     MatFormFieldModule,
     MatSelectModule,
-
+    ReactiveFormsModule
+  
   ]
 })
 export class AdminModule { }
