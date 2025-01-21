@@ -17,6 +17,9 @@ import { PropertyComponent } from './property/property.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { ReviewComponent } from './review/review.component';
+import { AddPropertyComponent } from './add-property/add-property.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { ReviewComponent } from './review/review.component';
     VerticaleChartComponent,
     MessagesComponent,
     PropertyComponent,
-    ReviewComponent
+    ReviewComponent,
+    AddPropertyComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +43,9 @@ import { ReviewComponent } from './review/review.component';
     MatIconModule,
     FormsModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule,
+    MatSelectModule,
 
   ]
 })
