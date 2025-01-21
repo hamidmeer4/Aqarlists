@@ -17,6 +17,9 @@ import { PropertyComponent } from './property/property.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { ReviewComponent } from './review/review.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { ReviewComponent } from './review/review.component';
     VerticaleChartComponent,
     MessagesComponent,
     PropertyComponent,
-    ReviewComponent
+    ReviewComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -39,8 +43,10 @@ import { ReviewComponent } from './review/review.component';
     MatIconModule,
     FormsModule,
     MatCardModule,
-    MatDividerModule
-
+    MatDividerModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
+  
   ]
 })
 export class AdminModule { }
