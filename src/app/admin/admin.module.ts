@@ -17,8 +17,10 @@ import { PropertyComponent } from './property/property.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { ReviewComponent } from './review/review.component';
-import { ProfileComponent } from './profile/profile.component';
+import { AddPropertyComponent } from './add-property/add-property.component';
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ProfileComponent } from './profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -33,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MessagesComponent,
     PropertyComponent,
     ReviewComponent,
+    AddPropertyComponent,
     ProfileComponent
   ],
   imports: [
@@ -45,6 +48,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatDividerModule,
     MatFormFieldModule,
+    MatSelectModule,
     ReactiveFormsModule
   
   ]
