@@ -1,0 +1,24 @@
+img.img-thumbnail {
+    width: 100% !important;
+    height: auto;
+}
+
+
+.dashed-border {
+    border: 2px dashed #ccc !important;
+    border-radius: 8px;
+}
+
+.img-thumbnail {
+    height: 125px !important;
+    object-fit: cover !important;
+    background-color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+}
+
+button.btn-danger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

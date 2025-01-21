@@ -1,0 +1,421 @@
+<div class="container-fluid">
+    <h1 class="fw-bold">Add New Property</h1>
+    <p>We are glad to see you again!</p>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="card mb-3 border-0 rounded-4 shadow-sm p-2">
+        <mat-tab label="1.Description">
+            <div class="container mt-3 ">
+                <h3 class="fw-bold">Property Description</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-bold">Title</label>
+                        <input type="text" id="title" class="form-control" placeholder="Your Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-bold">Description</label>
+                        <textarea id="description" class="form-control" rows="5"
+                            placeholder="There are many variations of passages."></textarea>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="category" class="form-label fw-bold">Select Category</label>
+                            <select id="category" class="form-select">
+                                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                            </select>
+                        </div>                           
+                        <div class="col-md-4">
+                            <label for="listed" class="form-label fw-bold">Listed In</label>
+                            <select id="listed" class="form-select">
+                                <option *ngFor="let list of listings" [value]="list">{{list}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="status" class="form-label fw-bold">Property Status</label>
+                            <select id="status" class="form-select">
+                                <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <label for="price" class="form-label fw-bold">Price in SLR</label>
+                            <input type="text" id="price" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="taxRate" class="form-label fw-bold">Yearly Tax Rate</label>
+                            <input type="text" id="taxRate" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="afterPrice" class="form-label fw-bold">After Price Label</label>
+                            <input type="text" id="afterPrice" class="form-control" placeholder="Your Name">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4 mb-3">
+                        <button type="button" class="btn btn-outline-dark">
+                            <span class="me-3">Prev Step</span>
+                            <span>
+                                <img src="../../../assets/icons/right-up1.png" alt="arrow"
+                                    style="width: 20px; height: 20px" />
+                            </span>
+                        </button>
+                        <button class="btn btn-primary round-5" type="button">
+                            <span class="me-3">Next Step</span>
+                            <span>
+                                <img src="../../../assets/icons/right-up.png" alt="arrow"
+                                    style="width: 20px; height: 20px" />
+                            </span> </button>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+        <mat-tab label="2. Media">
+            <div class="container mt-3">
+                <h3 class="fw-bold">Upload Photos of Your Property</h3>
+                <div class="border p-4 text-center dashed-border">
+                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_82_6438)">
+                            <path
+                                d="M67.9875 52.0121H52.0125C51.4555 52.0661 50.8934 52.0031 50.3622 51.827C49.8311 51.6508 49.3426 51.3656 48.9282 50.9895C48.5139 50.6133 48.1828 50.1547 47.9562 49.6431C47.7296 49.1314 47.6125 48.578 47.6125 48.0184C47.6125 47.4588 47.7296 46.9053 47.9562 46.3937C48.1828 45.882 48.5139 45.4234 48.9282 45.0473C49.3426 44.6712 49.8311 44.3859 50.3622 44.2098C50.8934 44.0336 51.4555 43.9706 52.0125 44.0246H68.025C68.582 43.9706 69.1441 44.0336 69.6753 44.2098C70.2064 44.3859 70.6949 44.6712 71.1093 45.0473C71.5236 45.4234 71.8547 45.882 72.0813 46.3937C72.3079 46.9053 72.4249 47.4588 72.4249 48.0184C72.4249 48.578 72.3079 49.1314 72.0813 49.6431C71.8547 50.1547 71.5236 50.6133 71.1093 50.9895C70.6949 51.3656 70.2064 51.6508 69.6753 51.827C69.1441 52.0031 68.582 52.0661 68.025 52.0121H67.9875Z"
+                                fill="#DDDDDD" />
+                            <path
+                                d="M71.475 65.0249L62.6625 57.0374C61.9093 56.3955 60.9521 56.043 59.9625 56.043C58.9729 56.043 58.0157 56.3955 57.2625 57.0374L48.45 65.0249C47.7196 65.7546 47.2986 66.7376 47.2744 67.7697C47.2502 68.8018 47.6248 69.8035 48.3202 70.5665C49.0156 71.3295 49.9783 71.7952 51.0082 71.8666C52.0381 71.938 53.0559 71.6097 53.85 70.9499L55.95 69.0374V88.0124C56.0463 89.0049 56.5086 89.9259 57.2469 90.5961C57.9853 91.2662 58.9466 91.6375 59.9438 91.6375C60.9409 91.6375 61.9022 91.2662 62.6406 90.5961C63.3789 89.9259 63.8412 89.0049 63.9375 88.0124V69.0374L66.0375 70.9499C66.4212 71.3333 66.8787 71.6348 67.3823 71.8364C67.8858 72.0379 68.425 72.1353 68.9673 72.1226C69.5095 72.1099 70.0436 71.9874 70.5371 71.7625C71.0307 71.5376 71.4735 71.2149 71.8389 70.814C72.2043 70.4131 72.4845 69.9423 72.6628 69.4301C72.8411 68.9178 72.9137 68.3747 72.8762 67.8336C72.8387 67.2925 72.6918 66.7647 72.4445 66.2819C72.1973 65.7992 71.8547 65.3716 71.4375 65.0249H71.475Z"
+                                fill="#DDDDDD" />
+                            <path
+                                d="M100.013 119.999C99.4555 120.053 98.8934 119.99 98.3622 119.814C97.8311 119.638 97.3426 119.353 96.9283 118.977C96.5139 118.6 96.1828 118.142 95.9562 117.63C95.7296 117.118 95.6126 116.565 95.6126 116.005C95.6126 115.446 95.7296 114.892 95.9562 114.381C96.1828 113.869 96.5139 113.41 96.9283 113.034C97.3426 112.658 97.8311 112.373 98.3622 112.197C98.8934 112.021 99.4555 111.958 100.013 112.012C103.195 112.012 106.247 110.747 108.498 108.497C110.748 106.247 112.013 103.194 112.013 100.012V19.9867C112.013 16.8041 110.748 13.7519 108.498 11.5014C106.247 9.251 103.195 7.98672 100.013 7.98672H36C35.443 8.04076 34.8809 7.97769 34.3497 7.80157C33.8186 7.62545 33.3301 7.34017 32.9157 6.96406C32.5014 6.58795 32.1703 6.12933 31.9437 5.61766C31.7171 5.10598 31.6001 4.55257 31.6001 3.99297C31.6001 3.43337 31.7171 2.87996 31.9437 2.36828C32.1703 1.85661 32.5014 1.39798 32.9157 1.02188C33.3301 0.645767 33.8186 0.360491 34.3497 0.184371C34.8809 0.00825153 35.443 -0.0548163 36 -0.000780875H100.013C105.31 0.00913116 110.389 2.11813 114.135 5.86437C117.881 9.61061 119.99 14.6887 120 19.9867V100.012C119.99 105.31 117.881 110.388 114.135 114.134C110.389 117.88 105.31 119.989 100.013 119.999Z"
+                                fill="#DDDDDD" />
+                            <path
+                                d="M84 119.999H19.9875C14.6895 119.989 9.61139 117.88 5.86515 114.134C2.11891 110.388 0.00991204 105.31 0 100.012L0 19.9867C0.00991204 14.6887 2.11891 9.61061 5.86515 5.86437C9.61139 2.11813 14.6895 0.00913116 19.9875 -0.000780875C20.5445 -0.0548163 21.1066 0.00825153 21.6378 0.184371C22.1689 0.360491 22.6574 0.645767 23.0718 1.02188C23.4861 1.39798 23.8172 1.85661 24.0438 2.36828C24.2704 2.87996 24.3874 3.43337 24.3874 3.99297C24.3874 4.55257 24.2704 5.10598 24.0438 5.61766C23.8172 6.12933 23.4861 6.58795 23.0718 6.96406C22.6574 7.34017 22.1689 7.62545 21.6378 7.80157C21.1066 7.97769 20.5445 8.04076 19.9875 7.98672C16.8049 7.98672 13.7527 9.251 11.5022 11.5014C9.25178 13.7519 7.9875 16.8041 7.9875 19.9867V100.012C7.9875 103.194 9.25178 106.247 11.5022 108.497C13.7527 110.747 16.8049 112.012 19.9875 112.012H84C84.557 111.958 85.1191 112.021 85.6503 112.197C86.1814 112.373 86.6699 112.658 87.0842 113.034C87.4986 113.41 87.8297 113.869 88.0563 114.381C88.2829 114.892 88.3999 115.446 88.3999 116.005C88.3999 116.565 88.2829 117.118 88.0563 117.63C87.8297 118.142 87.4986 118.6 87.0842 118.977C86.6699 119.353 86.1814 119.638 85.6503 119.814C85.1191 119.99 84.557 120.053 84 119.999Z"
+                                fill="#DDDDDD" />
+                            <path
+                                d="M28.0125 23.9992H19.9875C18.9951 23.9029 18.074 23.4406 17.4039 22.7023C16.7337 21.964 16.3624 21.0026 16.3624 20.0055C16.3624 19.0084 16.7337 18.047 17.4039 17.3087C18.074 16.5703 18.9951 16.108 19.9875 16.0117H28.0125C29.0049 16.108 29.926 16.5703 30.5961 17.3087C31.2663 18.047 31.6375 19.0084 31.6375 20.0055C31.6375 21.0026 31.2663 21.964 30.5961 22.7023C29.926 23.4406 29.0049 23.9029 28.0125 23.9992Z"
+                                fill="#DDDDDD" />
+                            <path
+                                d="M76.0125 23.9996C75.4873 24.0046 74.9664 23.9054 74.4798 23.7079C73.9932 23.5103 73.5506 23.2183 73.1775 22.8487C72.8044 22.4791 72.5082 22.0392 72.3061 21.5545C72.104 21.0698 72 20.5498 72 20.0246C71.9926 19.2295 72.2216 18.45 72.6579 17.7853C73.0943 17.1205 73.7183 16.6004 74.4508 16.2909C75.1833 15.9815 75.9913 15.8966 76.7721 16.0472C77.5529 16.1978 78.2713 16.5769 78.8362 17.1366C79.4012 17.6962 79.787 18.4111 79.9449 19.1904C80.1028 19.9698 80.0256 20.7785 79.723 21.5138C79.4205 22.2492 78.9062 22.8781 78.2456 23.3207C77.5849 23.7633 76.8077 23.9996 76.0125 23.9996Z"
+                                fill="#DDDDDD" />
+                            <path
+                                d="M88.0125 23.9996C87.4873 24.0046 86.9664 23.9054 86.4798 23.7079C85.9932 23.5103 85.5506 23.2183 85.1775 22.8487C84.8044 22.4791 84.5082 22.0392 84.3061 21.5545C84.104 21.0698 84 20.5498 84 20.0246C83.9926 19.2295 84.2216 18.45 84.6579 17.7853C85.0943 17.1205 85.7183 16.6004 86.4508 16.2909C87.1833 15.9815 87.9912 15.8966 88.772 16.0472C89.5529 16.1978 90.2713 16.5769 90.8362 17.1366C91.4012 17.6962 91.787 18.4111 91.9449 19.1904C92.1028 19.9698 92.0256 20.7785 91.723 21.5138C91.4205 22.2492 90.9062 22.8781 90.2456 23.3207C89.5849 23.7633 88.8077 23.9996 88.0125 23.9996Z"
+                                fill="#DDDDDD" />
+                            <path
+                                d="M100.012 23.9996C99.4873 24.0046 98.9664 23.9054 98.4798 23.7079C97.9932 23.5103 97.5506 23.2183 97.1775 22.8487C96.8044 22.4791 96.5082 22.0392 96.3061 21.5545C96.104 21.0698 96 20.5498 96 20.0246C95.9926 19.2295 96.2216 18.45 96.6579 17.7853C97.0943 17.1205 97.7183 16.6004 98.4508 16.2909C99.1833 15.9815 99.9913 15.8966 100.772 16.0472C101.553 16.1978 102.271 16.5769 102.836 17.1366C103.401 17.6962 103.787 18.4111 103.945 19.1904C104.103 19.9698 104.026 20.7785 103.723 21.5138C103.42 22.2492 102.906 22.8781 102.246 23.3207C101.585 23.7633 100.808 23.9996 100.012 23.9996Z"
+                                fill="#DDDDDD" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_82_6438">
+                                <rect width="120" height="120" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <p class="mt-2">Drag and drop images here</p>
+                    <p class="text-muted">Photos must be JPEG or PNG format and at least 2048x768</p>
+                    <button type="button" class="btn btn-outline-dark">
+                        <span class="me-3">Browse Files</span>
+                        <span>
+                            <img src="../../../assets/icons/right-up1.png" alt="arrow"
+                                style="width: 20px; height: 20px" />
+                        </span>
+                    </button>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-2 position-relative" *ngFor="let image of images">
+                        <img [src]="image" alt="Property" class="img-thumbnail"
+                            style="width: 150px; height: 150px; object-fit: cover;" />
+                        <div class="position-relative" style="left: 7%; bottom: 65%; cursor: pointer;"
+                            (click)="removeImage(image)">
+                            <svg width="45" height="45" viewBox="0 0 45 45" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="45" height="45" rx="12" fill="white" />
+                                <g clip-path="url(#clip0_82_6452)">
+                                    <path
+                                        d="M31.6687 15.6688H27V15C26.9977 14.4702 26.7866 13.9626 26.4125 13.5875C26.2275 13.4011 26.0075 13.2532 25.765 13.1524C25.5226 13.0516 25.2626 12.9998 25 13H21C20.4695 13 19.9608 13.2107 19.5858 13.5858C19.2107 13.9609 19 14.4696 19 15V15.6688H14.3312C14.1658 15.6848 14.0123 15.7619 13.9006 15.8849C13.7889 16.008 13.7271 16.1682 13.7271 16.3344C13.7271 16.5006 13.7889 16.6608 13.9006 16.7838C14.0123 16.9069 14.1658 16.984 14.3312 17H31.6687C31.8341 16.984 31.9876 16.9069 32.0993 16.7838C32.211 16.6608 32.2729 16.5006 32.2729 16.3344C32.2729 16.1682 32.211 16.008 32.0993 15.8849C31.9876 15.7619 31.8341 15.6848 31.6687 15.6688ZM20.3312 15C20.3312 14.8226 20.4017 14.6525 20.5271 14.5271C20.6525 14.4017 20.8226 14.3313 21 14.3313H25C25.1773 14.3313 25.3474 14.4017 25.4729 14.5271C25.5983 14.6525 25.6687 14.8226 25.6687 15V15.6688H20.3312V15Z"
+                                        fill="black" />
+                                    <path
+                                        d="M29.7 18.3308C29.6129 18.3257 29.5258 18.3379 29.4434 18.3666C29.3611 18.3952 29.2853 18.4399 29.2202 18.498C29.1552 18.556 29.1023 18.6264 29.0645 18.7049C29.0267 18.7835 29.0048 18.8687 29 18.9558L28.4625 29.7558C28.4306 30.2642 28.2059 30.7414 27.8343 31.0898C27.4626 31.4383 26.9719 31.6318 26.4625 31.6308H19.5375C19.028 31.6318 18.5374 31.4383 18.1657 31.0898C17.794 30.7414 17.5693 30.2642 17.5375 29.7558L17 18.9683C17.0028 18.8759 16.9864 18.7839 16.9518 18.6982C16.9173 18.6124 16.8654 18.5348 16.7993 18.4701C16.7333 18.4055 16.6545 18.3552 16.5681 18.3225C16.4816 18.2898 16.3893 18.2754 16.297 18.2802C16.2047 18.285 16.1144 18.3088 16.0318 18.3502C15.9492 18.3917 15.876 18.4498 15.817 18.5209C15.758 18.592 15.7143 18.6746 15.6888 18.7634C15.6633 18.8522 15.6564 18.9454 15.6687 19.037L16.2062 29.837C16.2495 30.6909 16.6195 31.4955 17.2396 32.0842C17.8597 32.6729 18.6824 33.0006 19.5375 32.9995H26.4625C27.3185 33.0005 28.1421 32.672 28.7624 32.082C29.3826 31.4919 29.752 30.6858 29.7937 29.8308L30.3312 19.0308C30.3397 18.8544 30.2782 18.6818 30.1599 18.5506C30.0416 18.4195 29.8763 18.3405 29.7 18.3308Z"
+                                        fill="black" />
+                                    <path
+                                        d="M23.6688 27.6694V21.0007C23.6527 20.8353 23.5757 20.6817 23.4526 20.5701C23.3296 20.4584 23.1693 20.3965 23.0031 20.3965C22.837 20.3965 22.6767 20.4584 22.5537 20.5701C22.4306 20.6817 22.3536 20.8353 22.3375 21.0007V27.6694C22.3536 27.8348 22.4306 27.9883 22.5537 28.1C22.6767 28.2117 22.837 28.2736 23.0031 28.2736C23.1693 28.2736 23.3296 28.2117 23.4526 28.1C23.5757 27.9883 23.6527 27.8348 23.6688 27.6694Z"
+                                        fill="black" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h4 class="fw-bold">Video Option</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="videoFrom" class="form-label fw-bold">Video From</label>
+                            <select id="videoFrom" class="form-select" [(ngModel)]="videoSource">
+                                <option value="Youtube">Youtube</option>
+                                <option value="Vimeo">Vimeo</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="videoId" class="form-label fw-bold">Embed Video ID</label>
+                            <input type="text" id="videoId" class="form-control" placeholder="Enter Video ID"
+                                [(ngModel)]="videoId" />
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-4 mb-3">
+                    <button type="button" class="btn btn-outline-dark">
+                        <span class="me-3">Prev Step</span>
+                        <span>
+                            <img src="../../../assets/icons/right-up1.png" alt="arrow"
+                                style="width: 20px; height: 20px" />
+                        </span>
+                    </button>
+                    <button class="btn btn-primary round-5" type="button">
+                        <span class="me-3">Next Step</span>
+                        <span>
+                            <img src="../../../assets/icons/right-up.png" alt="arrow"
+                                style="width: 20px; height: 20px" />
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="3.Location">
+            <div class="container mt-3">
+                <h3 class="fw-bold">Listing Location</h3>
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label for="address" class="form-label fw-bold">Address</label>
+                            <input type="text" id="address" class="form-control" placeholder="Your Name">
+                        </div>
+                    </div>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <label for="state" class="form-label fw-bold">Country/State</label>
+                            <select id="videoFrom" class="form-select" placeholder="Select">
+                                <option *ngFor="let state of states" [value]="state"> {{state}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="city" class="form-label fw-bold">City</label>
+                            <input type="text" id="city" class="form-control" placeholder="City Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="neighborhood" class="form-label fw-bold">Neighborhood</label>
+                            <input type="text" id="neighborhood" class="form-control" placeholder="Neighborhood">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <label for="zipcode" class="form-label fw-bold">Zip Code</label>
+                            <input type="text" id="zipcode" class="form-control" placeholder="Zip Code">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="country" class="form-label fw-bold">Country</label>
+                            <select id="videoFrom" class="form-select" placeholder="Select">
+                                <option *ngFor="let country of countries" [value]="country"> {{country.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mapouter mt-3 rounded-4">
+                        <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no"
+                                marginheight="0" marginwidth="0"
+                                src="https://maps.google.com/maps?width=1920&amp;height=500&amp;hl=en&amp;q=madina&amp;t=&amp;z=19&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
+                                href="https://sprunkiplay.com/">Sprunki Game</a></div>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                text-align: right;
+                                width: 100%;
+                                height: 500px;
+                            }
+
+                            .gmap_canvas {
+                                overflow: hidden;
+                                background: none !important;
+                                width: 100%;
+                                height: 500px;
+                            }
+
+                            .gmap_iframe {
+                                height: 500px !important;
+                            }
+                        </style>
+                    </div>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <label for="latitude" class="form-label fw-bold">Latitude</label>
+                            <input type="text" id="latitude" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="longitude" class="form-label fw-bold">Longitude</label>
+                            <input type="text" id="longitude" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4 mb-3">
+                        <button type="button" class="btn btn-outline-dark">
+                            <span class="me-3">Prev Step</span>
+                            <span>
+                                <img src="../../../assets/icons/right-up1.png" alt="arrow"
+                                    style="width: 20px; height: 20px" />
+                            </span>
+                        </button>
+                        <button class="btn btn-primary round-5" type="button">
+                            <span class="me-3">Next Step</span>
+                            <span>
+                                <img src="../../../assets/icons/right-up.png" alt="arrow"
+                                    style="width: 20px; height: 20px" />
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+        <mat-tab label="4.Detail">
+            <div class="container mt-3">
+                <h3 class="fw-bold">Listing Details</h3>
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="size" class="form-label fw-bold">Size in ft (only numbers)</label>
+                            <input type="number" id="size" class="form-control" placeholder="Enter Size">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lotSize" class="form-label fw-bold">Lot Size in ft (only numbers)</label>
+                            <input type="number" id="lotSize" class="form-control" placeholder="Enter Lot Size">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="rooms" class="form-label fw-bold">Rooms</label>
+                            <input type="number" id="rooms" class="form-control" placeholder="Enter Rooms">
+                        </div>
+                    </div>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <label for="bedrooms" class="form-label fw-bold">Bedrooms</label>
+                            <input type="number" id="bedrooms" class="form-control" placeholder="Enter Bedrooms">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="bathrooms" class="form-label fw-bold">Bathrooms</label>
+                            <input type="number" id="bathrooms" class="form-control" placeholder="Enter Bathrooms">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="CustomID" class="form-label fw-bold">Custom ID (text)</label>
+                            <input type="text" id="CustomID" class="form-control" placeholder="Enter Custom ID (text)">
+                        </div>
+                    </div>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <label for="Garage" class="form-label fw-bold">Garage</label>
+                            <input type="number" id="Garage" class="form-control" placeholder="Enter Garage">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="garageSize" class="form-label fw-bold">Garage Size</label>
+                            <input type="number" id="garageSize" class="form-control" placeholder="Enter Garage Size">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Yearbuilt" class="form-label fw-bold">Year built (numeric)</label>
+                            <input type="number" id="Yearbuilt" class="form-control" placeholder="Year built (numeric)">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <label for="availableFrom" class="form-label fw-bold">Available From (date)</label>
+                            <input type="date" id="availableFrom" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="basement" class="form-label fw-bold">Basement</label>
+                            <select id="basement" class="form-select" placeholder="Select">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="floors" class="form-label fw-bold">Floors No</label>
+                            <input type="number" id="floors" class="form-control" placeholder="Enter Number of Floors">
+                        </div>
+                    </div>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <label for="roofing" class="form-label fw-bold">Roofing</label>
+                            <input type="text" id="roofing" class="form-control" placeholder="Enter Roofing Type">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="exteriorMaterial" class="form-label fw-bold">Exterior Material</label>
+                            <input type="text" id="exteriorMaterial" class="form-control" placeholder="Enter Material">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="structureType" class="form-label fw-bold">Structure Type</label>
+                            <select id="structureType" class="form-select">
+                                <option selected>Select Structure Type</option>
+                                <option value="house">House</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="condo">Condo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label for="structureType" class="form-label fw-bold">Floors no</label>
+                            <select id="structureType" class="form-select">
+                                <option selected>Select Floors No </option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <label for="ownerNotes" class="form-label fw-bold">Owner/Agent Notes (not visible on front
+                            end)</label>
+                        <textarea id="ownerNotes" class="form-control" rows="5"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4 mb-3">
+                        <button type="button" class="btn btn-outline-dark">
+                            <span class="me-3">Prev Step</span>
+                            <span>
+                                <img src="../../../assets/icons/right-up1.png" alt="arrow"
+                                    style="width: 20px; height: 20px" />
+                            </span>
+                        </button>
+                        <button class="btn btn-primary round-5" type="button">
+                            <span class="me-3">Next Step</span>
+                            <span>
+                                <img src="../../../assets/icons/right-up.png" alt="arrow"
+                                    style="width: 20px; height: 20px" />
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+        <mat-tab label="5.Amenities">
+            <div class="container mt-3">
+                <h3 class="fw-bold">Select Amenities</h3>
+                <div class="row g-3">
+                    <div class="col-md-3" *ngFor="let amenity of amenities">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" [id]="amenity" [value]="amenity"
+                                [(ngModel)]="selectedAmenities[amenity]" name="amenities" />
+                            <label class="form-check-label" [for]="amenity">
+                                {{ amenity }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-4 mb-3">
+                    <button type="button" class="btn btn-outline-dark">
+                        <span class="me-3">Prev Step</span>
+                        <span>
+                            <img src="../../../assets/icons/right-up1.png" alt="arrow"
+                                style="width: 20px; height: 20px" />
+                        </span>
+                    </button>
+                    <button class="btn btn-primary round-5" type="button">
+                        <span class="me-3">Submit Property</span>
+                        <span>
+                            <img src="../../../assets/icons/right-up.png" alt="arrow"
+                                style="width: 20px; height: 20px" />
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
