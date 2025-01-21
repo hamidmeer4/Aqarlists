@@ -22,3 +22,20 @@ button.btn-danger {
     align-items: center;
     justify-content: center;
 }
+
+label {
+    font-weight: 600; 
+    text-align: start ;
+    font-family: Poppins;
+    font-size: 15px 
+  }
+  
+input {
+    border: 1px solid #DDDDDD !important;
+    padding: 10px 10px !important;
+  }
+
+.form-select {
+    border: 1px solid #DDDDDD !important;
+    padding: 10px 10px !important;  
+}
