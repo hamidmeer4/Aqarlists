@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @Component({
   selector: 'app-user',
@@ -13,6 +15,16 @@ export class UserComponent {
 
   selectButton(buttonType: string): void {
     this.selectedButton = buttonType;
+  }
+
+  constructor (public dialog: MatDialog)
+  {
+    
+  }
+  openDialog() {
+    this.dialog.open(EditUserComponent, {
+      panelClass: 'custom-dialog-width'
+    });
   }
 
   displayedColumns: string[] = [

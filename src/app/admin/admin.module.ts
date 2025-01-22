@@ -26,6 +26,8 @@ import { UserComponent } from './user/user.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { MatSortModule } from '@angular/material/sort';
     ReviewComponent,
     AddPropertyComponent,
     ProfileComponent,
-    UserComponent
+    UserComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +61,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }

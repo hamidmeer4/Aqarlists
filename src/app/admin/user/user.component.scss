@@ -22,3 +22,12 @@
 table {
   width: 100%;
 }
+
+.action-icon {
+  cursor: pointer;
+  transition: fill 0.3s ease, transform 0.3s ease;
+}
+
+.action-icon:hover {
+  transform: scale(1.1); 
+}
