@@ -1,0 +1,20 @@
+
+.custom-dialog-width {
+    width: 400px; 
+  }
+
+  .btn-toggle {
+    transition: all 0.1s ease;
+    background-color: #ebebeb !important;
+    border: none !important;
+    width: 30% !important;
+  }
+  .btn-toggle.active {
+    background-color: #023c88 !important;
+    color: white;
+  }
+  
+  .btn-toggle:hover {
+    background-color: #023c88 !important;
+    color: white !important;
+  }

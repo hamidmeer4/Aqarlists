@@ -15,6 +15,9 @@
       color: #fff;
     }
   }
+.active .me-2 path {
+    fill: #fff !important; /* Change SVG color to white when link is active */
+  }
 }
 
 .toggle-button {

@@ -7,6 +7,7 @@ import { PropertyComponent } from './property/property.component';
 import { ReviewComponent } from './review/review.component';
 import { AddPropertyComponent } from './add-property/add-property.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'review', component: ReviewComponent }, 
       { path: 'add-property',component:AddPropertyComponent},
       { path: 'profile', component: ProfileComponent }, 
+      { path: 'user', component: UserComponent }, 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },

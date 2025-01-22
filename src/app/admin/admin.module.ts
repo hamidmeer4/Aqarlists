@@ -22,6 +22,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProfileComponent } from './profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './user/user.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -36,7 +42,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     PropertyComponent,
     ReviewComponent,
     AddPropertyComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,
@@ -49,8 +57,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDividerModule,
     MatFormFieldModule,
     MatSelectModule,
-    ReactiveFormsModule
-  
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }

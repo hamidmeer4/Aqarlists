@@ -11,13 +11,13 @@
         <a class="navbar-brand d-flex align-items-center text-decoration-none mx-4 image-inside">
           <img src="assets/icons/logo.png" alt="Logo" class="header-logo me-2" />
         </a>
-        <div class="navbar-nav">
-          <a routerLink='/home' class="btn btn-round px-4 mt-4 route-button"  [ngStyle]="{ 'color': isHome ? 'white' : '' }">Home</a>
-          <a routerLink="/for-sale" class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }">For Sale</a>
-          <a routerLink='/agent' class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }">Agent</a>
-          <a  routerLink='/companies' class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }">Companies</a>
-          <a routerLink='/listed-properties' class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }" >Properties</a>
-          <a routerLink='/login' class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }"> <i class="fa-regular fa-circle-user mx-1"></i>Login / Register</a>
+        <div class="navbar-nav gap-1">
+          <a routerLink='/home' routerLinkActive="active" class="btn btn-round px-4 mt-4 route-button"  [ngStyle]="{ 'color': isHome ? 'white' : '' }">Home</a>
+          <a routerLink="/for-sale" routerLinkActive="active" class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }">For Sale</a>
+          <a routerLink='/agent' routerLinkActive="active" class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }">Agent</a>
+          <a  routerLink='/companies' routerLinkActive="active" class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }">Companies</a>
+          <a routerLink='/listed-properties' routerLinkActive="active" class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }" >Properties</a>
+          <a routerLink='/login' routerLinkActive="active" class="btn btn-round px-4 mt-4 route-button" [ngStyle]="{ 'color': isHome ? 'white' : '' }"> <i class="fa-regular fa-circle-user mx-1"></i>Login / Register</a>
         </div>
       </div>
     </div>
