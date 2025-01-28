@@ -4,15 +4,37 @@
     <h1 class="fw-bold">Compare Properties</h1>
     <span>Home / Compare Properties</span>
   </div>
-  <img src="assets/images/businessman-hold-house.png" class="img-fluid w-100" alt="Responsive image" />
-  <div class="p-5 mt-5 d-flex justify-content-center main-card" style="overflow:  hidden !important;">
+  <img
+    src="assets/images/businessman-hold-house.png"
+    class="img-fluid w-100"
+    alt="Responsive image"
+  />
+  <div class="mt-3 d-flex justify-content-end me-5">
+    <button
+      class="btn add-property d-flex align-items-center justify-content-center"
+      routerLink="/compare-properties"
+    >
+      <i
+        class="add-icon fa-regular fa-plus d-flex align-items-center justify-content-center rounded-circle"
+      ></i>
+      Add Property
+    </button>
+  </div>
+  <div
+    class="p-5 d-flex justify-content-center main-card"
+    style="overflow: hidden !important"
+  >
     <app-side-bar></app-side-bar>
-    <div class="mt-3">
+    <div class="mt-3" >
       <div class="d-flex table-card">
-        <div>
+        <div *ngIf="showCard">
           <div>
             <div class="card-img-container">
-              <img [src]="properties[0].image" alt="{{ properties[0].name }}" class="card-img" />
+              <img
+                [src]="properties[0].image"
+                alt="{{ properties[0].name }}"
+                class="card-img"
+              />
             </div>
             <div class="mb-4 mt-2">
               <p class="card-title fw-bold">{{ properties[0].name }}</p>
@@ -22,38 +44,67 @@
           </div>
           <div class="table-container">
             <div class="table-responsive-xxl rounded">
-              <table class="table table-hover text-center table-striped align-middle">
+              <table
+                class="table table-hover text-center table-striped align-middle"
+              >
                 <thead>
                   <tr>
-                    <th class="py-4 text-end">Property Type</th>
-                    <th class="py-4">Apartment</th>
-                    <th class="py-4">Studio</th>
-                    <th class="py-4">Villa</th>
+                    <th class="py-4 text-start">Property Type</th>
+                    <th class="py-4 text-center">Apartment</th>
+                    <th class="py-4 text-center ">Studio</th>
+                    <th class="py-4 text-center">Villa</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let row of tableData">
-                    <th class="py-4 text-end text-start">{{ row.property }}</th>
+                    <th class="py-4 fw-bold text-start">{{ row.property }}</th>
                     <td>
-                      <ng-container *ngIf="isBoolean(row.apartment); else textContentApartment">
+                      <ng-container
+                        *ngIf="
+                          isBoolean(row.apartment);
+                          else textContentApartment
+                        "
+                      >
                         <i
-                          [ngClass]="{'fas fa-check text-success': row.apartment, 'fa fa-times text-danger': !row.apartment}"></i>
+                          [ngClass]="{
+                            'fas fa-check text-success': row.apartment,
+                            'fa fa-times text-danger': !row.apartment
+                          }"
+                        ></i>
                       </ng-container>
-                      <ng-template #textContentApartment>{{ row.apartment }}</ng-template>
+                      <ng-template #textContentApartment>{{
+                        row.apartment
+                      }}</ng-template>
                     </td>
                     <td>
-                      <ng-container *ngIf="isBoolean(row.studio); else textContentStudio">
+                      <ng-container
+                        *ngIf="isBoolean(row.studio); else textContentStudio"
+                      >
                         <i
-                          [ngClass]="{'fas fa-check text-success': row.studio, 'fa fa-times text-danger': !row.studio}"></i>
+                          [ngClass]="{
+                            'fas fa-check text-success': row.studio,
+                            'fa fa-times text-danger': !row.studio
+                          }"
+                        ></i>
                       </ng-container>
-                      <ng-template #textContentStudio>{{ row.studio }}</ng-template>
+                      <ng-template #textContentStudio>{{
+                        row.studio
+                      }}</ng-template>
                     </td>
                     <td>
-                      <ng-container *ngIf="isBoolean(row.villa); else textContentVilla">
+                      <ng-container
+                        *ngIf="isBoolean(row.villa); else textContentVilla"
+                      >
                         <i
-                          [ngClass]="{'fas fa-check text-success': row.villa, 'fa fa-times text-danger': !row.villa}"></i>
+                          [ngClass]="{
+                            'fas fa-check text-success': row.villa,
+                            'fa fa-times text-danger': !row.villa
+                          }"
+                        ></i>
                       </ng-container>
-                      <ng-template #textContentVilla>{{ row.villa }}</ng-template>
+                      <ng-template #textContentVilla>{{
+                        row.villa
+                      }}</ng-template>
                     </td>
                   </tr>
                 </tbody>
@@ -61,10 +112,14 @@
             </div>
           </div>
         </div>
-        <div>
+        <div *ngIf="!showCard">
           <div>
             <div class="card-img-container">
-              <img [src]="properties[1].image" alt="{{ properties[1].name }}" class="card-img" />
+              <img
+                [src]="properties[1].image"
+                alt="{{ properties[1].name }}"
+                class="card-img"
+              />
             </div>
             <div class="mb-4 mt-2">
               <p class="card-title fw-bold">{{ properties[1].name }}</p>
@@ -74,7 +129,9 @@
           </div>
           <div class="table-container">
             <div class="table-responsive-xxl rounded">
-              <table class="table table-hover text-center table-striped align-middle">
+              <table
+                class="table table-hover text-center table-striped align-middle"
+              >
                 <thead>
                   <tr>
                     <th class="py-4 text-end">Property Type</th>
@@ -85,27 +142,54 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let row of tableData">
-                    <th class="py-4 text-end text-start">{{ row.property }}</th>
+                    <th class="py-4 text-start">{{ row.property }}</th>
                     <td>
-                      <ng-container *ngIf="isBoolean(row.apartment); else textContentApartment">
+                      <ng-container
+                        *ngIf="
+                          isBoolean(row.apartment);
+                          else textContentApartment
+                        "
+                      >
                         <i
-                          [ngClass]="{'fas fa-check text-success': row.apartment, 'fa fa-times text-danger': !row.apartment}"></i>
+                          [ngClass]="{
+                            'fas fa-check text-success': row.apartment,
+                            'fa fa-times text-danger': !row.apartment
+                          }"
+                        ></i>
                       </ng-container>
-                      <ng-template #textContentApartment>{{ row.apartment }}</ng-template>
+                      <ng-template #textContentApartment>{{
+                        row.apartment
+                      }}</ng-template>
                     </td>
                     <td>
-                      <ng-container *ngIf="isBoolean(row.studio); else textContentStudio">
+                      <ng-container
+                        *ngIf="isBoolean(row.studio); else textContentStudio"
+                      >
                         <i
-                          [ngClass]="{'fas fa-check text-success': row.studio, 'fa fa-times text-danger': !row.studio}"></i>
+                          [ngClass]="{
+                            'fas fa-check text-success': row.studio,
+                            'fa fa-times text-danger': !row.studio
+                          }"
+                        ></i>
                       </ng-container>
-                      <ng-template #textContentStudio>{{ row.studio }}</ng-template>
+                      <ng-template #textContentStudio>{{
+                        row.studio
+                      }}</ng-template>
                     </td>
                     <td>
-                      <ng-container *ngIf="isBoolean(row.villa); else textContentVilla">
+                      <ng-container
+                        *ngIf="isBoolean(row.villa); else textContentVilla"
+                      >
                         <i
-                          [ngClass]="{'fas fa-check text-success': row.villa, 'fa fa-times text-danger': !row.villa}"></i>
+                          [ngClass]="{
+                            'fas fa-check text-success': row.villa,
+                            'fa fa-times text-danger': !row.villa
+                          }"
+                        ></i>
                       </ng-container>
-                      <ng-template #textContentVilla>{{ row.villa }}</ng-template>
+                      <ng-template #textContentVilla>{{
+                        row.villa
+                      }}</ng-template>
                     </td>
                   </tr>
                 </tbody>
@@ -136,7 +220,7 @@
                 />
               </span>
             </button>
-    
+
             <button
               mat-raised-button
               color="primary"

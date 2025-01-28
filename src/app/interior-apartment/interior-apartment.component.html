@@ -11,6 +11,7 @@
               </h2>
               <button
                 class="py-2 px-2 btn btn-primary ms-md-3 mt-2 mt-md-0 d-flex align-items-center"
+                routerLink="/compare-properties-detail"
               >
                 <i class="fa fa-building me-2"></i> Compare Property
               </button>
@@ -312,114 +313,114 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-8 my-4  rounded">
+      <div class="col-12 col-lg-8 my-4 rounded">
         <div class="card p-4 border-0">
           <h3 class="fw-bold">Features & Amenities</h3>
-        <div class="row">
-          <div class="col-12 col-md-4">
-            <ul class="list">
-              <li><i class="bi bi-dot text-primary"></i> Air Conditioning</li>
-              <li><i class="bi bi-dot text-primary"></i> Barbeque</li>
-              <li><i class="bi bi-dot text-primary"></i> Dryer</li>
-              <li><i class="bi bi-dot text-primary"></i> Gym</li>
-            </ul>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <ul class="list">
+                <li><i class="bi bi-dot text-primary"></i> Air Conditioning</li>
+                <li><i class="bi bi-dot text-primary"></i> Barbeque</li>
+                <li><i class="bi bi-dot text-primary"></i> Dryer</li>
+                <li><i class="bi bi-dot text-primary"></i> Gym</li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-4">
+              <ul class="list">
+                <li><i class="bi bi-dot text-primary"></i> Lawn</li>
+                <li><i class="bi bi-dot text-primary"></i> Microwave</li>
+                <li><i class="bi bi-dot text-primary"></i> Outdoor Shower</li>
+                <li><i class="bi bi-dot text-primary"></i> Refrigerator</li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-4">
+              <ul class="list">
+                <li><i class="bi bi-dot text-primary"></i> Swimming Pool</li>
+                <li><i class="bi bi-dot text-primary"></i> TV Cable</li>
+                <li><i class="bi bi-dot text-primary"></i> Washer</li>
+                <li><i class="bi bi-dot text-primary"></i> WiFi</li>
+              </ul>
+            </div>
           </div>
-          <div class="col-12 col-md-4">
-            <ul class="list">
-              <li><i class="bi bi-dot text-primary"></i> Lawn</li>
-              <li><i class="bi bi-dot text-primary"></i> Microwave</li>
-              <li><i class="bi bi-dot text-primary"></i> Outdoor Shower</li>
-              <li><i class="bi bi-dot text-primary"></i> Refrigerator</li>
-            </ul>
-          </div>
-          <div class="col-12 col-md-4">
-            <ul class="list">
-              <li><i class="bi bi-dot text-primary"></i> Swimming Pool</li>
-              <li><i class="bi bi-dot text-primary"></i> TV Cable</li>
-              <li><i class="bi bi-dot text-primary"></i> Washer</li>
-              <li><i class="bi bi-dot text-primary"></i> WiFi</li>
-            </ul>
-          </div>
-        </div>
         </div>
       </div>
       <div class="col-12 col-lg-8 my-3 rounded">
         <div class="card p-4 border-0">
-        <h3 class="fw-bold mb-4">Floor Plans</h3>
-        <div
-          *ngFor="let floor of floorPlans; let i = index"
-          class="border-bottom pb-3 mb-3"
-        >
+          <h3 class="fw-bold mb-4">Floor Plans</h3>
           <div
-            class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center"
+            *ngFor="let floor of floorPlans; let i = index"
+            class="border-bottom pb-3 mb-3"
           >
-            <button
-              class="btn btn-link text-decoration-none p-0 fw-bold text-start"
-              type="button"
-              (click)="toggleDetails(floor)"
+            <div
+              class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center"
             >
-              <i
-                *ngIf="i === 0"
-                [class.bi-star-fill]="floor.isOpen"
-                [class.bi-star]="!floor.isOpen"
-                class="bi me-2"
-              ></i>
-              <i
-                *ngIf="i !== 0"
-                [class.bi-caret-down-fill]="!floor.isOpen"
-                [class.bi-caret-up-fill]="floor.isOpen"
-                class="bi me-2"
-              ></i>
-              {{ floor.name }}
-            </button>
-            <div class="d-flex flex-wrap text-start mt-2 mt-md-0">
-              <div class="me-3">
-                <span class="fw-bold">Size:</span> {{ floor.size }}
+              <button
+                class="btn btn-link text-decoration-none p-0 fw-bold text-start"
+                type="button"
+                (click)="toggleDetails(floor)"
+              >
+                <i
+                  *ngIf="i === 0"
+                  [class.bi-star-fill]="floor.isOpen"
+                  [class.bi-star]="!floor.isOpen"
+                  class="bi me-2"
+                ></i>
+                <i
+                  *ngIf="i !== 0"
+                  [class.bi-caret-down-fill]="!floor.isOpen"
+                  [class.bi-caret-up-fill]="floor.isOpen"
+                  class="bi me-2"
+                ></i>
+                {{ floor.name }}
+              </button>
+              <div class="d-flex flex-wrap text-start mt-2 mt-md-0">
+                <div class="me-3">
+                  <span class="fw-bold">Size:</span> {{ floor.size }}
+                </div>
+                <div class="me-3">
+                  <span class="fw-bold">Bedrooms:</span> {{ floor.bedrooms }}
+                </div>
+                <div class="me-3">
+                  <span class="fw-bold">Bathrooms:</span> {{ floor.bathrooms }}
+                </div>
+                <div><span class="fw-bold">Price:</span> {{ floor.price }}</div>
               </div>
-              <div class="me-3">
-                <span class="fw-bold">Bedrooms:</span> {{ floor.bedrooms }}
-              </div>
-              <div class="me-3">
-                <span class="fw-bold">Bathrooms:</span> {{ floor.bathrooms }}
-              </div>
-              <div><span class="fw-bold">Price:</span> {{ floor.price }}</div>
+            </div>
+            <div *ngIf="floor.isOpen" class="mt-3">
+              <img
+                [src]="floor.image"
+                alt="Floor Plan Image"
+                class="img-fluid rounded shadow-sm"
+              />
             </div>
           </div>
-          <div *ngIf="floor.isOpen" class="mt-3">
-            <img
-              [src]="floor.image"
-              alt="Floor Plan Image"
-              class="img-fluid rounded shadow-sm"
-            />
-          </div>
         </div>
-      </div>
       </div>
       <div class="col-12 col-lg-8 my-2">
         <h3 class="fw-bold ms-2">Video</h3>
         <div class="card border-0">
-        <div class="position-relative rounded overflow-hidden shadow">
-          <video
-            #videoPlayer
-            [src]="videoSource"
-            class="img-fluid w-100"
-            (click)="toggleVideo(videoPlayer)"
-            style="cursor: pointer"
-          ></video>
-          <div
-            *ngIf="!isPlaying"
-            class="position-absolute top-50 start-50 translate-middle"
-            (click)="toggleVideo(videoPlayer)"
-            style="cursor: pointer"
-          >
-            <mat-icon
-              class="play-button bg-white text-primary rounded-circle d-flex align-items-center justify-content-center shadow"
-              style="font-size: 48px; width: 80px; height: 80px"
+          <div class="position-relative rounded overflow-hidden shadow">
+            <video
+              #videoPlayer
+              [src]="videoSource"
+              class="img-fluid w-100"
+              (click)="toggleVideo(videoPlayer)"
+              style="cursor: pointer"
+            ></video>
+            <div
+              *ngIf="!isPlaying"
+              class="position-absolute top-50 start-50 translate-middle"
+              (click)="toggleVideo(videoPlayer)"
+              style="cursor: pointer"
             >
-              play_arrow
-            </mat-icon>
+              <mat-icon
+                class="play-button bg-white text-primary rounded-circle d-flex align-items-center justify-content-center shadow"
+                style="font-size: 48px; width: 80px; height: 80px"
+              >
+                play_arrow
+              </mat-icon>
+            </div>
           </div>
-        </div>
         </div>
       </div>
       <div class="col-12 col-lg-8 py-4">
@@ -509,110 +510,68 @@
           </mat-tab-group>
         </div>
       </div>
-      <div class="reviews-section col-12 col-lg-8 my-4  rounded">
+      <div class="reviews-section col-12 col-lg-8 my-4 rounded">
         <div class="card border-0 p-4">
-
-       
-        <div
-          class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3"
-        >
-          <span class="fw-bold">★ 5.0 · 3 reviews</span>
-          <select class="form-select w-auto mt-3 mt-md-0">
-            <option>Sort by Newest</option>
-          </select>
-        </div>
-        <div *ngFor="let review of reviews" class="mb-4 mt-4">
-          <div class="card-body">
-            <div
-              class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center"
-            >
-              <div class="d-flex align-items-start align-items-md-center">
-                <div
-                  class="d-flex justify-content-center align-items-center rounded-circle bg-secondary text-white"
-                  style="width: 40px; height: 40px; font-size: 20px"
-                >
-                  A.T
-                </div>
-
-                <div class="ms-3">
-                  <p class="fw-semibold mb-0 text-start">{{ review.name }}</p>
-                  <p
-                    class="card-text text-muted text-start"
-                    style="font-size: 12px"
-                  >
-                    {{ review.date }}
-                  </p>
-                </div>
-              </div>
-              <span class="text-warning mt-2 mt-md-0">★★★★★</span>
-            </div>
-          </div>
-          <p class="card-text mt-3">{{ review.text }}</p>
-          <div *ngIf="review.images" class="d-flex flex-wrap">
-            <img
-              *ngFor="let img of review.images"
-              [src]="img"
-              class="img-thumbnail me-2 mb-2"
-              style="width: 80px; height: 80px"
-              alt="Review image"
-            />
-          </div>
-          <div class="d-flex flex-wrap mt-2">
-            <button class="btn btn-sm me-2">
-              <i class="fa-solid fa-thumbs-up me-2"></i>Helpful
-            </button>
-            <button class="btn btn-sm">
-              <i class="fa-solid fa-thumbs-up fa-rotate-180 me-2"></i>Not
-              helpful
-            </button>
-          </div>
-          <hr />
-        </div>
-        <button
-          mat-stroked-button
-          class="d-flex btn-shadow py-4 rounded-4 justify-content-center align-items-center mx-2 text-primary w-100"
-        >
-          <span class="me-3">Show all 134 reviews</span>
-          <span>
-            <img
-              src="assets/icons/right-up1.png"
-              alt="arrow"
-              style="width: 20px; height: 20px"
-            />
-          </span>
-        </button>
-      </div>
-      </div>
-      <div class="col-12 col-lg-8 my-4  rounded">
-        <div class="card border-0 p-4">
-        <h4 class="mt-4 fw-bold">Leave A Review</h4>
-        <form>
-          <div class="mb-3">
-            <input type="email" class="form-control p-3" placeholder="Email" />
-          </div>
-          <div class="mb-3 d-flex flex-column flex-md-row gap-3">
-            <input type="text" class="form-control p-3" placeholder="Title" />
-            <select class="form-select p-3">
-              <option>Select Rating</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3"
+          >
+            <span class="fw-bold">★ 5.0 · 3 reviews</span>
+            <select class="form-select w-auto mt-3 mt-md-0">
+              <option>Sort by Newest</option>
             </select>
           </div>
-          <div class="mb-3">
-            <textarea
-              class="form-control"
-              rows="5"
-              placeholder="Write a Review"
-            ></textarea>
+          <div *ngFor="let review of reviews" class="mb-4 mt-4">
+            <div class="card-body">
+              <div
+                class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center"
+              >
+                <div class="d-flex align-items-start align-items-md-center">
+                  <div
+                    class="d-flex justify-content-center align-items-center rounded-circle bg-secondary text-white"
+                    style="width: 40px; height: 40px; font-size: 20px"
+                  >
+                    A.T
+                  </div>
+
+                  <div class="ms-3">
+                    <p class="fw-semibold mb-0 text-start">{{ review.name }}</p>
+                    <p
+                      class="card-text text-muted text-start"
+                      style="font-size: 12px"
+                    >
+                      {{ review.date }}
+                    </p>
+                  </div>
+                </div>
+                <span class="text-warning mt-2 mt-md-0">★★★★★</span>
+              </div>
+            </div>
+            <p class="card-text mt-3">{{ review.text }}</p>
+            <div *ngIf="review.images" class="d-flex flex-wrap">
+              <img
+                *ngFor="let img of review.images"
+                [src]="img"
+                class="img-thumbnail me-2 mb-2"
+                style="width: 80px; height: 80px"
+                alt="Review image"
+              />
+            </div>
+            <div class="d-flex flex-wrap mt-2">
+              <button class="btn btn-sm me-2">
+                <i class="fa-solid fa-thumbs-up me-2"></i>Helpful
+              </button>
+              <button class="btn btn-sm">
+                <i class="fa-solid fa-thumbs-up fa-rotate-180 me-2"></i>Not
+                helpful
+              </button>
+            </div>
+            <hr />
           </div>
           <button
             mat-stroked-button
             class="d-flex btn-shadow py-4 rounded-4 justify-content-center align-items-center mx-2 text-primary w-100"
           >
-            <span class="me-3">Submit Review</span>
+            <span class="me-3">Show all 134 reviews</span>
             <span>
               <img
                 src="assets/icons/right-up1.png"
@@ -621,8 +580,52 @@
               />
             </span>
           </button>
-        </form>
+        </div>
       </div>
+      <div class="col-12 col-lg-8 my-4 rounded">
+        <div class="card border-0 p-4">
+          <h4 class="mt-4 fw-bold">Leave A Review</h4>
+          <form>
+            <div class="mb-3">
+              <input
+                type="email"
+                class="form-control p-3"
+                placeholder="Email"
+              />
+            </div>
+            <div class="mb-3 d-flex flex-column flex-md-row gap-3">
+              <input type="text" class="form-control p-3" placeholder="Title" />
+              <select class="form-select p-3">
+                <option>Select Rating</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                rows="5"
+                placeholder="Write a Review"
+              ></textarea>
+            </div>
+            <button
+              mat-stroked-button
+              class="d-flex btn-shadow py-4 rounded-4 justify-content-center align-items-center mx-2 text-primary w-100"
+            >
+              <span class="me-3">Submit Review</span>
+              <span>
+                <img
+                  src="assets/icons/right-up1.png"
+                  alt="arrow"
+                  style="width: 20px; height: 20px"
+                />
+              </span>
+            </button>
+          </form>
+        </div>
       </div>
       <div class="mb-3 my-5">
         <h2 class="fw-bold text-dark">Nearby Similar Homes</h2>

@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./compare-properties-detail.component.scss']
 })
 export class ComparePropertiesDetailComponent {
+  public showCard: boolean = true;
   properties = [
     {
       name: 'Home in Metric Way',
