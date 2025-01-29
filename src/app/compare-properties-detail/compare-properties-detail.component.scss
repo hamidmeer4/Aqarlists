@@ -60,10 +60,32 @@
 }
 
 @media (max-width: 768px) {
- .p-4 {
- display: block !important;
- }
- .contact {
-  margin-bottom: 15px !important;
- }
+  .p-4 {
+    display: block !important;
+  }
+  .contact {
+    margin-bottom: 15px !important;
+  }
+}
+
+.add-property {
+  color: #002f6d;
+  border: 1px solid #002f6d;
+  background-color: transparent;
+}
+.add-property:hover {
+  color: white;
+  border: 1px solid #ffffff;
+  background-color: #002f6d;
+}
+.add-icon {
+  border: 1px solid #002f6d;
+  color: #002f6d;
+  width: 30px;
+  height: 30px;
+  margin-right: -22px;
+}
+.add-property:hover .add-icon {
+  color: white;
+  border-color: white;
 }

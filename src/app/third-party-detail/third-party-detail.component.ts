@@ -48,4 +48,18 @@ export class ThirdPartyDetailComponent {
       images: []
     }
   ];
+  openWhatsApp(): void {
+    const phoneNumber = '1234567890';
+    const message = encodeURIComponent(
+      'Hello, I am interested in your property!'
+    );
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  openApp(): void {
+    const appUrl = 'your-app-url';
+    window.open(appUrl, '_blank');
+  }
+
 }

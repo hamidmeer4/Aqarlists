@@ -27,7 +27,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 mb-4" *ngFor="let card of cards">
                         <div class="card h-100 properties-card position-relative">
                             <div class="check-icon position-absolute">
-                                <input type="checkbox" id="check-{{card.title}}" class="form-check-input" />
+                                <input type="checkbox" id="check-{{card.title}}" class="form-check-input"  (change)="onCheckboxChange(card.title, $event)" />
                                 <label for="check-{{card.title}}" class="rounded-circle"></label>
                             </div>
                             <img src="{{ card.image }}" class="card-img-top" alt="{{ card.title }}">
@@ -52,7 +52,7 @@
                 <div class="d-flex">
                     <button mat-raised-button color="primary"
                         class="d-flex btn-shadow py-4 rounded-4  d-flex justify-content-center align-items-center"
-                        type="submit">
+                        (click)="navigateWithId()">
                         <span>Compare</span>
                     </button>
                     <button mat-stroked-button

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-compare-properties',
@@ -10,7 +11,7 @@ export class ComparePropertiesComponent {
     { img: 'assets/images/categories1.png', name: 'Home in Metric Way', rate: 'sAR 14,000 / mo', location: 'California City, CA, USA' },
     { img: 'assets/images/categories2.png', name: 'Home in Metric Way', rate: 'sAR 14,000 / mo', location: 'California City, CA, USA' },
   ];
-
+  selectedProperty: boolean = false;
   cards = [
     {
       image: 'assets/images/pexels.png',
@@ -109,5 +110,16 @@ export class ComparePropertiesComponent {
       area: 3000
     }
   ];
+
+
+  constructor(private router: Router) { }
+  onCheckboxChange(title: string, event: Event): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    this.selectedProperty = isChecked;
+  }
+
+  navigateWithId() {
+   this.selectedProperty ?   this.router.navigate(['/compare-properties-detail', 1]) : this.router.navigate(['/compare-properties-detail']) 
+  }
 
 }
