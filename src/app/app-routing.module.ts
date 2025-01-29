@@ -31,6 +31,7 @@ const routes: Routes = [
  {path:'about', component:AboutComponent},
  {path:'compare-properties', component:ComparePropertiesComponent},
  {path:'compare-properties-detail', component:ComparePropertiesDetailComponent},
+ { path: 'compare-properties-detail/:id', component: ComparePropertiesDetailComponent },
  {path:'third-party-detail', component:ThirdPartyDetailComponent},
  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
  {path:'interior-apartment', component:InteriorApartmentComponent},

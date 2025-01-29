@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-compare-properties-detail',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./compare-properties-detail.component.scss']
 })
 export class ComparePropertiesDetailComponent {
-  public showCard: boolean = true;
+  public showCard: boolean = false;
   properties = [
     {
       name: 'Home in Metric Way',
@@ -39,7 +40,12 @@ export class ComparePropertiesDetailComponent {
     { property: 'Swimming Pool', apartment: true, studio: true, villa: true },
     { property: 'TV Cable', apartment: true, studio: true, villa: true },
   ];
-
+  constructor(private route: ActivatedRoute) {}
+  
+  ngOnInit(): void {
+    this.route.snapshot.paramMap.get('id') ? this.showCard = true : ''; 
+    
+  }
   isBoolean(value: any): boolean {
     return typeof value === 'boolean';
   }
