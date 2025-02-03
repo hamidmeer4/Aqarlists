@@ -17,7 +17,7 @@ import { ThirdPartyDetailComponent } from './third-party-detail/third-party-deta
 import { InteriorApartmentComponent } from './interior-apartment/interior-apartment.component';
 
 const routes: Routes = [
- {path:'', component:LoginComponent},
+ {path:'', component:HomeComponent},
  {path:'login', component:LoginComponent},
  {path:'register', component:RegistrationComponent},
  {path:'home', component:HomeComponent},
