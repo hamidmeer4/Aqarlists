@@ -150,12 +150,29 @@
     margin-bottom: 15px !important;
   }
   .card-price {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px !important;
   }
   .property {
     padding-left: 0px !important;
     padding-right: 0px !important;
+  }
+  .card-discription {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 160px !important;
+  }
+
+  .card-text {
+    font-size: 10px !important;
+    font-weight: 300 !important;
+    margin-bottom: 0px;
+    white-space: nowrap !important;
   }
 
 }
@@ -169,15 +186,41 @@
     }
   .card-price {
     margin-top: 0px !important;
-    border: none !important;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px !important;
   }
   .move-up-image {
     left: 0% !important;
+  }
+  .card-discription {
+    padding-left: 10px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 160px !important;
   }
   .card-title-text {
     padding: 0px !important;
     margin-left: 2px !important;
     margin-top: 2px !important;
+  }
+  .card-title {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+
+  }
+  .card-text {
+    font-size: 8px !important;
+    font-weight: 300 !important;
+    margin-bottom: 0px;
+    white-space: nowrap !important;
+  }
+  .seller-card {
+    display: flex !important;
+    justify-content: unset !important;
   }
   .for-sale-badge {
     left: 50% !important;
@@ -386,11 +429,9 @@
 }
 
 .card-price {
-  font-size: 1.2rem;
   font-weight: bold;
   color: rgba(0, 47, 109, 1);
   border: 1px solid rgba(0, 47, 109, 1);
-  margin-top: 6px;
 }
 
 .btn-primary {
