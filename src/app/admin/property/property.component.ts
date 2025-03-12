@@ -1,83 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-property',
   templateUrl: './property.component.html',
   styleUrls: ['./property.component.scss']
 })
-export class PropertyComponent {
-  properties = [
-    {
-      name: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      size: 1200,
-      price: 14000,
-      image: 'assets/images/prop1.jpg',
-    },
-    {
-      name: 'Luxury Villa In Rego Park',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      size: 1200,
-      price: 82000,
-      image: 'assets/images/prop2.jpg',
-    },
-    {
-      name: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      size: 1200,
-      price: 14000,
-      image: 'assets/images/prop3.jpg',
-    },
-    {
-      name: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      size: 1200,
-      price: 14000,
-      image: 'assets/images/prop4.jpg',
-    },
-    {
-      name: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      size: 1200,
-      price: 14000,
-      image: 'assets/images/prop5.jpg',
-    },
-    {
-      name: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      size: 1200,
-      price: 14000,
-      image: 'assets/images/prop3.jpg',
-    },
-    {
-      name: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      size: 1200,
-      price: 14000,
-      image: 'assets/images/prop4.jpg',
-    },
-    {
-      name: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      size: 1200,
-      price: 14000,
-      image: 'assets/images/prop5.jpg',
-    },
+export class PropertyComponent implements OnInit {
+  images = [
+       'assets/images/prop1.jpg',
+       'assets/images/prop2.jpg',
+       'assets/images/prop3.jpg',
+       'assets/images/prop4.jpg',
+       'assets/images/prop5.jpg',
+       'assets/images/prop3.jpg',
+       'assets/images/prop4.jpg',
+       'assets/images/prop5.jpg',
   ];
+
+  properties: any
+
+  constructor(private propertyService: PropertyService){}
+
+  ngOnInit(): void { 
+   this.propertyService.getAllPropertys().subscribe(resp =>{
+    this.properties = resp;
+   })
+  }
+
+  getRandomImage(): string {
+    const randomIndex = Math.floor(Math.random() * this.images.length);
+    return this.images[randomIndex];
+  }
 }

@@ -15,6 +15,7 @@ import { ComparePropertiesComponent } from './compare-properties/compare-propert
 import { ComparePropertiesDetailComponent } from './compare-properties-detail/compare-properties-detail.component';
 import { ThirdPartyDetailComponent } from './third-party-detail/third-party-detail.component';
 import { InteriorApartmentComponent } from './interior-apartment/interior-apartment.component';
+import { authGuard } from './Gaurd/auth.guard';
 
 const routes: Routes = [
  {path:'', component:HomeComponent},
@@ -33,7 +34,9 @@ const routes: Routes = [
  {path:'compare-properties-detail', component:ComparePropertiesDetailComponent},
  { path: 'compare-properties-detail/:id', component: ComparePropertiesDetailComponent },
  {path:'third-party-detail', component:ThirdPartyDetailComponent},
- { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+ { path: 'admin', 
+  loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+  canActivate: [authGuard] },
  {path:'interior-apartment', component:InteriorApartmentComponent},
 ]
 
