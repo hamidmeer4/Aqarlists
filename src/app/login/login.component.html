@@ -18,7 +18,7 @@
       <p class="text-muted text-center">
         Sign in with your account to continue.
       </p>
-      <form>
+      <form (ngSubmit)="onLogin()">
         <div class="mb-2">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Email</mat-label>
@@ -26,8 +26,15 @@
               matInput
               type="email"
               placeholder="Enter your email"
+              [(ngModel)]="email"
+              [ngModelOptions]="{standalone: true}"
+              #emailInput="ngModel"
               required
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
             />
+            <mat-error *ngIf="emailInput?.invalid && emailInput?.touched">
+              <span >Invalid email format!</span>
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -40,6 +47,8 @@
               placeholder="Enter your password"
               required
               id="password"
+              [(ngModel)]="password"
+              [ngModelOptions]="{standalone: true}"
             />
           </mat-form-field>
         </div>
@@ -59,7 +68,7 @@
           mat-raised-button
           color="primary"
           class="d-flex btn-shadow py-4 rounded w-100 d-flex justify-content-center align-items-center"
-          routerLink="/admin">
+          type="submit">
           <span class="me-3">Sign In</span>
           <span>
             <img

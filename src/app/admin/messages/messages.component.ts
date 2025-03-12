@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-messages',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
+  public userName: string | null = '';
 
   contacts = [
     {
@@ -102,11 +104,14 @@ export class MessagesComponent implements OnInit {
   messages: { text: String, sender: String, time: String }[] = [];
   newMessage = '';
 
+  constructor(private authService: AuthService){}
+
   ngOnInit() {
     // Select the first contact by default
     if (this.contacts.length > 0) {
       this.selectContact(this.contacts[0])
     }
+    this.userName = this.authService.getUserName()
   }
 
   selectContact(contact: any) {

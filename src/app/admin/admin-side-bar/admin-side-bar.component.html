@@ -46,7 +46,7 @@
             Dashboard
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="userRole === 'Admin'">
           <a
             routerLink="/admin/user"
             routerLinkActive="active"
@@ -80,7 +80,7 @@
             Users
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"  *ngIf="userRole !== 'Admin'">
           <a
             routerLink="/admin/messages"
             routerLinkActive="active"
@@ -253,7 +253,7 @@
         </li>
         <li class="nav-item">
           <a
-            routerLink="/home"
+          (click)="Logout()"
             routerLinkActive="active"
             class="nav-link rounded-4 p-3"
           >

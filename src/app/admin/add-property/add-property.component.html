@@ -1,36 +1,42 @@
 <div class="container-fluid">
     <h1 class="fw-bold">Add New Property</h1>
     <p>We are glad to see you again!</p>
-    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="card mb-3 border-0 rounded-4 shadow-sm p-2">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="card mb-3 border-0 rounded-4 shadow-sm p-2"
+        #tabGroup [(selectedIndex)]="selectedTabIndex">
         <mat-tab label="1.Description">
             <div class="container mt-3 ">
                 <h3 class="fw-bold">Property Description</h3>
                 <form>
                     <div class="mb-3">
                         <label for="title" class="form-label fw-bold">Title</label>
-                        <input type="text" id="title" class="form-control" placeholder="Your Name">
+                        <input type="text" id="title" class="form-control" placeholder="Name"
+                            [(ngModel)]="propertyData.name" [ngModelOptions]="{standalone: true}">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label fw-bold">Description</label>
                         <textarea id="description" class="form-control" rows="5"
-                            placeholder="There are many variations of passages."></textarea>
+                            placeholder="There are many variations of passages." [(ngModel)]="propertyData.description"
+                            [ngModelOptions]="{standalone: true}"></textarea>
                     </div>
                     <div class="row g-3">
                         <div class="col-md-4">
                             <label for="category" class="form-label fw-bold">Select Category</label>
-                            <select id="category" class="form-select">
+                            <select id="category" class="form-select" [(ngModel)]="propertyData.category"
+                                [ngModelOptions]="{standalone: true}">
                                 <option *ngFor="let category of categories" [value]="category">{{category}}</option>
                             </select>
-                        </div>                           
+                        </div>
                         <div class="col-md-4">
                             <label for="listed" class="form-label fw-bold">Listed In</label>
-                            <select   id="listed" class="form-select">
+                            <select id="listed" class="form-select" [(ngModel)]="propertyData.listedIn"
+                                [ngModelOptions]="{standalone: true}">
                                 <option *ngFor="let list of listings" [value]="list">{{list}}</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label for="status" class="form-label fw-bold">Property Status</label>
-                            <select id="status" class="form-select">
+                            <select id="status" class="form-select" [(ngModel)]="propertyData.status"
+                                [ngModelOptions]="{standalone: true}">
                                 <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
                             </select>
                         </div>
@@ -38,26 +44,29 @@
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
                             <label for="price" class="form-label fw-bold">Price in SLR</label>
-                            <input type="text" id="price" class="form-control" placeholder="Your Name">
+                            <input type="number" id="price" class="form-control" placeholder="Price"
+                                [(ngModel)]="propertyData.price" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="taxRate" class="form-label fw-bold">Yearly Tax Rate</label>
-                            <input type="text" id="taxRate" class="form-control" placeholder="Your Name">
+                            <input type="number" id="taxRate" class="form-control" placeholder="Tax Rate"
+                                [(ngModel)]="propertyData.yearlyTaxRate" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="afterPrice" class="form-label fw-bold">After Price Label</label>
-                            <input type="text" id="afterPrice" class="form-control" placeholder="Your Name">
+                            <input type="number" id="afterPrice" class="form-control" placeholder="After Price"
+                                [(ngModel)]="propertyData.afterPriceLabel" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     <div class="d-flex justify-content-between mt-4 mb-3">
-                        <button type="button" class="btn btn-outline-dark">
+                        <button type="button" class="btn btn-outline-dark" (click)="goToPreviousTab(tabGroup)">
                             <span class="me-3">Prev Step</span>
                             <span>
                                 <img src="../../../assets/icons/right-up1.png" alt="arrow"
                                     style="width: 20px; height: 20px" />
                             </span>
                         </button>
-                        <button class="btn btn-primary round-5" type="button">
+                        <button class="btn btn-primary round-5" type="button" (click)="goToNextTab(tabGroup)">
                             <span class="me-3">Next Step</span>
                             <span>
                                 <img src="../../../assets/icons/right-up.png" alt="arrow"
@@ -143,7 +152,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <label for="videoFrom" class="form-label fw-bold">Video From</label>
-                            <select id="videoFrom" class="form-select" [(ngModel)]="videoSource">
+                            <select id="videoFrom" class="form-select" [(ngModel)]="propertyData.videoFrom"
+                                [ngModelOptions]="{standalone: true}">
                                 <option value="Youtube">Youtube</option>
                                 <option value="Vimeo">Vimeo</option>
                             </select>
@@ -151,19 +161,19 @@
                         <div class="col-md-4">
                             <label for="videoId" class="form-label fw-bold">Embed Video ID</label>
                             <input type="text" id="videoId" class="form-control" placeholder="Enter Video ID"
-                                [(ngModel)]="videoId" />
+                                [(ngModel)]="propertyData.embedVideoId" [ngModelOptions]="{standalone: true}" />
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between mt-4 mb-3">
-                    <button type="button" class="btn btn-outline-dark">
+                    <button type="button" class="btn btn-outline-dark" (click)="goToPreviousTab(tabGroup)">
                         <span class="me-3">Prev Step</span>
                         <span>
                             <img src="../../../assets/icons/right-up1.png" alt="arrow"
                                 style="width: 20px; height: 20px" />
                         </span>
                     </button>
-                    <button class="btn btn-primary round-5" type="button">
+                    <button class="btn btn-primary round-5" type="button" (click)="goToNextTab(tabGroup)">
                         <span class="me-3">Next Step</span>
                         <span>
                             <img src="../../../assets/icons/right-up.png" alt="arrow"
@@ -180,7 +190,8 @@
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label for="address" class="form-label fw-bold">Address</label>
-                            <input type="text" id="address" class="form-control" placeholder="Your Name">
+                            <input type="text" id="address" class="form-control" placeholder="Address"
+                                [(ngModel)]="propertyData.address" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     <div class="row g-3 mt-3">
@@ -192,23 +203,28 @@
                         </div>
                         <div class="col-md-4">
                             <label for="city" class="form-label fw-bold">City</label>
-                            <input type="text" id="city" class="form-control" placeholder="City Name">
+                            <input type="text" id="city" class="form-control" placeholder="City Name"
+                                [(ngModel)]="propertyData.city" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="neighborhood" class="form-label fw-bold">Neighborhood</label>
-                            <input type="text" id="neighborhood" class="form-control" placeholder="Neighborhood">
+                            <input type="text" id="neighborhood" class="form-control" placeholder="Neighborhood"
+                                [(ngModel)]="propertyData.neighbourhood" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
 
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
                             <label for="zipcode" class="form-label fw-bold">Zip Code</label>
-                            <input type="text" id="zipcode" class="form-control" placeholder="Zip Code">
+                            <input type="text" id="zipcode" class="form-control" placeholder="Zip Code"
+                                [(ngModel)]="propertyData.zipCode" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="country" class="form-label fw-bold">Country</label>
-                            <select id="videoFrom" class="form-select" placeholder="Select">
-                                <option *ngFor="let country of countries" [value]="country"> {{country.name}}</option>
+                            <select id="videoFrom" class="form-select" placeholder="Select"
+                                [(ngModel)]="propertyData.country" [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let country of countries" [value]="country.code"> {{country.name}}
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -240,22 +256,24 @@
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
                             <label for="latitude" class="form-label fw-bold">Latitude</label>
-                            <input type="text" id="latitude" class="form-control" readonly>
+                            <input type="number" id="latitude" class="form-control" [(ngModel)]="propertyData.latitude"
+                                [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="longitude" class="form-label fw-bold">Longitude</label>
-                            <input type="text" id="longitude" class="form-control" readonly>
+                            <input type="number" id="longitude" class="form-control"
+                                [(ngModel)]="propertyData.longitude" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     <div class="d-flex justify-content-between mt-4 mb-3">
-                        <button type="button" class="btn btn-outline-dark">
+                        <button type="button" class="btn btn-outline-dark" (click)="goToPreviousTab(tabGroup)">
                             <span class="me-3">Prev Step</span>
                             <span>
                                 <img src="../../../assets/icons/right-up1.png" alt="arrow"
                                     style="width: 20px; height: 20px" />
                             </span>
                         </button>
-                        <button class="btn btn-primary round-5" type="button">
+                        <button class="btn btn-primary round-5" type="button" (click)="goToNextTab(tabGroup)">
                             <span class="me-3">Next Step</span>
                             <span>
                                 <img src="../../../assets/icons/right-up.png" alt="arrow"
@@ -273,86 +291,105 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <label for="size" class="form-label fw-bold">Size in ft (only numbers)</label>
-                            <input type="number" id="size" class="form-control" placeholder="Enter Size">
+                            <input type="number" id="size" class="form-control" placeholder="Enter Size"
+                                [(ngModel)]="propertyData.size" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="lotSize" class="form-label fw-bold">Lot Size in ft (only numbers)</label>
-                            <input type="number" id="lotSize" class="form-control" placeholder="Enter Lot Size">
+                            <input type="number" id="lotSize" class="form-control" placeholder="Enter Lot Size"
+                                [(ngModel)]="propertyData.lotSize" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="rooms" class="form-label fw-bold">Rooms</label>
-                            <input type="number" id="rooms" class="form-control" placeholder="Enter Rooms">
+                            <input type="number" id="rooms" class="form-control" placeholder="Enter Rooms"
+                                [(ngModel)]="propertyData.numOfRooms" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
                             <label for="bedrooms" class="form-label fw-bold">Bedrooms</label>
-                            <input type="number" id="bedrooms" class="form-control" placeholder="Enter Bedrooms">
+                            <input type="number" id="bedrooms" class="form-control" placeholder="Enter Bedrooms"
+                                [(ngModel)]="propertyData.numOfBedrooms" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="bathrooms" class="form-label fw-bold">Bathrooms</label>
-                            <input type="number" id="bathrooms" class="form-control" placeholder="Enter Bathrooms">
+                            <input type="number" id="bathrooms" class="form-control" placeholder="Enter Bathrooms"
+                                [(ngModel)]="propertyData.numOfBathrooms" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="CustomID" class="form-label fw-bold">Custom ID (text)</label>
-                            <input type="text" id="CustomID" class="form-control" placeholder="Enter Custom ID (text)">
+                            <input type="text" id="CustomID" class="form-control" placeholder="Enter Custom ID (text)"
+                                [(ngModel)]="propertyData.customId" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
-                            <label for="Garage" class="form-label fw-bold">Garage</label>
-                            <input type="number" id="Garage" class="form-control" placeholder="Enter Garage">
+                            <label for="garage" class="form-label fw-bold">Garage</label>
+                            <select id="garage" class="form-select" [(ngModel)]="propertyData.hasGarage"
+                                [ngModelOptions]="{ standalone: true }">
+                                <option value=true>Yes</option>
+                                <option value=false>No</option>
+                            </select>
                         </div>
                         <div class="col-md-4">
                             <label for="garageSize" class="form-label fw-bold">Garage Size</label>
-                            <input type="number" id="garageSize" class="form-control" placeholder="Enter Garage Size">
+                            <input type="number" id="garageSize" class="form-control" placeholder="Enter Garage Size"
+                                [(ngModel)]="propertyData.garageSize" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="Yearbuilt" class="form-label fw-bold">Year built (numeric)</label>
-                            <input type="number" id="Yearbuilt" class="form-control" placeholder="Year built (numeric)">
+                            <input type="number" id="Yearbuilt" class="form-control" placeholder="Year built (numeric)"
+                                [(ngModel)]="propertyData.yearBuilt" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
 
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
                             <label for="availableFrom" class="form-label fw-bold">Available From (date)</label>
-                            <input type="date" id="availableFrom" class="form-control">
+                            <input type="date" id="availableFrom" class="form-control"
+                                [(ngModel)]="propertyData.availableFrom" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="basement" class="form-label fw-bold">Basement</label>
-                            <select id="basement" class="form-select" placeholder="Select">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                            <select id="basement" class="form-select" placeholder="Select"
+                                [(ngModel)]="propertyData.hasBasement" [ngModelOptions]="{standalone: true}">
+                                <option value=true>Yes</option>
+                                <option value=false>No</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label for="floors" class="form-label fw-bold">Floors No</label>
-                            <input type="number" id="floors" class="form-control" placeholder="Enter Number of Floors">
+                            <input type="number" id="floors" class="form-control" placeholder="Enter Number of Floors"
+                                [(ngModel)]="propertyData.numOfFloors" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
                             <label for="roofing" class="form-label fw-bold">Roofing</label>
-                            <input type="text" id="roofing" class="form-control" placeholder="Enter Roofing Type">
+                            <input type="text" id="roofing" class="form-control" placeholder="Enter Roofing Type"
+                                [(ngModel)]="propertyData.roofing" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="exteriorMaterial" class="form-label fw-bold">Exterior Material</label>
-                            <input type="text" id="exteriorMaterial" class="form-control" placeholder="Enter Material">
+                            <input type="text" id="exteriorMaterial" class="form-control" placeholder="Enter Material"
+                                [(ngModel)]="propertyData.exteriorMaterial" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-md-4">
                             <label for="structureType" class="form-label fw-bold">Structure Type</label>
-                            <select id="structureType" class="form-select">
+                            <select id="structureType" class="form-select" [(ngModel)]="propertyData.propertyTypeId"
+                                [ngModelOptions]="{standalone: true}">
                                 <option selected>Select Structure Type</option>
-                                <option value="house">House</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="condo">Condo</option>
+                                <option value=1>House</option>
+                                <option value=2>Apartment</option>
+                                <option value=3>Condo</option>
                             </select>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-4">
                             <label for="structureType" class="form-label fw-bold">Floors no</label>
-                            <select id="structureType" class="form-select">
+                            <select id="structureType" class="form-select" [(ngModel)]="propertyData.floorNumber"
+                                [ngModelOptions]="{standalone: true}">
                                 <option selected>Select Floors No </option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -363,17 +400,18 @@
                     <div class="mt-3">
                         <label for="ownerNotes" class="form-label fw-bold">Owner/Agent Notes (not visible on front
                             end)</label>
-                        <textarea id="ownerNotes" class="form-control" rows="5"></textarea>
+                        <textarea id="ownerNotes" class="form-control" rows="5"
+                            ></textarea>
                     </div>
                     <div class="d-flex justify-content-between mt-4 mb-3">
-                        <button type="button" class="btn btn-outline-dark">
+                        <button type="button" class="btn btn-outline-dark" (click)="goToPreviousTab(tabGroup)">
                             <span class="me-3">Prev Step</span>
                             <span>
                                 <img src="../../../assets/icons/right-up1.png" alt="arrow"
                                     style="width: 20px; height: 20px" />
                             </span>
                         </button>
-                        <button class="btn btn-primary round-5" type="button">
+                        <button class="btn btn-primary round-5" type="button" (click)="goToNextTab(tabGroup)">
                             <span class="me-3">Next Step</span>
                             <span>
                                 <img src="../../../assets/icons/right-up.png" alt="arrow"
@@ -399,14 +437,14 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-between mt-4 mb-3">
-                    <button type="button" class="btn btn-outline-dark">
+                    <button type="button" class="btn btn-outline-dark" (click)="goToPreviousTab(tabGroup)">
                         <span class="me-3">Prev Step</span>
                         <span>
                             <img src="../../../assets/icons/right-up1.png" alt="arrow"
                                 style="width: 20px; height: 20px" />
                         </span>
                     </button>
-                    <button class="btn btn-primary round-5" type="button">
+                    <button class="btn btn-primary round-5" type="button" (click)="saveData()">
                         <span class="me-3">Submit Property</span>
                         <span>
                             <img src="../../../assets/icons/right-up.png" alt="arrow"
