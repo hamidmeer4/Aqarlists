@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ThirdPartyDetailComponent } from './third-party-detail/third-party-detail.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatTabsModule } from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     BrowserModule,
     BrowserAnimationsModule,
     NgxChartsModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     MatFormFieldModule,

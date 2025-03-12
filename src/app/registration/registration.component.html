@@ -1,14 +1,9 @@
 <div class="container-fluid login">
-  <a
-    class="home-btn d-flex align-items-center  d-md-flex rounded-5"
-    routerLink="/home"
-  >
+  <a class="home-btn d-flex align-items-center  d-md-flex rounded-5" routerLink="/home">
     <i class="fas fa-home me-2"></i> Home
   </a>
   <div class="row w-100 align-items-center justify-content-center px-3">
-    <div
-      class="col-lg-4 col-md-6 col-sm-6 bg-white text-dark rounded-2 shadow-lg login-card"
-    >
+    <div class="col-lg-4 col-md-6 col-sm-6 bg-white text-dark rounded-2 shadow-lg login-card">
       <div class="text-center">
         <img src="assets/icons/logo.png" alt="Logo" height="50" />
       </div>
@@ -19,64 +14,54 @@
       <form>
         <div class="mb-2">
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Email</mat-label>
-            <input
-              matInput
-              type="email"
-              placeholder="Enter your email"
-              required
-            />
+            <mat-label>Name</mat-label>
+            <input matInput type="text" placeholder="Enter your name" [(ngModel)]="user.name"
+              [ngModelOptions]="{standalone: true}" required />
           </mat-form-field>
         </div>
-
+        <div class="mb-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="Enter your email" [(ngModel)]="user.emailAddress"
+              [ngModelOptions]="{standalone: true}" #emailInput="ngModel" required
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+            <mat-error *ngIf="emailInput?.invalid && emailInput?.touched">
+              <span>Invalid email format!</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
         <div>
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Password</mat-label>
-            <input
-              matInput
-              type="password"
-              placeholder="Enter your password"
-              required
-            />
+            <input matInput type="password" placeholder="Enter your password" [(ngModel)]="user.password"
+              [ngModelOptions]="{standalone: true}" required />
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Choose Seller</mat-label>
-            <mat-select required>
-              <mat-option value="seller1">Individual</mat-option>
-              <mat-option value="seller2">Company</mat-option>
+            <mat-label>Choose Role</mat-label>
+            <mat-select required [(ngModel)]="user.roleId" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
 
+
         <div>
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>National ID</mat-label>
-            <input
-              id="nation-id"
-              matInput
-              type="text"
-              placeholder="Enter your National ID"
-              required
-            />
+            <input id="nation-id" matInput type="text" placeholder="Enter your National ID"
+              [(ngModel)]="user.nationalId" [ngModelOptions]="{standalone: true}" required />
           </mat-form-field>
         </div>
 
-        <button
-          mat-raised-button
-          color="primary"
+        <button mat-raised-button color="primary"
           class="d-flex btn-shadow py-4 rounded w-100 d-flex justify-content-center align-items-center"
-          routerLink="/admin"
-        >
+          (click)="onSubmit()">
           <span class="me-2">Create Account</span>
           <span>
-            <img
-              src="assets/icons/right-up.png"
-              alt="arrow"
-              style="width: 20px; height: 20px"
-            />
+            <img src="assets/icons/right-up.png" alt="arrow" style="width: 20px; height: 20px" />
           </span>
         </button>
       </form>
@@ -87,15 +72,15 @@
 
       <div class="d-grid gap-3">
         <button class="btn border text-color rounded shadow-sm bg-custom align-items-center">
-          <i class="fab fa-google"></i> 
-          <span class="ms-5">Continue with Google &nbsp;</span> 
+          <i class="fab fa-google"></i>
+          <span class="ms-5">Continue with Google &nbsp;</span>
         </button>
         <button class="btn border text-color rounded py-3 shadow-sm bg-custom align-items-center">
-          <i class="fab fa-facebook"></i> 
-          <span class="ms-5">Continue with Facebook </span>  
+          <i class="fab fa-facebook"></i>
+          <span class="ms-5">Continue with Facebook </span>
         </button>
         <button class="btn border text-color rounded py-3 shadow-sm bg-custom align-items-center">
-          <i class="fab fa-apple"></i> 
+          <i class="fab fa-apple"></i>
           <span class="ms-5">Continue with Apple &nbsp;&nbsp; &nbsp;</span>
         </button>
       </div>
