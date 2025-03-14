@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
+import { finalize } from 'rxjs';
+import { LoaderService } from 'src/app/services/loader.service';
 import { PropertyService } from 'src/app/services/property.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-add-property',
@@ -85,21 +88,29 @@ export class AddPropertyComponent {
     // mainAttachmentId: 0
   };
 
-  constructor(private propertyService: PropertyService) { }
+  constructor(private propertyService: PropertyService, private loaderService: LoaderService, private toastService: ToastService) { }
 
   removeImage(image: string): void {
     this.images = this.images.filter((img) => img !== image);
   }
 
   saveData() {
+    this.loaderService.show();
     this.propertyData.hasGarage = this.propertyData.hasGarage ? true : false;
     this.propertyData.hasBasement = this.propertyData.hasBasement ? true : false;
     this.propertyData.floorNumber = +this.propertyData.floorNumber;
     this.propertyData.propertyTypeId = +this.propertyData.propertyTypeId;
-    this.propertyService.sendPropertyData(this.propertyData).subscribe(resp => {
+    this.propertyService.sendPropertyData(this.propertyData).pipe(
+      finalize(()=> this.loaderService.hide())
+    ).subscribe(resp => {
       if (resp) {
+        this.toastService.showSuccess('Property added successfully!');
         this.selectedTabIndex = 0; 
       }
+    },
+    (error) => {
+      console.error('Property Addition Error:', error);
+      this.toastService.showError('Failed to add property. Please try again.');
     })
   }
 
