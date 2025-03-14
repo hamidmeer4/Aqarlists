@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class PropertyService {
 
-  private apiUrl = 'http://ec2-34-229-116-30.compute-1.amazonaws.com/api/Property/';
+  private apiUrl = 'https://ec2-34-229-116-30.compute-1.amazonaws.com/api/Property/';
   constructor(private http: HttpClient, private authService: AuthService) { }
 
 
@@ -19,9 +19,9 @@ export class PropertyService {
   sendPropertyData(propertyData: any): Observable<any> {
     const toQueryString = (obj: any): string => {
       return Object.keys(obj)
-        .filter(key => obj[key] !== null && obj[key] !== undefined) // Ignore null/undefined values
+        .filter(key => obj[key] !== null && obj[key] !== undefined) 
         .map(key => {
-          const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize first letter
+          const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
           return `${encodeURIComponent(capitalizedKey)}=${encodeURIComponent(obj[key])}`;
         })
         .join("&");
@@ -31,7 +31,7 @@ export class PropertyService {
     const apiUrl = `${this.apiUrl}add`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` // Include token in Authorization header
+      'Authorization': `Bearer ${token}` 
     });
     return this.http.post<any>(apiUrl, propertyData, { headers })
   }

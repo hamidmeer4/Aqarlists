@@ -38,6 +38,9 @@ import { ThirdPartyDetailComponent } from './third-party-detail/third-party-deta
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LoaderComponent } from './loader/loader.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,7 @@ import { HttpClientModule } from '@angular/common/http';
     ComparePropertiesComponent,
     ComparePropertiesDetailComponent,
     ThirdPartyDetailComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatIconModule,
     MatTabsModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

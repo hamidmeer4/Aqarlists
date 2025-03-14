@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastService } from '../services/toast.service';
+import { finalize } from 'rxjs';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,7 @@ export class LoginComponent implements OnInit {
   public eyeIcon: string = 'fa-eye';
   email = '';
   password = '';
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthService, private router: Router, private toastService: ToastService, private loaderService: LoaderService) { }
 
 
   ngOnInit(): void { }
@@ -34,18 +37,22 @@ export class LoginComponent implements OnInit {
       alert('Invalid email format!');
       return;
     }
-    this.userService.login(this.email, this.password).subscribe(
+    this.loaderService.show();
+    this.userService.login(this.email, this.password).pipe(
+          finalize(()=>    this.loaderService.hide() )
+        ).subscribe(
       (resp: any) => {
         if (resp && resp.token) {
           this.authService.storeUserData(resp.token.token, resp.user);
+          this.toastService.showSuccess('Login successful!');
           this.router.navigate(['/admin']);
         } else {
-          alert('Invalid login response. Please try again.');
+          this.toastService.showWarning('Invalid login response. Please try again.');
         }
       },
       (error) => {
         console.error('Login Error:', error);
-        alert('Login failed. Please check your credentials.');
+        this.toastService.showError('Login failed. Please check your credentials.');
       }
     );
   }

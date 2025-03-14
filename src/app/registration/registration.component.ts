@@ -3,6 +3,9 @@ import { UserService } from '../services/user.service';
 import { Role, User } from '../Model/User';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastService } from '../services/toast.service';
+import { LoaderService } from '../services/loader.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -20,12 +23,16 @@ export class RegistrationComponent implements OnInit {
 
   roles!: Role[];
 
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthService, private router: Router, private toastService: ToastService, private loaderService: LoaderService) { }
 
   ngOnInit(): void {
     this.userService.getAllRoles().subscribe((resp: Role[]) => {
       this.roles = resp;
-    })
+    },
+    (error) => {
+      this.toastService.showError('Failed to load roles. Please try again!.')
+    });
+
   }
   onSubmit() {
 
@@ -46,19 +53,34 @@ export class RegistrationComponent implements OnInit {
       alert('Invalid email format!');
       return;
     }
-    this.userService.register(userData).subscribe(
+    this.loaderService.show();
+    this.userService.register(userData).pipe(
+      finalize(()=>    this.loaderService.hide() )
+    ).subscribe(
       (resp: any) => {
         if (resp && resp.token) {
           this.authService.storeUserData(resp.token.token, resp.user);
+          this.toastService.showSuccess('Registration successful!');
           this.router.navigate(['/admin']);
         } else {
-          alert('Invalid login response. Please try again.');
+          this.toastService.showWarning('Invalid login response. Please try again.')
         }
       },
       (error) => {
-        console.error('Registration Error:', error);
-        alert('Registration error. Please check your details.');
+        this.toastService.showError('Registration error. Please check your details.')
       }
     );
+  }
+
+  showSuccessMessage() {
+    this.toastService.showSuccess('Data saved successfully!');
+  }
+
+  showErrorMessage() {
+    this.toastService.showError('Something went wrong!');
+  }
+
+  showWarningMessage() {
+    this.toastService.showWarning('This is a warning message!');
   }
 }

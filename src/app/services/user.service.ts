@@ -7,15 +7,13 @@ import { Role, User } from '../Model/User';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://ec2-34-229-116-30.compute-1.amazonaws.com/api/User/';
+  private apiUrl = 'https://ec2-34-229-116-30.compute-1.amazonaws.com/api/User/';
 
   constructor(private http: HttpClient) { }
 
 
   getAllRoles(): Observable<Role[]> {
-    return this.http.get<Role[]>(`${this.apiUrl}roles/all`).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.get<Role[]>(`${this.apiUrl}roles/all`);
   }
 
   private handleError(error: HttpErrorResponse) {
