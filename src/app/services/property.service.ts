@@ -16,6 +16,11 @@ export class PropertyService {
     return this.http.get<any>(`${this.apiUrl}get/all`)
   }
 
+  getPropertiesById(id: number): Observable<any> {
+    const url = `${this.apiUrl}${id}:int`;
+    return this.http.get<any>(url);
+  }
+  
   sendPropertyData(propertyData: any): Observable<any> {
     const toQueryString = (obj: any): string => {
       return Object.keys(obj)

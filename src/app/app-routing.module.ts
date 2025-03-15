@@ -37,7 +37,8 @@ const routes: Routes = [
  { path: 'admin', 
   loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
   canActivate: [authGuard] },
- {path:'interior-apartment', component:InteriorApartmentComponent},
+ {path:'interior-apartment/:id', component:InteriorApartmentComponent},
+ { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ]
 
 @NgModule({
