@@ -33,7 +33,7 @@
           </div>
           <hr style="border: 1px solid #DDDDDD;">
           <div class="d-flex justify-content-between align-items-center">
-            <a routerLink="/interior-apartment" class="btn btn-primary">For Sell</a>
+            <a [routerLink]="['/interior-apartment', property.id]" class="btn btn-primary">For Sell</a>
             <div style="display: flex; gap: 10px;">
               <i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i>
               <i class="fa-regular fa-clone fa-lg"></i>
