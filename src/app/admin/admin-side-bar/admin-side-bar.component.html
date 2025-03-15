@@ -114,7 +114,7 @@
 
       <h6 class="nav-title">Manage Listings</h6>
       <ul class="nav flex-column">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="userRole === 'Admin' || userRole ==='Seller'">
           <a
             routerLink="/admin/add-property"
             routerLinkActive="active"
