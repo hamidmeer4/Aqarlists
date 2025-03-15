@@ -11,6 +11,11 @@ export const authGuard: CanActivateFn = (route, state) => {
       router.navigate(['/admin']);
       return false;
     }
+    if((authService.getUserRole() !== 'Admin' || authService.getUserRole() !== 'Seller') && state.url.startsWith('/admin/add-property'))
+    {
+      router.navigate(['/admin'])
+      return false;
+    }
     return true;
   } else {
     router.navigate(['/home']);

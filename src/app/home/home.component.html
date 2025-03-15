@@ -12,7 +12,7 @@
           <a class="nav-link buy-tab active">Buy</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link auction-tab">Auction</a>
+          <a class="nav-link auction-tab">Seller</a>
         </li>
       </ul>
     </div>
@@ -169,7 +169,7 @@
     <div class="container my-5">
       <div class="row"  *ngIf="properties?.length > 0; else noRecords">
         <div class="col-md-6 col-lg-4 mb-1" *ngFor="let property of properties">
-          <div class="card property-card">
+          <div class="card property-card" [routerLink]="['/interior-apartment', property.id]">
             <div class="property-image">
               <img
               [src]="getRandomImage()"
