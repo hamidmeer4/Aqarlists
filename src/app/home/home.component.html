@@ -167,12 +167,12 @@
     </div>
 
     <div class="container my-5">
-      <div class="row">
+      <div class="row"  *ngIf="properties?.length > 0; else noRecords">
         <div class="col-md-6 col-lg-4 mb-1" *ngFor="let property of properties">
           <div class="card property-card">
             <div class="property-image">
               <img
-                [src]="property.image"
+              [src]="getRandomImage()"
                 [alt]="property.name"
                 class="img-fluid card-img-top"
               />
@@ -195,8 +195,8 @@
               <div class="d-flex justify-content-between seller-card">
                 <div class="d-flex justify-content-center align-items-center">
                   <div  class="px-4 mt-3 card-discription">
-                    <span class="card-title">{{ property.name }}</span>
-                  <p class="card-text text-muted">{{ property.location }}</p>
+                    <span class="card-title"> {{ property.name ? property.name : 'Unknown' }}</span>
+                  <p class="card-text text-muted">{{ property.address }}, {{property.city}} ,{{property.country}}</p>
                   </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center me-2">
@@ -210,6 +210,11 @@
           </div>
         </div>
       </div>
+      <ng-template #noRecords>
+        <div class="text-center mt-5">
+          <h4 class="text-muted">No Record Found</h4>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
