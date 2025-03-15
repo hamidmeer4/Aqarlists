@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { PropertyService } from '../services/property.service';
+import { ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../services/loader.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-interior-apartment',
@@ -8,6 +12,22 @@ import { Component } from '@angular/core';
 export class InteriorApartmentComponent {
   videoSource: string = 'assets/video/REAL-ESTATE-TOUR.mp4';
   isPlaying: boolean = false;
+  apartmentId: number | any = null;
+  propertiesByIdBase: any;
+
+
+  constructor(private route: ActivatedRoute, private propertyService: PropertyService, private loader: LoaderService) { }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.apartmentId =  params.get('id');
+      if (this.apartmentId) {
+        this.getPropertyById(this.apartmentId);
+      }
+    });
+  }
+
+
 
   properties = [
     {
@@ -119,6 +139,20 @@ export class InteriorApartmentComponent {
     this.isPlaying ? videoPlayer.pause() : videoPlayer.play();
     this.isPlaying = !this.isPlaying;
   }
-  previous() {}
-  next() {}
+  previous() { }
+  next() { }
+
+  public getPropertyById(id: number) {
+    this.loader.show();
+    this.propertyService.getPropertiesById(id).pipe(
+      finalize(() => this.loader.hide())
+    )
+      .subscribe(
+        (resp) => {
+          this.propertiesByIdBase = resp;
+        },
+
+      );
+  }
+
 }
