@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PropertyService } from '../services/property.service';
+import { ToastService } from '../services/toast.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -40,55 +42,13 @@ export class HomeComponent {
   filters = ['House', 'Villa', 'Office', 'Apartments'];
   selectedFilter = 'House';
 
-  properties = [
-    {
-      name: 'Sky Pool Villa House',
-      location: 'California City, CA, USA',
-      price: 14000,
-      image: './assets/images/property1.png',
-      featured: true,
-      sale: true,
-    },
-    {
-      name: 'Luxury Villa in Rego..',
-      location: 'California City, CA, USA',
-      price: 18000,
-      image: './assets/images/property2.png',
-      featured: true,
-      sale: true,
-    },
-    {
-      name: 'Villa on Hollywood..',
-      location: 'California City, CA, USA',
-      price: 22000,
-      image: './assets/images/property3.png',
-      featured: false,
-      sale: false,
-    },
-    {
-      name: 'Northwest Office Space',
-      location: 'California City, CA, USA',
-      price: 12000,
-      image: './assets/images/property3.png',
-      featured: false,
-      sale: false,
-    },
-    {
-      name: 'Affordable Green Villa...',
-      location: 'California City, CA, USA',
-      price: 12000,
-      image: './assets/images/property4.png',
-      featured: false,
-      sale: false,
-    },
-    {
-      name: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      price: 12000,
-      image: './assets/images/property5.png',
-      featured: false,
-      sale: false,
-    },
+ images = [
+      './assets/images/property1.png',
+       './assets/images/property2.png',
+        './assets/images/property3.png',
+         './assets/images/property3.png',
+         './assets/images/property4.png',
+        './assets/images/property5.png',
   ];
 
   customers = [
@@ -129,18 +89,42 @@ export class HomeComponent {
       company: 'Bank of America'
     },
   ];
+  properties: any;
+  allproperties: any;
+  constructor(private propertyService: PropertyService, private toastService: ToastService){}
+
+  ngOnInit(): void { 
+    this.propertyService.getAllPropertys()
+    .subscribe(resp =>{
+     this.properties = resp;
+     this.allproperties = resp;
+     this.toastService.showSuccess('Properties loaded successfully!');
+    },
+    (error) =>{
+    this.toastService.showError('Failed to load properties. Please try again.');
+    });
+   }
+
+   getRandomImage(): string {
+    const randomIndex = Math.floor(Math.random() * this.images.length);
+    return this.images[randomIndex];
+  }
 
 
   buttons = [
-    { label: 'House', active: true },
-    { label: 'Villa', active: false },
-    { label: 'Office', active: false },
-    { label: 'Apartment', active: false },
+    { id: 0, label: 'All', active: true },
+    { id: 1, label: 'House', active: false },
+    { id: 2, label: 'Villa', active: false },
+    { id: 3, label: 'Office', active: false },
+    { id: 4, label: 'Apartment', active: false }
   ];
 
   onButtonClick(selectedButton: any) {
     this.buttons.forEach((button) => (button.active = false));
     selectedButton.active = true;
+    this.properties = selectedButton.id === 0
+    ? this.allproperties 
+    : this.allproperties.filter((property: any) => property.propertyTypeId === selectedButton.id);
   }
 
   onFilterChange(filter: string) {
@@ -152,6 +136,24 @@ export class HomeComponent {
   }
 
   onSearch() {
+    const searchTerm = this.searchQuery?.trim();
+    if(searchTerm)
+    {
+     this.propertyService.getPropertiesByCategory(1, searchTerm).subscribe(resp => {
+      if(resp?.length)
+      {
+        this.properties = resp;
+        this.allproperties = resp;
+      } else {
+        this.toastService.showWarning('No records found.');
+      }
+       
+     },
+     (error) => {
+      this.toastService.showError('Failed to fetch search results. Please try again.');
+    })
+    }
+    
     console.log(
       `Searching for ${this.searchQuery} in ${this.selectedTab} tab.`
     );
