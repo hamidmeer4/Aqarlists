@@ -41,8 +41,13 @@ export class PropertyService {
     return this.http.post<any>(apiUrl, propertyData, { headers })
   }
 
-  getPropertiesByCategory(categoryId: number, searchTerm: string = ''): Observable<any> {
-    const url = `${this.apiUrl}by/category/${categoryId}?SearchTerm=${searchTerm}`;
+  getFilteredProperties(finalParams: any): Observable<any> {
+    const apiUrl = `${this.apiUrl}by/category?${finalParams?.toString()}`;
+    return this.http.get<any>(apiUrl);
+  }
+  
+  getPropertiesByCategory(searchTerm: string = ''): Observable<any> {
+    const url = `${this.apiUrl}by/category?search=${searchTerm}`;
     return this.http.get<any>(url);
   }
 

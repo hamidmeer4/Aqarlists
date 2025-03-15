@@ -37,4 +37,9 @@ export class ForSaleComponent implements OnInit {
     const randomIndex = Math.floor(Math.random() * this.images.length);
     return this.images[randomIndex];
   }
+
+  updateProperties(properties: any) {
+    this.properties = properties;
+  }
+  
 }
