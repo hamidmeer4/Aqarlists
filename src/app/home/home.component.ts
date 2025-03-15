@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PropertyService } from '../services/property.service';
 import { ToastService } from '../services/toast.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SideBarComponent } from '../side-bar/side-bar.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -91,7 +93,7 @@ export class HomeComponent {
   ];
   properties: any;
   allproperties: any;
-  constructor(private propertyService: PropertyService, private toastService: ToastService){}
+  constructor(private propertyService: PropertyService, private toastService: ToastService, public dialog: MatDialog){}
 
   ngOnInit(): void { 
     this.propertyService.getAllPropertys()
@@ -139,7 +141,7 @@ export class HomeComponent {
     const searchTerm = this.searchQuery?.trim();
     if(searchTerm)
     {
-     this.propertyService.getPropertiesByCategory(1, searchTerm).subscribe(resp => {
+     this.propertyService.getPropertiesByCategory(searchTerm).subscribe(resp => {
       if(resp?.length)
       {
         this.properties = resp;
@@ -153,10 +155,6 @@ export class HomeComponent {
       this.toastService.showError('Failed to fetch search results. Please try again.');
     })
     }
-    
-    console.log(
-      `Searching for ${this.searchQuery} in ${this.selectedTab} tab.`
-    );
   }
 
   currentTestimonialIndex = 0;
@@ -167,6 +165,23 @@ export class HomeComponent {
 
   next() {
     this.currentTestimonialIndex = (this.currentTestimonialIndex < this.testimonials.length - 1) ? this.currentTestimonialIndex + 1 : 0;
+  }
+
+  openSidebarDialog() {
+    const dialogRef = this.dialog.open(SideBarComponent, {
+      width: '400px', 
+      height: '100vh',
+      position: { left: '35%' },
+      panelClass: 'custom-dialog', 
+    });
+
+    dialogRef.afterClosed().subscribe((properties) => {
+      if (properties) {
+        this.properties = properties;
+        this.allproperties = properties;
+        this.onButtonClick(this.buttons[0]);
+      }
+    });
   }
 
 }

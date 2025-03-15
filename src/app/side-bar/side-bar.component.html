@@ -9,18 +9,18 @@
   <div class="collapse d-md-block" id="filterForm">
     <h5 class="mb-4">Find your home</h5>
     <div class="mb-3">
-      <input type="text" class="form-control" placeholder="What are you looking for?" />
+      <input type="text" class="form-control" placeholder="What are you looking for?"  [(ngModel)]="searchQuery" />
     </div>
 
     <div class="mb-3">
       <h6>Listing Status</h6>
       <div>
         <div class="form-check">
-          <input type="radio" class="form-check-input" name="listingStatus" id="buy" />
+          <input type="radio" class="form-check-input" name="listingStatus" id="buy" value="buy" [(ngModel)]="listingStatus" />
           <label for="buy" class="form-check-label mb-2">Buy</label>
         </div>
         <div class="form-check">
-          <input type="radio" class="form-check-input" name="listingStatus" id="auction" checked />
+          <input type="radio" class="form-check-input" name="listingStatus" id="auction" value="auction"   [(ngModel)]="listingStatus"/>
           <label for="auction" class="form-check-label mb-2">Auction</label>
         </div>
       </div>
@@ -28,63 +28,70 @@
 
     <div class="mb-3">
       <h6>Property Type</h6>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="houses" />
-        <label for="houses" class="form-check-label mb-2">Houses</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input me-2 mb-1" id="apartments" checked />
-        <label for="apartments" class="form-check-label mb-2">Apartments</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="office" />
-        <label for="office" class="form-check-label mb-2">Office</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="villa" />
-        <label for="villa" class="form-check-label mb-2">Villa</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="townhome" />
-        <label for="townhome" class="form-check-label mb-2">Townhome</label>
+      <div *ngFor="let type of propertyTypes">
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [id]="'property-' + type.id"
+            [(ngModel)]="type.selected"
+            (change)="updatePropertyType()"
+          />
+          <label [for]="'property-' + type.id" class="form-check-label mb-2">
+            {{ type.label }}
+          </label>
+        </div>
       </div>
     </div>
+    
 
     <div class="">
       <h6>Price Range</h6>
     </div>
     <mat-slider min="200" max="500" class="mb-3 w-100">
-      <input value="0" matSliderStartThumb>
-      <input value="400" matSliderEndThumb>
+      <input value="0" matSliderStartThumb [(ngModel)]="minPrice">
+      <input value="400" matSliderEndThumb [(ngModel)]="maxPrice">
     </mat-slider>
-
     <div class="mb-3">
       <h6>Bedrooms</h6>
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-dark active">Any</button>
-        <button type="button" class="btn btn-outline-dark">1+</button>
-        <button type="button" class="btn btn-outline-dark">2+</button>
-        <button type="button" class="btn btn-outline-dark">3+</button>
-        <button type="button" class="btn btn-outline-dark">4+</button>
-        <button type="button" class="btn btn-outline-dark">5+</button>
+        <button 
+          type="button" 
+          class="btn" 
+          [ngClass]="bedrooms === null ? 'btn-dark active' : 'btn-outline-dark'"
+          (click)="bedrooms = null">Any</button>
+    
+        <button 
+          *ngFor="let num of [1, 2, 3, 4, 5]" 
+          type="button" 
+          class="btn" 
+          [ngClass]="bedrooms === num ? 'btn-dark active' : 'btn-outline-dark'"
+          (click)="bedrooms = num">{{ num }}+</button>
       </div>
     </div>
-
+    
     <div class="mb-3">
       <h6>Bathrooms</h6>
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-dark active">Any</button>
-        <button type="button" class="btn btn-outline-dark">1+</button>
-        <button type="button" class="btn btn-outline-dark">2+</button>
-        <button type="button" class="btn btn-outline-dark">3+</button>
-        <button type="button" class="btn btn-outline-dark">4+</button>
-        <button type="button" class="btn btn-outline-dark">5+</button>
+        <button 
+          type="button" 
+          class="btn" 
+          [ngClass]="bathrooms === null ? 'btn-dark active' : 'btn-outline-dark'"
+          (click)="bathrooms = null">Any</button>
+    
+        <button 
+          *ngFor="let num of [1, 2, 3, 4, 5]" 
+          type="button" 
+          class="btn" 
+          [ngClass]="bathrooms === num ? 'btn-dark active' : 'btn-outline-dark'"
+          (click)="bathrooms = num">{{ num }}+</button>
       </div>
     </div>
+    
 
     <div class="mb-3">
       <h6>Location</h6>
-      <select class="form-select">
+      <select class="form-select" [(ngModel)]="location">
         <option selected>All Cities</option>
         <option>Riyadh</option>
         <option>Makkah</option>
@@ -93,7 +100,7 @@
 
     <div class="mb-3">
       <h6>Area</h6>
-      <select class="form-select">
+      <select class="form-select" [(ngModel)]="area">
         <option selected>All Areas</option>
         <option>Area 1</option>
         <option>Area 2</option>
@@ -103,16 +110,16 @@
     <div class="mb-3">
       <h6>Square Feet</h6>
       <div class="d-flex justify-content-between">
-        <input type="number" class="form-control me-2" placeholder="Min." />
-        <input type="number" class="form-control" placeholder="Max" />
+        <input type="number" class="form-control me-2" placeholder="Min." [(ngModel)]="minSqft" />
+        <input type="number" class="form-control" placeholder="Max" [(ngModel)]="maxSqft" />
       </div>
     </div>
 
     <div class="mb-3">
       <h6>Year Built</h6>
       <div class="d-flex justify-content-between">
-        <input type="number" class="form-control me-2" placeholder="2019" />
-        <input type="number" class="form-control" placeholder="2022" />
+        <input type="number" class="form-control me-2" placeholder="2019" [(ngModel)]="minYear"  />
+        <input type="number" class="form-control" placeholder="2022" [(ngModel)]="maxYear"  />
       </div>
     </div>
 
@@ -122,11 +129,11 @@
       </p>
     </div>
     <button mat-raised-button color="primary"
-      class="d-flex btn-shadow py-4 rounded w-100 d-flex justify-content-center align-items-center" type="submit">
+      class="d-flex btn-shadow py-4 rounded w-100 d-flex justify-content-center align-items-center" (click)="onSearch()">
       <span><i class="fa-solid fa-magnifying-glass p-2"></i> </span>
       <span class="me-3">Search</span>
     </button>
-    <div class="d-flex justify-content-around mt-3">
+    <div class="d-flex justify-content-around mt-3" (click)="resetFilters()">
       <div class="reset-filters">
         <i class="fas fa-undo"></i>
         <small>Reset all filters</small>
