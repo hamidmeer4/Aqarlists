@@ -146,6 +146,7 @@ export class HomeComponent {
       {
         this.properties = resp;
         this.allproperties = resp;
+        this.toastService.showSuccess('Properties loaded successfully!');
       } else {
         this.toastService.showWarning('No records found.');
       }

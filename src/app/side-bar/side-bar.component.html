@@ -20,8 +20,8 @@
           <label for="buy" class="form-check-label mb-2">Buy</label>
         </div>
         <div class="form-check">
-          <input type="radio" class="form-check-input" name="listingStatus" id="auction" value="auction"   [(ngModel)]="listingStatus"/>
-          <label for="auction" class="form-check-label mb-2">Auction</label>
+          <input type="radio" class="form-check-input" name="listingStatus" id="Seller" value="for sale"   [(ngModel)]="listingStatus"/>
+          <label for="Seller" class="form-check-label mb-2">Seller</label>
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@
     </div>
     <mat-slider min="200" max="500" class="mb-3 w-100">
       <input value="0" matSliderStartThumb [(ngModel)]="minPrice">
-      <input value="400" matSliderEndThumb [(ngModel)]="maxPrice">
+      <input value="1000" matSliderEndThumb [(ngModel)]="maxPrice">
     </mat-slider>
     <div class="mb-3">
       <h6>Bedrooms</h6>

@@ -11,8 +11,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class SideBarComponent {
   @Output() propertiesEmitted = new EventEmitter<any[]>();
   searchQuery: string = '';
-  listingStatus: string = '';
-  selectedPropertyTypes: number[] = [];
+  listingStatus: string = 'for sale';
+  selectedPropertyTypes: string[] = [];
   minPrice: number | null = null;
   maxPrice: number | null = null;
   location: string = 'All Cities';
@@ -24,11 +24,11 @@ export class SideBarComponent {
   bedrooms: number | null = null;
   bathrooms: number | null = null;
   propertyTypes = [
-    { id: 1, label: 'Houses', selected: false },
-    { id: 2, label: 'Apartments', selected: true },
-    { id: 3, label: 'Office', selected: false },
-    { id: 4, label: 'Villa', selected: false },
-    { id: 5, label: 'Townhome', selected: false },
+    { id: '1', label: 'Houses', selected: false },
+    { id: '2', label: 'Apartments', selected: true },
+    { id: '3', label: 'Office', selected: false },
+    { id: '4', label: 'Villa', selected: false },
+    { id: '5', label: 'Townhome', selected: false },
   ];
   properties: any
 
@@ -39,42 +39,54 @@ export class SideBarComponent {
   ) { }
 
   onSearch() {
-    const params = new URLSearchParams();
-    if (this.searchQuery.trim()) params.append('search', this.searchQuery.trim());
-    if (this.listingStatus) params.append('ListingStatus', this.listingStatus);
-    if (this.selectedPropertyTypes.length) params.append('PropertyType', this.selectedPropertyTypes.join(','));
-    if (this.minPrice !== null) params.append('MinPriceFilter', this.minPrice.toString());
-    if (this.maxPrice !== null) params.append('MaxPriceFilter', this.maxPrice.toString());
-    if (this.location && this.location !== 'All Cities') params.append('CityFilter', this.location);
-    if (this.area && this.area !== 'All Areas') params.append('AreaFilter', this.area);
-    if (this.minSqft !== null) params.append('MinSizeFilter', this.minSqft.toString());
-    if (this.maxSqft !== null) params.append('MaxSizeFilter', this.maxSqft.toString());
-    if (this.minYear !== null) params.append('YearBuildFrom', this.minYear.toString());
-    if (this.maxYear !== null) params.append('YearBuildTo', this.maxYear.toString());
-    if (this.bedrooms !== null) params.append('Bedrooms', this.bedrooms.toString());
-    if (this.bathrooms !== null) params.append('Bathrooms', this.bathrooms.toString());
-
-    this.propertyService.getFilteredProperties(params).subscribe(
+    const filters = {
+      description: this.searchQuery.trim() || '',
+      listingStatus: this.listingStatus || null,
+      propertyType: this.selectedPropertyTypes.length ? this.selectedPropertyTypes : [],
+      minPriceFilter: this.minPrice ?? null,
+      maxPriceFilter: this.maxPrice ?? null,
+      cityFilter: this.location && this.location !== 'All Cities' ? this.location : null,
+      areaFilter: this.area && this.area !== 'All Areas' ? this.area : null,
+      minSizeFilter: this.minSqft ?? null,
+      maxSizeFilter: this.maxSqft ?? null,
+      yearBuildFrom: this.minYear ?? null,
+      yearBuildTo: this.maxYear ?? null,
+      bedrooms: this.bedrooms ?? null,
+      bathrooms: this.bathrooms ?? null
+    };
+  
+    this.propertyService.getFilteredProperties(filters).subscribe(
       (resp) => {
         if (resp?.length > 0) {
           this.properties = resp;
           this.propertiesEmitted.emit(this.properties);
-          this.dialogRef ? this.dialogRef.close(this.properties) : null;
+          if (this.dialogRef) {
+            this.dialogRef.close(this.properties);
+          }
+  
           this.toastService.showSuccess('Properties loaded successfully!');
-
         } else {
           this.properties = [];
-          this.dialogRef ? this.dialogRef.close() : null;
+          
+          if (this.dialogRef) {
+            this.dialogRef.close();
+          }
+  
           this.toastService.showWarning('No records found.');
         }
       },
       (error) => {
         console.error('Error fetching properties:', error);
-        this.dialogRef ? this.dialogRef.close() : null;
+  
+        if (this.dialogRef) {
+          this.dialogRef.close();
+        }
+  
         this.toastService.showError('Failed to fetch properties.');
       }
     );
   }
+  
 
 
 
@@ -85,7 +97,7 @@ export class SideBarComponent {
   }
 
   resetFilters() {
-    this.listingStatus = '';
+    this.listingStatus = 'for sale';
     this.propertyTypes.forEach(type => (type.selected = false));
     this.selectedPropertyTypes = [];
     this.searchQuery = '';

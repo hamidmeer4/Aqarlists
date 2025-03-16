@@ -42,13 +42,13 @@ export class PropertyService {
   }
 
   getFilteredProperties(finalParams: any): Observable<any> {
-    const apiUrl = `${this.apiUrl}by/category?${finalParams?.toString()}`;
-    return this.http.get<any>(apiUrl);
+    const apiUrl = `${this.apiUrl}by/category`;
+    return this.http.post<any>(apiUrl, finalParams);
   }
   
   getPropertiesByCategory(searchTerm: string = ''): Observable<any> {
     const url = `${this.apiUrl}by/category?search=${searchTerm}`;
-    return this.http.get<any>(url);
+    return this.http.post<any>(url,null);
   }
 
 
