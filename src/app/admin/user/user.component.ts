@@ -13,34 +13,79 @@ import { Role, User } from 'src/app/Model/User';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent {
-  selectedButton: string = 'individuals';
-  allUsers:User[] = [];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  selectedButton: string = 'all';
+  allUsers: User[] = [];
+  filteredUsers: User[] = []
   roles!: Role[];
   dataSource: MatTableDataSource<User> = new MatTableDataSource<User>([]);
-  selectButton(buttonType: string): void {
-    this.selectedButton = buttonType;
-  }
 
-  constructor (public dialog: MatDialog, private userService: UserService){ }
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService,
+ 
+  ) { }
 
-  ngOnInit(): void {  
-    this.userService.getAllUser().subscribe(resp => {
+  ngOnInit(): void {
+    this.userService.getAllUser().subscribe((resp) => {
       this.allUsers = resp;
       const usersWithIndex = resp?.map((user, i) => ({
         ...user,
-        index: i + 1, 
+        index: i + 1,
       }));
-        this.userService.getAllRoles().subscribe((resp: Role[]) => {
-            this.roles = resp;
-          })
+      this.userService.getAllRoles().subscribe((resp: Role[]) => {
+        this.roles = resp;
+      });
       this.dataSource = new MatTableDataSource<User>(usersWithIndex);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    })
+    });
   }
-  openDialog() {
-    this.dialog.open(EditUserComponent, {
-      panelClass: 'custom-dialog-width'
+
+  selectButton(buttonType: string): void {
+    this.selectedButton = buttonType;
+    if (this.selectedButton === 'all') {
+      this.filteredUsers = this.allUsers;
+      this.setDataSource(this.filteredUsers);
+    } else if (this.selectedButton === 'seller') {
+      this.filteredUsers = this.allUsers.filter(
+        (user) => user.roleId === 1
+      );
+      this.setDataSource(this.filteredUsers);
+    } else {
+      this.filteredUsers = this.allUsers.filter(
+        (user) => user.roleId === 2
+      );
+      this.setDataSource(this.filteredUsers);
+    }
+  }
+
+  setDataSource(users: User[]): void {
+    this.dataSource = new MatTableDataSource<User>(this.addIndexToUsers(users));
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  addIndexToUsers(users: any[]) {
+    return users?.map((user, i) => ({
+      ...user,
+      index: i + 1,
+    }));
+  }
+
+  openDialog(user: any): void {
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      width: '400px',
+      data: user,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        const updatedData = this.dataSource.data.filter(
+          (user) => user.emailAddress !== result.emailAddress
+        );
+        this.dataSource.data = updatedData;
+      }
     });
   }
 
@@ -52,12 +97,8 @@ export class UserComponent {
     'actions',
   ];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
   getRoleName(roleId: number): string {
-    const role = this.roles?.find(r => r?.id === roleId);
+    const role = this.roles?.find((r) => r?.id === roleId);
     return role ? role?.name : 'Unknown';
   }
 }
-

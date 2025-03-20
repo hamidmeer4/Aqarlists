@@ -6,7 +6,7 @@
                 <h2>Find your nearest properties</h2>
                 <p>Home / Nearest Property</p>
             </div>
-            <app-side-bar></app-side-bar>
+            <app-side-bar (propertiesEmitted)="updateProperties($event)"></app-side-bar>
         </div>
         <div class="mapouter mt-5 p-5">
             <div class="d-flex flex-wrap sale-card">

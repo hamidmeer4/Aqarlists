@@ -28,6 +28,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
     AddPropertyComponent,
     ProfileComponent,
     UserComponent,
-    EditUserComponent
+    EditUserComponent,
   ],
   imports: [
     CommonModule,
@@ -61,7 +62,8 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
-  ]
+    MatDialogModule,
+    GoogleMapsModule,
+  ],
 })
 export class AdminModule { }

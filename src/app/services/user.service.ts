@@ -16,6 +16,11 @@ export class UserService {
     return this.http.get<Role[]>(`${this.apiUrl}roles/all`);
   }
 
+  deleteUserByEmail(email: string): Observable<any> {
+    const url = `${this.apiUrl}deleteUser?emailAddress=${encodeURIComponent(email)}`;
+    return this.http.delete<any>(url);
+  }
+
   private handleError(error: HttpErrorResponse) {
     console.error('Server error:', error);
     return throwError(() => new Error('Something went wrong! Please try again later.'));
