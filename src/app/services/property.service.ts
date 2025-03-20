@@ -7,6 +7,9 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class PropertyService {
+  private selectedProperties: number[] = [];
+  private selectedProperty: number | null = null; // Stores a single selected ID
+
 
   private apiUrl = 'https://ec2-34-229-116-30.compute-1.amazonaws.com/api/Property/';
   constructor(private http: HttpClient, private authService: AuthService) { }
@@ -58,6 +61,28 @@ export class PropertyService {
   getPropertiesByCategory(searchTerm: string = ''): Observable<any> {
     const url = `${this.apiUrl}by/category?search=${searchTerm}`;
     return this.http.post<any>(url,null);
+  }
+
+  uploadImage(data: any): Observable<any>{
+    const url = `${this.apiUrl}uploadImages`;
+    return this.http.post<any>(url,data);
+  }
+
+
+  setSelectedProperties(properties: number[]) {
+    this.selectedProperties = properties;
+  }
+
+  getSelectedProperties(): number[] {
+    return this.selectedProperties;
+  }
+
+  setSelectedProperty(propertyId: number) {
+    this.selectedProperty = propertyId;
+  }
+
+  getSelectedProperty(): number | null {
+    return this.selectedProperty;
   }
 
 

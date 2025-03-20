@@ -172,8 +172,8 @@
           <div class="card property-card" [routerLink]="['/interior-apartment', property.id]">
             <div class="property-image">
               <img
-              [src]="getRandomImage()"
-                [alt]="property.name"
+              [src]="property.mainAttachment?.length ? property.mainAttachment[0].fileUrl : 'assets/images/prop1.jpg' "              class="card-img-top img-fluid"
+              [alt]="property.name"
                 class="img-fluid card-img-top"
               />
               <div class="badge-container">

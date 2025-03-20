@@ -12,14 +12,25 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class AddPropertyComponent {
   categories = ['Residential', 'Commercial', 'Industrial'];
+   cityNames = [
+    "Riyadh",
+    "Jeddah",
+    "Mecca",
+    "Medina",
+    "Dammam",
+    "Taif",
+    "Al Khobar",
+    "Abha",
+    "Jubail",
+    "Yanbu"
+  ];
+  
+  
   listings = ['For Sale', 'For Rent'];
   statuses = ['Available', 'Sold', 'Pending'];
   states = ['State 1', 'State 2', 'State 3'];
-  images: string[] = [
-    '../../../assets/images/categories1.png',
-    '../../../assets/images/categories2.png',
-    '../../../assets/images/categories3.png',
-  ];
+  images: { id: number; name: string; fileUrl: string; file: File , imageId: number}[] = [];
+  imageIdCounter = 0;
   selectedTabIndex = 0;
   videoSource: string = 'Youtube';
   videoId: string = '';
@@ -45,9 +56,29 @@ export class AddPropertyComponent {
     { code: "SE", name: "Sweden" },
     { code: "NO", name: "Norway" }
   ];
+  amenities = [
+    { value: 'airConditioning', label: 'Air Conditioning' },
+    { value: 'lawn', label: 'Lawn' },
+    { value: 'swimmingPool', label: 'Swimming Pool' },
+    { value: 'microwave', label: 'Microwave' },
+    { value: 'basketballCourt', label: 'Basketball Court' },
+    { value: 'tvCable', label: 'TV Cable' },
+    { value: 'dryer', label: 'Dryer' },
+    { value: 'gym', label: 'Gym' },
+    { value: 'sauna', label: 'Sauna' },
+    { value: 'washer', label: 'Washer' },
+    { value: 'wiFi', label: 'WiFi' },
+    { value: 'barbeque', label: 'Barbeque' },
+    { value: 'lakeView', label: 'Lake View' },
+    { value: 'frontYard', label: 'Front Yard' },
+    { value: 'backYard', label: 'Back Yard' },
+    { value: 'refrigerator', label: 'Refrigerator' },
+    { value: 'outdoorShower', label: 'Outdoor Shower' },
+    { value: 'privateSpace', label: 'Private Space' }
+  ];
+  selectedAmenities: { [key: string]: boolean } = {};
 
   propertyData = {
-    // id: 0,
     name: '',
     description: '',
     category: '',
@@ -55,7 +86,7 @@ export class AddPropertyComponent {
     status: '',
     price: 0,
     yearlyTaxRate: 0,
-    afterPriceLabel: 0,
+    afterPriceLabel: '',
     videoFrom: '',
     embedVideoId: '',
     address: '',
@@ -79,27 +110,29 @@ export class AddPropertyComponent {
     roofing: '',
     exteriorMaterial: '',
     floorNumber: 0,
-    // ownerOrAgentNotes: '',
+    ownerOrAgentNotes: '',
     numOfBedrooms: 0,
     numOfBathrooms: 0,
     propertyTypeId: 0,
-    // amenities: '',
-    // attachments: null,
-    // mainAttachmentId: 0
+    mainAttachment: [] as { id: number; name: string; fileUrl: string }[],  
+    AttachmentIds: [] as number[]
   };
 
   constructor(private propertyService: PropertyService, private loaderService: LoaderService, private toastService: ToastService) { }
 
-  removeImage(image: string): void {
-    this.images = this.images.filter((img) => img !== image);
+  removeImage(id: number): void {
+    this.images = this.images.filter(img => img.imageId !== id);
   }
 
   saveData() {
     this.loaderService.show();
+    this.propertyData.AttachmentIds = this.images.map(img => img.id)
     this.propertyData.hasGarage = this.propertyData.hasGarage ? true : false;
     this.propertyData.hasBasement = this.propertyData.hasBasement ? true : false;
     this.propertyData.floorNumber = +this.propertyData.floorNumber;
     this.propertyData.propertyTypeId = +this.propertyData.propertyTypeId;
+    this.propertyData = { ...this.propertyData, ...this.selectedAmenities };
+
     this.propertyService.sendPropertyData(this.propertyData).pipe(
       finalize(()=> this.loaderService.hide())
     ).subscribe(resp => {
@@ -126,27 +159,53 @@ export class AddPropertyComponent {
     }
   }
 
-  amenities = [
-    'Air Conditioning',
-    'Lawn',
-    'Swimming Pool',
-    'Microwave',
-    'Basketball Court',
-    'TV Cable',
-    'Dryer',
-    'Gym',
-    'Sauna',
-    'Washer',
-    'WiFi',
-    'Barbeque',
-    'Lake View',
-    'Front Yard',
-    'Back Yard',
-    'Refrigerator',
-    'Outdoor Shower',
-    'Private Space'
-  ];
-  selectedAmenities: { [key: string]: boolean } = {};
+  
+  onFilesSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.images.push({
+          id: 0,
+          imageId: ++this.imageIdCounter,
+          name: file.name,
+          fileUrl: e.target.result,
+          file: file
+        });
+        this.uploadImage(this.imageIdCounter)
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  uploadImage(index: number) {
+    const selectedImage = this.images[index - 1];
+    if (!selectedImage) return;
+
+    const formData = new FormData();
+    formData.append('model', selectedImage.file, selectedImage.name);
+
+
+     this.propertyService.uploadImage( formData).subscribe(
+      (response) => {
+        if(response?.isSuccessful)
+        {
+           this.toastService.showSuccess('uploaded successfully!');
+           this.images[index-1].id = response.data
+        }
+        else {
+          this.toastService.showError('Failed to upload image')
+          this.removeImage(index-1)
+        }   
+      },
+      (error) => {
+        this.toastService.showError('Failed to upload image')
+        this.removeImage(index-1)
+      }
+    );
+  }
+  
+  
 
   madinaCoordinates: google.maps.LatLngLiteral = {
     lat: 24.524654, 

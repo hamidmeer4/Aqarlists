@@ -19,9 +19,8 @@
             style="position: relative"
           >
             <img
-             [src]="getRandomImage()"
-              class="card-img-top img-fluid"
-              alt="Property Image"
+            [src]="property.mainAttachment?.length ? property.mainAttachment[0].fileUrl : 'assets/images/prop1.jpg' "              class="card-img-top img-fluid"
+            alt="Property Image" class="card-img-top img-fluid"
             />
             <div
               class="property-price position-absolute"

@@ -5,6 +5,11 @@
   left: 18%;
 }
 
+.scroll-container {
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+}
+
 .card-img-container {
   width: 200px !important;
   height: 180px !important;
@@ -88,4 +93,10 @@
 .add-property:hover .add-icon {
   color: white;
   border-color: white;
+}
+
+
+.card-img-top {
+  height: 210px !important;
+  object-fit: cover;
 }

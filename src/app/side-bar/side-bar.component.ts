@@ -24,13 +24,25 @@ export class SideBarComponent {
   bedrooms: number | null = null;
   bathrooms: number | null = null;
   propertyTypes = [
-    { id: '1', label: 'Houses', selected: false },
-    { id: '2', label: 'Apartments', selected: true },
-    { id: '3', label: 'Office', selected: false },
-    { id: '4', label: 'Villa', selected: false },
-    { id: '5', label: 'Townhome', selected: false },
+    { id: '2', label: 'Houses', selected: false },
+    { id: '3', label: 'Apartments', selected: true },
+    { id: '4', label: 'Office', selected: false },
+    { id: '1', label: 'Villa', selected: false },
   ];
   properties: any
+
+  cityNames = [
+    "Riyadh",
+    "Jeddah",
+    "Mecca",
+    "Medina",
+    "Dammam",
+    "Taif",
+    "Al Khobar",
+    "Abha",
+    "Jubail",
+    "Yanbu"
+  ];
 
   constructor(
     private propertyService: PropertyService,
@@ -54,7 +66,7 @@ export class SideBarComponent {
       bedrooms: this.bedrooms ?? null,
       bathrooms: this.bathrooms ?? null
     };
-  
+
     this.propertyService.getFilteredProperties(filters).subscribe(
       (resp) => {
         if (resp?.length > 0) {
@@ -63,30 +75,30 @@ export class SideBarComponent {
           if (this.dialogRef) {
             this.dialogRef.close(this.properties);
           }
-  
+
           this.toastService.showSuccess('Properties loaded successfully!');
         } else {
           this.properties = [];
-          
+
           if (this.dialogRef) {
             this.dialogRef.close();
           }
-  
+
           this.toastService.showWarning('No records found.');
         }
       },
       (error) => {
         console.error('Error fetching properties:', error);
-  
+
         if (this.dialogRef) {
           this.dialogRef.close();
         }
-  
+
         this.toastService.showError('Failed to fetch properties.');
       }
     );
   }
-  
+
 
 
 

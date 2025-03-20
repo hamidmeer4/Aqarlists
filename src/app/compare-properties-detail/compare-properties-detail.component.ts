@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PropertyService } from '../services/property.service';
+import { ToastService } from '../services/toast.service';
+import { LoaderService } from '../services/loader.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-compare-properties-detail',
@@ -8,45 +12,147 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ComparePropertiesDetailComponent {
   public showCard: boolean = false;
-  properties = [
-    {
-      name: 'Home in Metric Way',
-      price: 'SAR 14,000',
-      location: 'California City, CA, USA',
-      image: 'assets/images/categories1.png',
-    },
-    {
-      name: 'Villa on Hollywood Boulevard',
-      price: 'SAR 14,000',
-      location: 'California City, CA, USA',
-      image: 'assets/images/categories2.png'
-    }
-  ];
+  selectedProperty: any;
+  selctedPropertyTableData: any
+  propertyId: any
+  receivedProperties: any
+  propertyTypes: { [key: string]: string } = {
+    '1': 'Villa',
+    '2': 'House',
+    '3': 'Appartment',
+    '4': 'Office'
+  };
 
-  tableData = [
-    { property: 'Address', apartment: 'Quincy St', studio: '8100 S Ashland Ave', villa: '194 Mercer Street' },
-    { property: 'City', apartment: 'Riyadh', studio: 'Riyadh', villa: 'Riyadh' },
-    { property: 'State/County', apartment: 'Riyadh', studio: 'Riyadh', villa: 'Riyadh' },
-    { property: 'Zip/Postal Code', apartment: '10013', studio: '10013', villa: '10013' },
-    { property: 'Country', apartment: 'Saudi Arabia', studio: 'Saudi Arabia', villa: 'Saudi Arabia' },
-    { property: 'Property Size', apartment: '2560 Sq Ft', studio: '2560 Sq Ft', villa: '2560 Sq Ft' },
-    { property: 'Property ID', apartment: 'R43', studio: 'R43', villa: 'R43' },
-    { property: 'Bedrooms', apartment: 3, studio: 2, villa: 5 },
-    { property: 'Bathrooms', apartment: 1, studio: 4, villa: 3 },
-    { property: 'Garage', apartment: 1, studio: 4, villa: 3 },
-    { property: 'Air Conditioning', apartment: true, studio: true, villa: true },
-    { property: 'Barbeque', apartment: false, studio: false, villa: false },
-    { property: 'Gym', apartment: true, studio: true, villa: true },
-    { property: 'Swimming Pool', apartment: true, studio: true, villa: true },
-    { property: 'TV Cable', apartment: true, studio: true, villa: true },
-  ];
-  constructor(private route: ActivatedRoute) {}
-  
+  compareProperty: any
+  public featureNames: any = {
+    airConditioning: 'Air Conditioning',
+    lawn: 'Lawn',
+    swimmingPool: 'Swimming Pool',
+    microwave: 'Microwave',
+    basketballCourt: 'Basketball Court',
+    tvCable: 'TV Cable',
+    dryer: 'Dryer',
+    gym: 'Gym',
+    sauna: 'Sauna',
+    washer: 'Washer',
+    wiFi: 'WiFi',
+    barbeque: 'Barbeque',
+    lakeView: 'Lake View',
+    frontYard: 'Front Yard',
+    backYard: 'Back Yard',
+    refrigerator: 'Refrigerator',
+    outdoorShower: 'Outdoor Shower',
+    privateSpace: 'Private Space'
+  };
+
+
+
+  constructor(private propertyService: PropertyService, private toastService: ToastService, private route: ActivatedRoute, private loader: LoaderService) { }
+
   ngOnInit(): void {
-    this.route.snapshot.paramMap.get('id') ? this.showCard = true : ''; 
-    
+    this.propertyId = this.route.snapshot.paramMap.get('id');
+    this.route.snapshot.paramMap.get('id')
+    this.receivedProperties = this.propertyService.getSelectedProperties();
+    this.propertyService.setSelectedProperty(this.propertyId);
+    this.receivedProperties?.length > 0 ? this.getAllProperties() : this.getPropertyById(this.propertyId)
+
+
   }
   isBoolean(value: any): boolean {
     return typeof value === 'boolean';
+  }
+
+  public getPropertyById(id: number) {
+    this.loader.show();
+    this.propertyService.getPropertiesById(id).pipe(
+      finalize(() => this.loader.hide())
+    )
+      .subscribe(
+        (resp) => {
+          this.selectedProperty = resp;
+          this.generateSelectedPropertyTableData();
+        },
+      );
+  }
+
+  public getAllProperties() {
+    this.propertyService.getAllPropertys()
+      .subscribe(resp => {
+        this.selectedProperty = resp.find((property: any) => property.id == this.propertyId);
+        this.compareProperty = resp
+          .filter((property: any) => this.receivedProperties.includes(property.id))
+          .map((property: any) => ({
+            ...property,
+            tableData: this.generateTableData(property)
+          }));
+        this.showCard = true
+        this.generateSelectedPropertyTableData();
+      },
+        (error) => {
+          this.toastService.showError('Failed to load properties. Please try again.');
+        });
+  }
+
+  getPropertyName(id: string): string {
+    return this.propertyTypes[id] || 'Unknown';
+  }
+
+  generateSelectedPropertyTableData() {
+    this.selctedPropertyTableData = [
+      {
+        property: 'Address',
+        value: `${this.selectedProperty.address}, ${this.selectedProperty.city}, ${this.selectedProperty.country}`
+      },
+      { property: 'Zip Code', value: this.selectedProperty.zipCode },
+      { property: 'Bedrooms', value: this.selectedProperty.numOfBedrooms },
+      { property: 'Bathrooms', value: this.selectedProperty.numOfBathrooms },
+      { property: 'Size', value: `${this.selectedProperty.size} Sq Ft` },
+      { property: 'Price', value: `${this.selectedProperty.price} ${this.selectedProperty.afterPriceLabel}` },
+      {
+        property: 'Garage',
+        value: this.selectedProperty.hasGarage
+          ? `Yes (${this.selectedProperty.garageSize} Sq Ft)`
+          : 'No'
+      },
+      { property: 'Floors', value: this.selectedProperty.numOfFloors }
+    ];
+    Object.keys(this.featureNames).forEach(key => {
+      if (this.selectedProperty[key] === true) {
+        this.selctedPropertyTableData.push({
+          property: this.featureNames[key],
+          value: true
+        });
+      }
+    });
+  }
+
+  generateTableData(property: any) {
+    let tableData = [
+      { property: 'Address', value: `${property.address}, ${property.city}, ${property.country}` },
+      { property: 'Zip Code', value: property.zipCode },
+      { property: 'Bedrooms', value: property.numOfBedrooms },
+      { property: 'Bathrooms', value: property.numOfBathrooms },
+      { property: 'Size', value: `${property.size} Sq Ft` },
+      { property: 'Price', value: `${property.price} ${property.afterPriceLabel}` },
+      { property: 'Garage', value: property.hasGarage ? `Yes (${property.garageSize} Sq Ft)` : 'No' },
+      { property: 'Floors', value: property.numOfFloors },
+    ];
+
+    Object.keys(this.featureNames).forEach(key => {
+      if (property[key] === true) {
+        tableData.push({ property: this.featureNames[key], value: property[key] });
+      }
+    });
+
+    return tableData;
+  }
+
+  updateProperties(properties: any) {
+    this.compareProperty = properties
+      .map((property: any) => ({
+        ...property,
+        tableData: this.generateTableData(property)
+      }));
+    this.showCard = true;
   }
 }

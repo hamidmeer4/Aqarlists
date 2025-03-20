@@ -8,17 +8,6 @@ import { ToastService } from '../services/toast.service';
   styleUrls: ['./for-sale.component.scss']
 })
 export class ForSaleComponent implements OnInit {
-  images = [
-     'assets/images/pexels-zachtheshoota.png', 
-    'assets/images/property1.png', 
-     'assets/images/pexels-zachtheshoota.png', 
-    'assets/images/property1.png', 
-     'assets/images/pexels-zachtheshoota.png', 
-    'assets/images/property1.png', 
-     'assets/images/pexels-zachtheshoota.png', 
-    'assets/images/property1.png', 
-  ];
-
  properties: any
  
  constructor(private propertyService: PropertyService, private toastService: ToastService){}
@@ -32,11 +21,6 @@ export class ForSaleComponent implements OnInit {
     this.toastService.showError('Failed to load properties. Please try again.');
     });
    }
-
-   getRandomImage(): string {
-    const randomIndex = Math.floor(Math.random() * this.images.length);
-    return this.images[randomIndex];
-  }
 
   updateProperties(properties: any) {
     this.properties = properties;

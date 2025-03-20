@@ -26,16 +26,6 @@ export class HomeComponent {
  
   filters = ['House', 'Villa', 'Office', 'Apartments'];
   selectedFilter = 'House';
-
- images = [
-      './assets/images/property1.png',
-       './assets/images/property2.png',
-        './assets/images/property3.png',
-         './assets/images/property3.png',
-         './assets/images/property4.png',
-        './assets/images/property5.png',
-  ];
-
   customers = [
     { img: 'assets/images/img.png', name: 'Marvin McKinney', role: 'Designer' },
     { img: 'assets/images/img1.png', name: 'Ralph Edwards', role: 'Designer' },
@@ -98,18 +88,18 @@ export class HomeComponent {
     });
   }
 
-   getRandomImage(): string {
-    const randomIndex = Math.floor(Math.random() * this.images.length);
-    return this.images[randomIndex];
-  }
+  //  getRandomImage(): string {
+  //   const randomIndex = Math.floor(Math.random() * this.images.length);
+  //   return this.images[randomIndex];
+  // }
 
 
   buttons = [
     { id: 0, label: 'All', active: true },
-    { id: 1, label: 'House', active: false },
-    { id: 2, label: 'Villa', active: false },
-    { id: 3, label: 'Office', active: false },
-    { id: 4, label: 'Apartment', active: false }
+    { id: 2, label: 'House', active: false },
+    { id: 1, label: 'Villa', active: false },
+    { id: 4, label: 'Office', active: false },
+    { id: 3, label: 'Apartment', active: false }
   ];
 
   onButtonClick(selectedButton: any) {
