@@ -42,6 +42,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoaderComponent } from './loader/loader.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import { GoogleMapsModule } from '@angular/google-maps';
+
 
 @NgModule({
   declarations: [
@@ -90,9 +92,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTabsModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    GoogleMapsModule,
+    
   ],
-  providers: [],
+  providers: [{ provide: 'MAP_API_KEY', useValue: 'AIzaSyD0fQ7GNCEzoNNRnk99yFIn11KryGle1pI' } ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

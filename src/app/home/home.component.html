@@ -109,20 +109,20 @@
               class="d-flex gap-flex justify-content-start align-items-center"
             >
               <div
-                *ngFor="let city of cities"
+                *ngFor="let city of propertiesCountByCity"
                 class="d-flex gap-flex justify-content-center mx-0 my-3"
               >
                 <div class="card property-card">
                   <div class="circle-image">
                     <img
-                      [src]="city.image"
+                      [src]="image"
                       class="card-img-top"
                       [alt]="city.name"
                     />
                   </div>
                   <div class="card-body text-center">
-                    <span class="custom-style">{{ city.name }}</span>
-                    <p>{{ city.properties }} properties</p>
+                    <span class="custom-style">{{ city.city }}</span>
+                    <p>{{ city.numOfProperties }} properties</p>
                   </div>
                 </div>
               </div>
