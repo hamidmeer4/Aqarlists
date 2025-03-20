@@ -80,18 +80,12 @@ export class HomeComponent {
 
     this.propertyService.propertyCountByCity()
     .subscribe(resp => {
-      console.log(resp);
-      this.propertiesCountByCity = resp;
+      this.propertiesCountByCity = resp.slice(0, 7);
     },
     (error) => {
       this.toastService.showError('Failed to load properties count by city. Please try again.');  
     });
   }
-
-  //  getRandomImage(): string {
-  //   const randomIndex = Math.floor(Math.random() * this.images.length);
-  //   return this.images[randomIndex];
-  // }
 
 
   buttons = [
