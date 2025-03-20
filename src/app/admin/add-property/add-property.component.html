@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="afterPrice" class="form-label fw-bold">After Price Label</label>
-                            <input type="number" id="afterPrice" class="form-control" placeholder="After Price"
+                            <input type="text" id="afterPrice" class="form-control" placeholder="After Price"
                                 [(ngModel)]="propertyData.afterPriceLabel" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
@@ -115,20 +115,22 @@
                     </svg>
                     <p class="mt-2">Drag and drop images here</p>
                     <p class="text-muted">Photos must be JPEG or PNG format and at least 2048x768</p>
-                    <button type="button" class="btn btn-outline-dark">
+                    <button type="button" class="btn btn-outline-dark"  (click)="fileInput.click()">
                         <span class="me-3">Browse Files</span>
                         <span>
                             <img src="../../../assets/icons/right-up1.png" alt="arrow"
                                 style="width: 20px; height: 20px" />
                         </span>
                     </button>
+                    <input type="file" #fileInput (change)="onFilesSelected($event)" accept="image/*" hidden />
+
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-2 position-relative" *ngFor="let image of images">
-                        <img [src]="image" alt="Property" class="img-thumbnail"
+                        <img [src]="image?.fileUrl" [alt]="image?.name" class="img-thumbnail"
                             style="width: 150px; height: 150px; object-fit: cover;" />
                         <div class="position-relative" style="left: 7%; bottom: 65%; cursor: pointer;"
-                            (click)="removeImage(image)">
+                        (click)="removeImage(image.imageId)">
                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="45" height="45" rx="12" fill="white" />
@@ -203,8 +205,11 @@
                         </div>
                         <div class="col-md-4">
                             <label for="city" class="form-label fw-bold">City</label>
-                            <input type="text" id="city" class="form-control" placeholder="City Name"
+                                <select id="city" class="form-select" placeholder="Select"
                                 [(ngModel)]="propertyData.city" [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let city of cityNames" [value]="city"> {{city}}
+                                </option>
+                            </select>
                         </div>
                         <div class="col-md-4">
                             <label for="neighborhood" class="form-label fw-bold">Neighborhood</label>
@@ -379,9 +384,11 @@
                             <select id="structureType" class="form-select" [(ngModel)]="propertyData.propertyTypeId"
                                 [ngModelOptions]="{standalone: true}">
                                 <option selected>Select Structure Type</option>
-                                <option value=1>House</option>
-                                <option value=2>Apartment</option>
-                                <option value=3>Condo</option>
+                                <option value=1>Villa</option>
+                                <option value=2>House</option>
+                                <option value=3>Appartment</option>
+                                <option value=4>Office</option>
+
                             </select>
                         </div>
                     </div>
@@ -393,7 +400,7 @@
                                 <option selected>Select Floors No </option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
-                                <option value="3">2</option>
+                                <option value="3">3</option>
                             </select>
                         </div>
                     </div>
@@ -401,7 +408,7 @@
                         <label for="ownerNotes" class="form-label fw-bold">Owner/Agent Notes (not visible on front
                             end)</label>
                         <textarea id="ownerNotes" class="form-control" rows="5"
-                            ></textarea>
+                        [(ngModel)]="propertyData.ownerOrAgentNotes" [ngModelOptions]="{standalone: true}" ></textarea>
                     </div>
                     <div class="d-flex justify-content-between mt-4 mb-3">
                         <button type="button" class="btn btn-outline-dark" (click)="goToPreviousTab(tabGroup)">
@@ -427,15 +434,22 @@
                 <h3 class="fw-bold">Select Amenities</h3>
                 <div class="row g-3">
                     <div class="col-md-3" *ngFor="let amenity of amenities">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" [id]="amenity" [value]="amenity"
-                                [(ngModel)]="selectedAmenities[amenity]" name="amenities" />
-                            <label class="form-check-label ms-2 mt-1" [for]="amenity">
-                                {{ amenity }}
-                            </label>
-                        </div>
+                      <div class="form-check">
+                        <input 
+                          class="form-check-input" 
+                          type="checkbox" 
+                          [id]="amenity.value" 
+                          [value]="amenity.value"
+                          [(ngModel)]="selectedAmenities[amenity.value]" 
+                          name="amenities"
+                        />
+                        <label class="form-check-label ms-2 mt-1" [for]="amenity.value">
+                          {{ amenity.label }}
+                        </label>
+                      </div>
                     </div>
-                </div>
+                  </div>
+                  
                 <div class="d-flex justify-content-between mt-4 mb-3">
                     <button type="button" class="btn btn-outline-dark" (click)="goToPreviousTab(tabGroup)">
                         <span class="me-3">Prev Step</span>

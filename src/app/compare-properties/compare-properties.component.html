@@ -6,43 +6,48 @@
     </div>
     <img src="assets/images/businessman-hold-house.png" class="img-fluid w-100" alt="Responsive image" />
     <div class="p-5 mt-5 d-flex justify-content-center main-card">
-        <app-side-bar></app-side-bar>
+        <app-side-bar (propertiesEmitted)="updateProperties($event)"></app-side-bar>
         <div class="p-2">
             <div class="d-flex">
-                <div class=" mb-4" *ngFor="let type of apartmentTypes">
+                <div class=" mb-4" >
                     <div>
                         <div class="card-img-container">
-                            <img [src]="type.img" alt="{{ type.name }}" class="card-img mx-5" />
+                            <img 
+                            [src]="selectedProperty?.mainAttachment?.length ? selectedProperty.mainAttachment[0].fileUrl : 'assets/images/prop1.jpg' "             
+                             class="card-img-top img-fluid mx-5"
+                            alt="{{ selectedProperty?.name }}"/>
                         </div>
                         <div class="ms-5 mt-2">
-                            <p class="card-title fw-bold">{{ type.name }}</p>
-                            <p class="card-title fw-bold">{{ type.rate }} </p>
-                            <p class="card-text text-muted">{{ type.location }} </p>
+                            <p class="card-title fw-bold">{{ selectedProperty?.name }}</p>
+                            <p class="card-title fw-bold">{{ selectedProperty?.price }} </p>
+                            <p class="card-text text-muted">{{ selectedProperty?.address }}, {{selectedProperty?.city}} ,{{selectedProperty?.country}} </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container mt-4">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-6 mb-4" *ngFor="let card of cards">
+                    <div class="col-xl-4 col-lg-6 col-md-6 mb-4" *ngFor="let property of properties">
                         <div class="card h-100 properties-card position-relative">
                             <div class="check-icon position-absolute">
-                                <input type="checkbox" id="check-{{card.title}}" class="form-check-input"  (change)="onCheckboxChange(card.title, $event)" />
-                                <label for="check-{{card.title}}" class="rounded-circle"></label>
+                                <input type="checkbox" id="check-{{property.name}}" class="form-check-input"  (change)="onCheckboxChange(property.id, $event)" />
+                                <label for="check-{{property.title}}" class="rounded-circle"></label>
                             </div>
-                            <img src="{{ card.image }}" class="card-img-top" alt="{{ card.title }}">
+                            <img 
+                            [src]="property.mainAttachment?.length ? property.mainAttachment[0].fileUrl : 'assets/images/prop1.jpg' "             
+                            class="card-img-top" alt="{{ property.name }}">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold">{{ card.title }}</h5>
-                                <p class="card-text">{{ card.location }}</p>
+                                <h5 class="card-title fw-bold">{{ property.name }}</h5>
+                                <p class="card-text">{{ property.address }}, {{property.city}} ,{{property.country}}</p>
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <span><i class="fas fa-bed"></i> {{ card.bed }} bed</span>
+                                        <span><i class="fas fa-bed"></i> {{ property?.numOfBedrooms }} bed</span>
                                     </div>
                                     <div>
-                                        <span><i class="fas fa-bath"></i> {{ card.bath }} bath</span>
+                                        <span><i class="fas fa-bath"></i> {{ property?.numOfBathrooms }} bath</span>
                                     </div>
                                     <div>
-                                        <span><i class="fas fa-expand"></i> {{ card.area }} sqft</span>
+                                        <span><i class="fas fa-expand"></i>  {{ property?.size }} sqft</span>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +61,7 @@
                         <span>Compare</span>
                     </button>
                     <button mat-stroked-button
-                        class="d-flex btn-shadow py-4 rounded-4 mx-3  d-flex justify-content-center align-items-center">
+                        class="d-flex btn-shadow py-4 rounded-4 mx-3  d-flex justify-content-center align-items-center" (click)="oncancel()">
                         <span class="me-3">Cancel</span>
                         <span>
                             <img src="assets/icons/right-up1.png" alt="arrow" style="width: 25px; height: 20px" />

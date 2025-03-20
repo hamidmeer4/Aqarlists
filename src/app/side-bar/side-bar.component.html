@@ -92,9 +92,8 @@
     <div class="mb-3">
       <h6>Location</h6>
       <select class="form-select" [(ngModel)]="location">
-        <option selected>All Cities</option>
-        <option>Riyadh</option>
-        <option>Makkah</option>
+       <option  selected>All Cities</option>
+      <option *ngFor="let city of cityNames" [value]="city">{{ city }}</option>
       </select>
     </div>
 

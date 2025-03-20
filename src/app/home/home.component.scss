@@ -595,3 +595,8 @@ blockquote {
   position: relative;
   bottom: 9px;
 }
+
+.card-img-top {
+  height: 353px !important;
+  object-fit: cover;
+}
