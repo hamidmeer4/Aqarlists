@@ -20,6 +20,15 @@ export class PropertyService {
     const url = `${this.apiUrl}${id}:int`;
     return this.http.get<any>(url);
   }
+
+  propertyCountByCity(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}propertyCountByCity`);
+  }
+  
+  removeProperty(id: number): Observable<any> {
+    const url = `${this.apiUrl}${id}:int`;
+    return this.http.delete<any>(url);
+  }
   
   sendPropertyData(propertyData: any): Observable<any> {
     const toQueryString = (obj: any): string => {

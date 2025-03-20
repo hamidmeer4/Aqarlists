@@ -4,6 +4,7 @@ export interface Role {
   }
 
   export interface User {
+    id?:string;
     emailAddress: string;
     password: string;
     name: string;

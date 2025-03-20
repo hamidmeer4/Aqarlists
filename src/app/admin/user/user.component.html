@@ -4,24 +4,31 @@
   <div class="d-flex justify-content-start">
     <button
       class="btn btn-outline-dark btn-toggle p-2"
-      [ngClass]="{ active: selectedButton === 'individuals' }"
-      (click)="selectButton('individuals')"
+      [ngClass]="{ active: selectedButton === 'all' }"
+      (click)="selectButton('all')"
     >
-      Individuals
+      All
     </button>
     <button
       class="btn btn-outline-dark btn-toggle ms-2 p-2"
-      [ngClass]="{ active: selectedButton === 'companies' }"
-      (click)="selectButton('companies')"
+      [ngClass]="{ active: selectedButton === 'seller' }"
+      (click)="selectButton('seller')"
     >
-      Companies
+      Seller
+    </button>
+    <button
+      class="btn btn-outline-dark btn-toggle ms-2 p-2"
+      [ngClass]="{ active: selectedButton === 'buyer' }"
+      (click)="selectButton('buyer')"
+    >
+      Buyer
     </button>
   </div>
   <div class="card border-0 mt-4 mb-2 rounded-4">
     <div class="example-table-container p-4">
       <table mat-table [dataSource]="dataSource" matSort class="example-table">
         <ng-container matColumnDef="index">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-4">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-4" >
             No.
           </th>
           <td mat-cell *matCellDef="let element" class="p-4">
@@ -57,7 +64,7 @@
           <th mat-header-cell *matHeaderCellDef class="p-4">
             Actions
           </th>
-          <td mat-cell *matCellDef="let element" class="p-4" (click)="openDialog()">
+          <td mat-cell *matCellDef="let element" class="p-4" (click)="openDialog(element)">
             <svg
              class="action-icon"
               width="28"

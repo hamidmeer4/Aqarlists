@@ -11,6 +11,10 @@ import { SideBarComponent } from '../side-bar/side-bar.component';
 export class HomeComponent {
   selectedTab: string = 'buy';
   searchQuery: string = '';
+  image: string = './assets/images/rounded.png';
+  properties: any;
+  allproperties: any[] = [];
+  propertiesCountByCity: any[] = [];
   apartmentTypes = [
     { img: 'assets/images/categories1.png', name: 'House', properties: 22 },
     { img: 'assets/images/categories2.png', name: 'Apartments', properties: 22 },
@@ -19,28 +23,7 @@ export class HomeComponent {
     { img: 'assets/images/categories1.png', name: 'Townhome', properties: 22 }
   ];
 
-  cities = [
-    { name: 'New York', properties: 12, image: './assets/images/rounded.png' },
-    { name: 'Chicago', properties: 12, image: './assets/images/rounded.png' },
-    { name: 'Manhattan', properties: 12, image: './assets/images/rounded.png' },
-    { name: 'Francisco', properties: 12, image: './assets/images/rounded.png' },
-    {
-      name: 'Los Angeles',
-      properties: 12,
-      image: './assets/images/rounded.png',
-    },
-    {
-      name: 'Los Angeles',
-      properties: 12,
-      image: './assets/images/rounded.png',
-    },
-    {
-      name: 'Los Angeles',
-      properties: 12,
-      image: './assets/images/rounded.png',
-    },
-  ];
-
+ 
   filters = ['House', 'Villa', 'Office', 'Apartments'];
   selectedFilter = 'House';
 
@@ -91,8 +74,7 @@ export class HomeComponent {
       company: 'Bank of America'
     },
   ];
-  properties: any;
-  allproperties: any;
+ 
   constructor(private propertyService: PropertyService, private toastService: ToastService, public dialog: MatDialog){}
 
   ngOnInit(): void { 
@@ -105,7 +87,16 @@ export class HomeComponent {
     (error) =>{
     this.toastService.showError('Failed to load properties. Please try again.');
     });
-   }
+
+    this.propertyService.propertyCountByCity()
+    .subscribe(resp => {
+      console.log(resp);
+      this.propertiesCountByCity = resp;
+    },
+    (error) => {
+      this.toastService.showError('Failed to load properties count by city. Please try again.');  
+    });
+  }
 
    getRandomImage(): string {
     const randomIndex = Math.floor(Math.random() * this.images.length);

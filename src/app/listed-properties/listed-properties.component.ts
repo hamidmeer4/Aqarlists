@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./listed-properties.component.scss']
 })
 export class ListedPropertiesComponent {
-  properties = [
-    { name: 'Equestrian Family Home', location: 'California City, CA, USA', bed: 3, bath: 4, size: 1200, price: 14000, image: 'assets/images/pexels-zachtheshoota.png', }
-  ];
+  properties: any[] = [];
+
+  updateProperties(properties: any) {
+    this.properties = properties;
+ }
+
 }

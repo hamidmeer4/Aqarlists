@@ -147,4 +147,18 @@ export class AddPropertyComponent {
     'Private Space'
   ];
   selectedAmenities: { [key: string]: boolean } = {};
+
+  madinaCoordinates: google.maps.LatLngLiteral = {
+    lat: 24.524654, 
+    lng: 39.569184
+  };
+
+  // Map configuration (matches iframe parameters)
+  mapOptions: google.maps.MapOptions = {
+    mapTypeId: 'roadmap',
+    disableDefaultUI: true, // Hide default controls (like "iwloc=B")
+    styles: []              // Add custom styles if needed
+  };
+ 
+
 }
