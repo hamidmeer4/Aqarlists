@@ -19,7 +19,9 @@
     </div>
     <div class="d-flex flex-wrap sale-card">
       <div *ngFor="let property of properties; let i = index" class="card mb-4 card-flex">
-        <img [src]="getRandomImage()" class="card-img-top img-fluid" alt="Property Image">
+        <img 
+        [src]="property.mainAttachment?.length ? property.mainAttachment[0].fileUrl : 'assets/images/prop1.jpg' "              class="card-img-top img-fluid"
+        class="card-img-top img-fluid" alt="Property Image">
         <div class="card-body">
           <h5 class="card-title text-start"> {{ property.name ? property.name : 'Unknown' }}  </h5>
           <p class="card-text text-start">{{ property.address }}, {{property.city}} ,{{property.country}}</p>

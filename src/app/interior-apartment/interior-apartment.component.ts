@@ -14,7 +14,14 @@ export class InteriorApartmentComponent {
   isPlaying: boolean = false;
   apartmentId: number | any = null;
   propertiesByIdBase: any;
+  propertyTypes: { [key: string]: string } = {
+    '1': 'Villa',
+    '2': 'House',
+    '3': 'Appartment',
+    '4': 'Office'
+  };
 
+  filteredFeatures: string[] = [];
 
   constructor(private route: ActivatedRoute, private propertyService: PropertyService, private loader: LoaderService) { }
 
@@ -150,9 +157,49 @@ export class InteriorApartmentComponent {
       .subscribe(
         (resp) => {
           this.propertiesByIdBase = resp;
+          this.filteredFeatures = this.getTrueFeatures(this.propertiesByIdBase);
         },
 
       );
+  }
+
+  getPropertyName(id: string): string {
+    return this.propertyTypes[id] || 'Unknown';
+  }
+
+  calculatePricePerSqFT(totalPrice: number, totalSqFT: number): number {
+    return totalSqFT > 0 ? totalPrice / totalSqFT : 0; 
+  }
+
+  getTrueFeatures(properties: any): string[] {
+    const featureNames: { [key: string]: string } = {
+      airConditioning: 'Air Conditioning',
+      lawn: 'Lawn',
+      swimmingPool: 'Swimming Pool',
+      microwave: 'Microwave',
+      basketballCourt: 'Basketball Court',
+      tvCable: 'TV Cable',
+      dryer: 'Dryer',
+      gym: 'Gym',
+      sauna: 'Sauna',
+      washer: 'Washer',
+      wiFi: 'WiFi',
+      barbeque: 'Barbeque',
+      lakeView: 'Lake View',
+      frontYard: 'Front Yard',
+      backYard: 'Back Yard',
+      refrigerator: 'Refrigerator',
+      outdoorShower: 'Outdoor Shower',
+      privateSpace: 'Private Space'
+    };
+
+    return Object.keys(properties)
+    .filter(key => properties[key] && featureNames[key]) // Check if true & in allowed list
+    .map(key => featureNames[key]); // Convert to readable names
+  }
+
+  getRowIndexes(featureCount: number): number[] {
+    return Array.from({ length: Math.ceil(featureCount / 3) }, (_, i) => i * 3);
   }
 
 }

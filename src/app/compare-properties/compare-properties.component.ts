@@ -1,125 +1,62 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from '../services/toast.service';
+import { PropertyService } from '../services/property.service';
 
 @Component({
   selector: 'app-compare-properties',
   templateUrl: './compare-properties.component.html',
   styleUrls: ['./compare-properties.component.scss']
 })
-export class ComparePropertiesComponent {
-  apartmentTypes = [
-    { img: 'assets/images/categories1.png', name: 'Home in Metric Way', rate: 'sAR 14,000 / mo', location: 'California City, CA, USA' },
-    { img: 'assets/images/categories2.png', name: 'Home in Metric Way', rate: 'sAR 14,000 / mo', location: 'California City, CA, USA' },
-  ];
-  selectedProperty: boolean = false;
-  cards = [
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      area: 1200
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Modern Apartment',
-      location: 'New York, NY, USA',
-      bed: 2,
-      bath: 2,
-      area: 900
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Beachfront Villa',
-      location: 'Miami, FL, USA',
-      bed: 5,
-      bath: 6,
-      area: 3000
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      area: 1200
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Modern Apartment',
-      location: 'New York, NY, USA',
-      bed: 2,
-      bath: 2,
-      area: 900
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Beachfront Villa',
-      location: 'Miami, FL, USA',
-      bed: 5,
-      bath: 6,
-      area: 3000
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      area: 1200
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Modern Apartment',
-      location: 'New York, NY, USA',
-      bed: 2,
-      bath: 2,
-      area: 900
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Beachfront Villa',
-      location: 'Miami, FL, USA',
-      bed: 5,
-      bath: 6,
-      area: 3000
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Equestrian Family Home',
-      location: 'California City, CA, USA',
-      bed: 3,
-      bath: 4,
-      area: 1200
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Modern Apartment',
-      location: 'New York, NY, USA',
-      bed: 2,
-      bath: 2,
-      area: 900
-    },
-    {
-      image: 'assets/images/pexels.png',
-      title: 'Beachfront Villa',
-      location: 'Miami, FL, USA',
-      bed: 5,
-      bath: 6,
-      area: 3000
-    }
-  ];
+export class ComparePropertiesComponent implements OnInit {
+  selectedProperties: number[] = [];
+  selectedProperty: any;
+  properties: any
+  selectedPropertyId: any
+  
+  constructor(private propertyService: PropertyService, private toastService: ToastService,private router: Router,private route: ActivatedRoute){}
+    ngOnInit(): void { 
+      this.selectedPropertyId = this.propertyService.getSelectedProperty();
+      if (this.selectedPropertyId ==  null)
+      {
+        this.router.navigate(['/for-sale']);
+        return;
+      }
+      this.propertyService.getAllPropertys()
+      .subscribe(resp =>{
+       this.properties = resp;
+       this.selectedProperty = this.properties?.find((propert: any) => propert.id == this.selectedPropertyId )
+       this.toastService.showSuccess('Properties loaded successfully!');
+      },
+      (error) =>{
+      this.toastService.showError('Failed to load properties. Please try again.');
+      });
+     }
+ 
+onCheckboxChange(id: number, event: Event): void { 
+  const isChecked = (event.target as HTMLInputElement).checked;
 
-
-  constructor(private router: Router) { }
-  onCheckboxChange(title: string, event: Event): void {
-    const isChecked = (event.target as HTMLInputElement).checked;
-    this.selectedProperty = isChecked;
+  if (isChecked) {
+    this.selectedProperties.push(id);
+  } else {
+    this.selectedProperties = this.selectedProperties.filter(item => item !== id);
   }
+}
 
   navigateWithId() {
-   this.selectedProperty ?   this.router.navigate(['/compare-properties-detail', 1]) : this.router.navigate(['/compare-properties-detail']) 
+    this.propertyService.setSelectedProperties(this.selectedProperties);
+    this.router.navigate(['/compare-properties-detail',this.selectedPropertyId ]) 
+  }
+
+  oncancel()
+  {
+    this.router.navigate(['/compare-properties-detail',this.selectedPropertyId ]) 
+  }
+
+  updateProperties(properties: any) {
+    this.properties = []
+    this.properties = properties;
+
   }
 
 }

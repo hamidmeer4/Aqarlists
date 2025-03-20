@@ -11,16 +11,16 @@
               </h2>
               <button
                 class="py-2 px-2 btn btn-primary ms-md-3 mt-2 mt-md-0 d-flex align-items-center"
-                routerLink="/compare-properties-detail"
-              >
+                [routerLink]="['/compare-properties-detail', propertiesByIdBase.id]"
+                >
                 <i class="fa fa-building me-2"></i> Compare Property
               </button>
             </div>
             <p class="gray mb-0">
-              4834 N 10th St, Philadelphia, PA 19141
+              {{ propertiesByIdBase.address }}, {{propertiesByIdBase.city}} ,{{propertiesByIdBase.country}}
               <span class="mx-2">|</span>
               <span class="badge text-primary px-2 py-1">
-                <li>For sale</li>
+                <li>{{propertiesByIdBase.listedIn}}</li>
               </span>
               <span class="mx-2">|</span>
               <span><i class="material-icons">schedule</i> 1 year ago</span>
@@ -33,7 +33,7 @@
                 ><i class="material-icons">bathtub</i> {{propertiesByIdBase.numOfBathrooms}} bath</span
               >
               <span class="mx-2"
-                ><i class="material-icons">square_foot</i> 1200 sqft</span
+                ><i class="material-icons">square_foot</i>  {{propertiesByIdBase.size}} sqft</span
               >
             </p>
           </div>
@@ -50,7 +50,7 @@
               </button>
             </div>
             <h2 class="fw-bold text-dark">SAR{{propertiesByIdBase.price}}</h2>
-            <p class="gray">SAR 2,300/SqFT</p>
+            <p class="gray">SAR {{ calculatePricePerSqFT(propertiesByIdBase.price, propertiesByIdBase.size) | number:'1.2-2' }}/SqFT</p>
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@
                   ></i>
                   <div class="text-start ms-1">
                     <span class="fw-bold d-block">Year built</span>
-                    <span class="gray">2022</span>
+                    <span class="gray">{{propertiesByIdBase.yearBuilt}}</span>
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@
                   ></i>
                   <div class="text-start ms-1">
                     <span class="fw-bold d-block">SQFT</span>
-                    <span class="gray">1200</span>
+                    <span class="gray">{{propertiesByIdBase.size}}</span>
                   </div>
                 </div>
               </div>
@@ -171,7 +171,7 @@
                   ></i>
                   <div class="ms-3 text-start">
                     <span class="fw-bold d-block">Property Type</span>
-                    <span class="gray">Apartment</span>
+                    <span class="gray"> {{ getPropertyName(propertiesByIdBase.propertyTypeId) }}</span>
                   </div>
                 </div>
               </div>
@@ -206,7 +206,7 @@
               <div class="col-12 col-md-6">
                 <div class="mb-3">
                   <span class="fw-bold">Property ID: </span>
-                  <span class="text-muted text-start ms-2">{{propertiesByIdBase.propertyTypeId}}</span>
+                  <span class="text-muted text-start ms-2">{{propertiesByIdBase.id}}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Price: </span>
@@ -214,7 +214,7 @@
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Property Size: </span>
-                  <span class="text-muted ms-2">1500 Sq Ft</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase.size}} SqFt</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Bathrooms: </span>
@@ -228,7 +228,7 @@
               <div class="col-12 col-md-6">
                 <div class="mb-3">
                   <span class="fw-bold">Garage: </span>
-                  <span class="text-muted ms-2">2</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase.hasGarage}}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Garage Size: </span>
@@ -236,15 +236,15 @@
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Year Built: </span>
-                  <span class="text-muted ms-2">2022</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase.yearBuilt}}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Property Type: </span>
-                  <span class="text-muted ms-2">Apartment</span>
+                  <span class="text-muted ms-2">{{ getPropertyName(propertiesByIdBase.propertyTypeId) }}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Property Status: </span>
-                  <span class="text-muted ms-2">For Sale</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase.listedIn}}</span>
                 </div>
               </div>
             </div>
@@ -311,29 +311,17 @@
         <div class="card p-4 border-0">
           <h3 class="fw-bold">Features & Amenities</h3>
           <div class="row">
-            <div class="col-12 col-md-4">
-              <ul class="list">
-                <li><i class="bi bi-dot text-primary"></i> Air Conditioning</li>
-                <li><i class="bi bi-dot text-primary"></i> Barbeque</li>
-                <li><i class="bi bi-dot text-primary"></i> Dryer</li>
-                <li><i class="bi bi-dot text-primary"></i> Gym</li>
-              </ul>
+            <div class="col-12" *ngIf="filteredFeatures.length === 0">
+              <p class="text-muted text-center">No features available for this property.</p>
             </div>
-            <div class="col-12 col-md-4">
-              <ul class="list">
-                <li><i class="bi bi-dot text-primary"></i> Lawn</li>
-                <li><i class="bi bi-dot text-primary"></i> Microwave</li>
-                <li><i class="bi bi-dot text-primary"></i> Outdoor Shower</li>
-                <li><i class="bi bi-dot text-primary"></i> Refrigerator</li>
-              </ul>
-            </div>
-            <div class="col-12 col-md-4">
-              <ul class="list">
-                <li><i class="bi bi-dot text-primary"></i> Swimming Pool</li>
-                <li><i class="bi bi-dot text-primary"></i> TV Cable</li>
-                <li><i class="bi bi-dot text-primary"></i> Washer</li>
-                <li><i class="bi bi-dot text-primary"></i> WiFi</li>
-              </ul>
+            <div class="row" *ngFor="let i of getRowIndexes(filteredFeatures.length)">
+              <div class="col-md-4" *ngFor="let feature of filteredFeatures.slice(i, i + 3)">
+                <ul class="list">
+                  <li>
+                    <i class="bi bi-dot text-primary"></i> {{ feature }}
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

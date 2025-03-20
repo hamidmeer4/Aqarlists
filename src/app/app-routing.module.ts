@@ -31,7 +31,6 @@ const routes: Routes = [
  {path:'fAQ', component:FaqComponent},
  {path:'about', component:AboutComponent},
  {path:'compare-properties', component:ComparePropertiesComponent},
- {path:'compare-properties-detail', component:ComparePropertiesDetailComponent},
  { path: 'compare-properties-detail/:id', component: ComparePropertiesDetailComponent },
  {path:'third-party-detail', component:ThirdPartyDetailComponent},
  { path: 'admin', 
