@@ -10,6 +10,9 @@ import { finalize } from 'rxjs';
   styleUrls: ['./interior-apartment.component.scss'],
 })
 export class InteriorApartmentComponent {
+  center: google.maps.LatLngLiteral = { lat: 24.4672, lng: 39.6024 };
+  zoom = 14;
+  markers: any = [];
   videoSource: string = 'assets/video/REAL-ESTATE-TOUR.mp4';
   isPlaying: boolean = false;
   apartmentId: number | any = null;
@@ -158,6 +161,10 @@ export class InteriorApartmentComponent {
         (resp) => {
           this.propertiesByIdBase = resp;
           this.filteredFeatures = this.getTrueFeatures(this.propertiesByIdBase);
+          if(this.propertiesByIdBase?.latitude && this.propertiesByIdBase?.longitude)
+          {
+            this.markers.push({ lat: this.propertiesByIdBase?.latitude, lng: this.propertiesByIdBase?.longitude })
+          }
         },
 
       );
@@ -170,7 +177,11 @@ export class InteriorApartmentComponent {
   calculatePricePerSqFT(totalPrice: number, totalSqFT: number): number {
     return totalSqFT > 0 ? totalPrice / totalSqFT : 0; 
   }
-
+  
+  moveMap(event: google.maps.MapMouseEvent) {
+    if (event.latLng != null) this.center = event.latLng.toJSON();
+  }
+  
   getTrueFeatures(properties: any): string[] {
     const featureNames: { [key: string]: string } = {
       airConditioning: 'Air Conditioning',

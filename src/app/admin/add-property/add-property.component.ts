@@ -11,6 +11,8 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./add-property.component.scss']
 })
 export class AddPropertyComponent {
+  center: google.maps.LatLngLiteral = { lat: 24.4672, lng: 39.6024 };
+  zoom = 14;
   categories = ['Residential', 'Commercial', 'Industrial'];
    cityNames = [
     "Riyadh",
@@ -205,19 +207,10 @@ export class AddPropertyComponent {
     );
   }
   
-  
 
-  madinaCoordinates: google.maps.LatLngLiteral = {
-    lat: 24.524654, 
-    lng: 39.569184
-  };
-
-  // Map configuration (matches iframe parameters)
-  mapOptions: google.maps.MapOptions = {
-    mapTypeId: 'roadmap',
-    disableDefaultUI: true, // Hide default controls (like "iwloc=B")
-    styles: []              // Add custom styles if needed
-  };
- 
-
+  moveMap(event: google.maps.MapMouseEvent) {
+    this.propertyData.latitude = event.latLng?.lat() ? event.latLng?.lat() : 0;
+    this.propertyData.longitude = event.latLng?.lng() ? event.latLng?.lng() : 0;
+    if (event.latLng != null) this.center = event.latLng.toJSON();
+  }
 }
