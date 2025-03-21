@@ -59,9 +59,9 @@
           <div class="col-lg-6 col-md-12">
             <div class="main-image">
               <img
-                src="assets/images/interior-image1.png"
+              [src]="propertiesByIdBase.mainAttachment?.length ? propertiesByIdBase.mainAttachment[0].fileUrl : 'assets/images/interior-image1.png' "              
                 alt="Main Building"
-                class="img-fluid rounded shadow-sm"
+                class="img-fluid card-img-top1 rounded shadow-sm"
               />
             </div>
           </div>
@@ -285,24 +285,21 @@
             </div>
           </div>
           <div class="mt-3">
-            <div class="position-relative">
-              <iframe
-                class="w-100 rounded-4 shadow-sm"
-                style="border: none; height: 300px"
-                frameborder="0"
-                scrolling="no"
-                marginheight="0"
-                marginwidth="0"
-                src="https://maps.google.com/maps?width=1920&amp;height=500&amp;hl=en&amp;q=madina&amp;t=&amp;z=19&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-              ></iframe>
-              <a
-                href="https://www.google.com/maps?q=madina"
-                target="_blank"
-                class="btn bg-white text-primary position-absolute"
-                style="top: 20px; right: 20px"
-              >
-                Open on Google Maps <i class="bi bi-box-arrow-up-right"></i>
-              </a>
+            <div class="d-flex ">
+              <div>
+                <google-map
+                width="54vw"
+                height="52vh"
+                [center]="center"
+                [zoom]="zoom"
+                (mapClick)="moveMap($event)"
+        >
+        <map-marker *ngFor="let marker of markers" [position]="marker"></map-marker>
+
+            </google-map>
+              </div>
+              <div>
+              </div>
             </div>
           </div>
         </div>
