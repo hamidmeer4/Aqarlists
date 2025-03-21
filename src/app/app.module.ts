@@ -94,9 +94,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatProgressSpinnerModule,
     MatDialogModule,
     GoogleMapsModule,
-    
+
   ],
-  providers: [{ provide: 'MAP_API_KEY', useValue: 'AIzaSyD0fQ7GNCEzoNNRnk99yFIn11KryGle1pI' } ],
+  providers: [ ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

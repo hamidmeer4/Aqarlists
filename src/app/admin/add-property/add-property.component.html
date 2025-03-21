@@ -234,29 +234,20 @@
                         </div>
                     </div>
                     <div class="mapouter mt-3 rounded-4">
-                        <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no"
-                                marginheight="0" marginwidth="0"
-                                src="https://maps.google.com/maps?width=1920&amp;height=500&amp;hl=en&amp;q=madina&amp;t=&amp;z=19&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
-                                href="https://sprunkiplay.com/">Sprunki Game</a></div>
-                        <style>
-                            .mapouter {
-                                position: relative;
-                                text-align: right;
-                                width: 100%;
-                                height: 500px;
-                            }
-
-                            .gmap_canvas {
-                                overflow: hidden;
-                                background: none !important;
-                                width: 100%;
-                                height: 500px;
-                            }
-
-                            .gmap_iframe {
-                                height: 500px !important;
-                            }
-                        </style>
+                        <div class="d-flex ">
+                            <div>
+                              <google-map
+                              width="80vw"
+                              height="80vh"
+                                      [center]="center"
+                                      [zoom]="zoom"
+                                      (mapClick)="moveMap($event)"
+                      >
+                          </google-map>
+                            </div>
+                            <div>
+                            </div>
+                          </div>
                     </div>
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">

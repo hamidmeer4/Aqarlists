@@ -157,6 +157,12 @@ card {
   object-fit: cover;
 }
 
+.card-img-top1 {
+ min-height: 500px;
+ min-width: 40vw;
+ object-fit: contain;
+}
+
 .card-body {
   text-align: center;
 }
