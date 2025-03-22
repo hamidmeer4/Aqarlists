@@ -25,6 +25,7 @@
     "@swimlane/ngx-charts": "^21.1.2",
     "@types/googlemaps": "^3.43.3",
     "bootstrap": "^5.3.3",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

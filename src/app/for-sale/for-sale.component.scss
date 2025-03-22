@@ -51,6 +51,16 @@
   justify-content: center;
 }
 
+.paginator {
+  position: relative;
+  left:30%;
+}
+
+.paginator-text {
+  position: relative;
+  left: 33%;
+}
+
 /* Add responsive design */
 @media (max-width: 768px) {
   .card-img-top {
