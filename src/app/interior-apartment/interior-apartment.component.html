@@ -11,16 +11,16 @@
               </h2>
               <button
                 class="py-2 px-2 btn btn-primary ms-md-3 mt-2 mt-md-0 d-flex align-items-center"
-                [routerLink]="['/compare-properties-detail', propertiesByIdBase.id]"
+                [routerLink]="['/compare-properties-detail', propertiesByIdBase?.id]"
                 >
                 <i class="fa fa-building me-2"></i> Compare Property
               </button>
             </div>
             <p class="gray mb-0">
-              {{ propertiesByIdBase.address }}, {{propertiesByIdBase.city}} ,{{propertiesByIdBase.country}}
+              {{ propertiesByIdBase?.address }}, {{propertiesByIdBase?.city}} ,{{propertiesByIdBase?.country}}
               <span class="mx-2">|</span>
               <span class="badge text-primary px-2 py-1">
-                <li>{{propertiesByIdBase.listedIn}}</li>
+                <li>{{propertiesByIdBase?.listedIn}}</li>
               </span>
               <span class="mx-2">|</span>
               <span><i class="material-icons">schedule</i> 1 year ago</span>
@@ -28,12 +28,12 @@
               <span><i class="material-icons">visibility</i> 8721</span>
             </p>
             <p class="mt-3">
-              <span><i class="material-icons">bed</i> {{propertiesByIdBase.numOfBedrooms}} bed</span>
+              <span><i class="material-icons">bed</i> {{propertiesByIdBase?.numOfBedrooms}} bed</span>
               <span class="mx-2"
-                ><i class="material-icons">bathtub</i> {{propertiesByIdBase.numOfBathrooms}} bath</span
+                ><i class="material-icons">bathtub</i> {{propertiesByIdBase?.numOfBathrooms}} bath</span
               >
               <span class="mx-2"
-                ><i class="material-icons">square_foot</i>  {{propertiesByIdBase.size}} sqft</span
+                ><i class="material-icons">square_foot</i>  {{propertiesByIdBase?.size}} sqft</span
               >
             </p>
           </div>
@@ -49,8 +49,8 @@
                 <i class="material-icons">file_copy</i>
               </button>
             </div>
-            <h2 class="fw-bold text-dark">SAR{{propertiesByIdBase.price}}</h2>
-            <p class="gray">SAR {{ calculatePricePerSqFT(propertiesByIdBase.price, propertiesByIdBase.size) | number:'1.2-2' }}/SqFT</p>
+            <h2 class="fw-bold text-dark">SAR{{propertiesByIdBase?.price}}</h2>
+            <p class="gray">SAR {{ calculatePricePerSqFT(propertiesByIdBase?.price, propertiesByIdBase?.size) | number:'1.2-2' }}/SqFT</p>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
           <div class="col-lg-6 col-md-12">
             <div class="main-image">
               <img
-              [src]="propertiesByIdBase.mainAttachment?.length ? propertiesByIdBase.mainAttachment[0].fileUrl : 'assets/images/interior-image1.png' "              
+              [src]="propertiesByIdBase?.mainAttachment?.length ? propertiesByIdBase?.mainAttachment[0].fileUrl : 'assets/images/interior-image1.png' "              
                 alt="Main Building"
                 class="img-fluid card-img-top1 rounded shadow-sm"
               />
@@ -116,7 +116,7 @@
                   ></i>
                   <div class="text-start ms-1">
                     <span class="fw-bold d-block">Bedroom</span>
-                    <span class="gray">{{propertiesByIdBase.numOfBedrooms}}</span>
+                    <span class="gray">{{propertiesByIdBase?.numOfBedrooms}}</span>
                   </div>
                 </div>
               </div>
@@ -127,7 +127,7 @@
                   ></i>
                   <div class="text-start ms-1">
                     <span class="fw-bold d-block">Bath</span>
-                    <span class="gray">{{propertiesByIdBase.numOfBathrooms}}</span>
+                    <span class="gray">{{propertiesByIdBase?.numOfBathrooms}}</span>
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@
                   ></i>
                   <div class="text-start ms-1">
                     <span class="fw-bold d-block">Year built</span>
-                    <span class="gray">{{propertiesByIdBase.yearBuilt}}</span>
+                    <span class="gray">{{propertiesByIdBase?.yearBuilt}}</span>
                   </div>
                 </div>
               </div>
@@ -149,7 +149,7 @@
                   ></i>
                   <div class="text-start ms-1">
                     <span class="fw-bold d-block">Garage</span>
-                    <span class="gray">{{propertiesByIdBase.garageSize}}</span>
+                    <span class="gray">{{propertiesByIdBase?.garageSize}}</span>
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@
                   ></i>
                   <div class="text-start ms-1">
                     <span class="fw-bold d-block">SQFT</span>
-                    <span class="gray">{{propertiesByIdBase.size}}</span>
+                    <span class="gray">{{propertiesByIdBase?.size}}</span>
                   </div>
                 </div>
               </div>
@@ -171,7 +171,7 @@
                   ></i>
                   <div class="ms-3 text-start">
                     <span class="fw-bold d-block">Property Type</span>
-                    <span class="gray"> {{ getPropertyName(propertiesByIdBase.propertyTypeId) }}</span>
+                    <span class="gray"> {{ getPropertyName(propertiesByIdBase?.propertyTypeId) }}</span>
                   </div>
                 </div>
               </div>
@@ -197,7 +197,7 @@
         <div class="card border-0 shadow-sm p-4 mb-4 rounded">
           <h4 class="fw-bold mb-3">Property Description</h4>
           <p class="text-muted">
-           {{propertiesByIdBase.description}}
+           {{propertiesByIdBase?.description}}
           </p>
           <a href="#" class="text-primary fw-bold">Show more</a>
           <div class="card border-0 py-4">
@@ -206,45 +206,45 @@
               <div class="col-12 col-md-6">
                 <div class="mb-3">
                   <span class="fw-bold">Property ID: </span>
-                  <span class="text-muted text-start ms-2">{{propertiesByIdBase.id}}</span>
+                  <span class="text-muted text-start ms-2">{{propertiesByIdBase?.id}}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Price: </span>
-                  <span class="text-muted text-start ms-2">SAR {{propertiesByIdBase.price}}</span>
+                  <span class="text-muted text-start ms-2">SAR {{propertiesByIdBase?.price}}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Property Size: </span>
-                  <span class="text-muted ms-2">{{propertiesByIdBase.size}} SqFt</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase?.size}} SqFt</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Bathrooms: </span>
-                  <span class="text-muted ms-2">{{propertiesByIdBase.numOfBathrooms}}</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase?.numOfBathrooms}}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Bedrooms: </span>
-                  <span class="text-muted ms-2">{{propertiesByIdBase.numOfBedrooms}}</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase?.numOfBedrooms}}</span>
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <div class="mb-3">
                   <span class="fw-bold">Garage: </span>
-                  <span class="text-muted ms-2">{{propertiesByIdBase.hasGarage}}</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase?.hasGarage}}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Garage Size: </span>
-                  <span class="text-muted ms-2">{{propertiesByIdBase.garageSize}}SqFt</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase?.garageSize}}SqFt</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Year Built: </span>
-                  <span class="text-muted ms-2">{{propertiesByIdBase.yearBuilt}}</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase?.yearBuilt}}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Property Type: </span>
-                  <span class="text-muted ms-2">{{ getPropertyName(propertiesByIdBase.propertyTypeId) }}</span>
+                  <span class="text-muted ms-2">{{ getPropertyName(propertiesByIdBase?.propertyTypeId) }}</span>
                 </div>
                 <div class="mb-3">
                   <span class="fw-bold">Property Status: </span>
-                  <span class="text-muted ms-2">{{propertiesByIdBase.listedIn}}</span>
+                  <span class="text-muted ms-2">{{propertiesByIdBase?.listedIn}}</span>
                 </div>
               </div>
             </div>
@@ -258,21 +258,21 @@
             <div class="col-12 col-md-6">
               <div class="mb-3">
                 <span class="fw-bold">Address:</span>
-                <span class="text-muted ms-2">{{propertiesByIdBase.address}}</span>
+                <span class="text-muted ms-2">{{propertiesByIdBase?.address}}</span>
               </div>
               <div class="mb-3">
                 <span class="fw-bold">City:</span>
-                <span class="text-muted ms-2">{{propertiesByIdBase.city}}</span>
+                <span class="text-muted ms-2">{{propertiesByIdBase?.city}}</span>
               </div>
               <div class="mb-3">
                 <span class="fw-bold">State/County:</span>
-                <span class="text-muted ms-2">{{propertiesByIdBase.state}}</span>
+                <span class="text-muted ms-2">{{propertiesByIdBase?.state}}</span>
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="mb-3">
                 <span class="fw-bold">Zip/Postal Code:</span>
-                <span class="text-muted ms-2">{{propertiesByIdBase.zipCode}}</span>
+                <span class="text-muted ms-2">{{propertiesByIdBase?.zipCode}}</span>
               </div>
               <div class="mb-3">
                 <span class="fw-bold">Area:</span>
@@ -280,7 +280,7 @@
               </div>
               <div class="mb-3">
                 <span class="fw-bold">Country:</span>
-                <span class="text-muted ms-2">{{propertiesByIdBase.country}}</span>
+                <span class="text-muted ms-2">{{propertiesByIdBase?.country}}</span>
               </div>
             </div>
           </div>
@@ -354,10 +354,10 @@
               </button>
               <div class="d-flex flex-wrap text-start mt-2 mt-md-0">
                 <div class="me-3">
-                  <span class="fw-bold">Size:</span> {{ propertiesByIdBase.floorNumber }}
+                  <span class="fw-bold">Size:</span> {{ propertiesByIdBase?.floorNumber }}
                 </div>
                 <div class="me-3">
-                  <span class="fw-bold">Bedrooms:</span> {{ propertiesByIdBase.numberOfBedrooms  }}
+                  <span class="fw-bold">Bedrooms:</span> {{ propertiesByIdBase?.numberOfBedrooms  }}
                 </div>
                 <div class="me-3">
                   <span class="fw-bold">Bathrooms:</span> {{ floor.bathrooms }}
@@ -379,25 +379,10 @@
         <h3 class="fw-bold ms-2">Video</h3>
         <div class="card border-0">
           <div class="position-relative rounded overflow-hidden shadow">
-            <video
-              #videoPlayer
-              [src]="videoSource"
-              class="img-fluid w-100"
-              (click)="toggleVideo(videoPlayer)"
-              style="cursor: pointer"
-            ></video>
-            <div
-              *ngIf="!isPlaying"
-              class="position-absolute top-50 start-50 translate-middle"
-              (click)="toggleVideo(videoPlayer)"
-              style="cursor: pointer"
-            >
-              <mat-icon
-                class="play-button bg-white text-primary rounded-circle d-flex align-items-center justify-content-center shadow"
-                style="font-size: 48px; width: 80px; height: 80px"
-              >
-                play_arrow
-              </mat-icon>
+            <div class="video-container">
+              <iframe [src]="safeSrc" frameborder="0" frameborder="0"
+              allow="autoplay; encrypted-media"
+              webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
           </div>
         </div>
