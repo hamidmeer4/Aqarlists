@@ -3,6 +3,7 @@ import { PropertyService } from '../services/property.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoaderService } from '../services/loader.service';
 import { finalize } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-interior-apartment',
@@ -13,7 +14,6 @@ export class InteriorApartmentComponent {
   center: google.maps.LatLngLiteral = { lat: 24.4672, lng: 39.6024 };
   zoom = 14;
   markers: any = [];
-  videoSource: string = 'assets/video/REAL-ESTATE-TOUR.mp4';
   isPlaying: boolean = false;
   apartmentId: number | any = null;
   propertiesByIdBase: any;
@@ -25,12 +25,15 @@ export class InteriorApartmentComponent {
   };
 
   filteredFeatures: string[] = [];
+  safeSrc: SafeResourceUrl;
+  constructor(private route: ActivatedRoute, private propertyService: PropertyService, private loader: LoaderService, private sanitizer: DomSanitizer) {
+    this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/2yuIByK7BSw");
+  }
 
-  constructor(private route: ActivatedRoute, private propertyService: PropertyService, private loader: LoaderService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.apartmentId =  params.get('id');
+      this.apartmentId = params.get('id');
       if (this.apartmentId) {
         this.getPropertyById(this.apartmentId);
       }
@@ -145,10 +148,6 @@ export class InteriorApartmentComponent {
     floor.isOpen = !floor.isOpen;
   }
 
-  toggleVideo(videoPlayer: HTMLVideoElement): void {
-    this.isPlaying ? videoPlayer.pause() : videoPlayer.play();
-    this.isPlaying = !this.isPlaying;
-  }
   previous() { }
   next() { }
 
@@ -161,9 +160,24 @@ export class InteriorApartmentComponent {
         (resp) => {
           this.propertiesByIdBase = resp;
           this.filteredFeatures = this.getTrueFeatures(this.propertiesByIdBase);
-          if(this.propertiesByIdBase?.latitude && this.propertiesByIdBase?.longitude)
-          {
+          if (this.propertiesByIdBase?.latitude && this.propertiesByIdBase?.longitude) {
             this.markers.push({ lat: this.propertiesByIdBase?.latitude, lng: this.propertiesByIdBase?.longitude })
+          }
+          if (this.propertiesByIdBase?.embedVideoId) {
+            const videoUrl = this.propertiesByIdBase.embedVideoId;
+            let videoId: string | null = null;
+
+            if (videoUrl.includes('youtube.com/watch')) {
+              const params = new URLSearchParams(videoUrl.split('?')[1]);
+              videoId = params.get('v');
+            } else if (videoUrl.includes('youtu.be/')) {
+              videoId = videoUrl.split('youtu.be/')[1];
+            }
+            this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
+              videoId ? `https://www.youtube.com/embed/${videoId}` : "https://www.youtube.com/watch?v=2yuIByK7BSw"
+            );
+          } else {
+            this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/watch?v=2yuIByK7BSw");
           }
         },
 
@@ -175,13 +189,13 @@ export class InteriorApartmentComponent {
   }
 
   calculatePricePerSqFT(totalPrice: number, totalSqFT: number): number {
-    return totalSqFT > 0 ? totalPrice / totalSqFT : 0; 
+    return totalSqFT > 0 ? totalPrice / totalSqFT : 0;
   }
-  
+
   moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.center = event.latLng.toJSON();
   }
-  
+
   getTrueFeatures(properties: any): string[] {
     const featureNames: { [key: string]: string } = {
       airConditioning: 'Air Conditioning',
@@ -205,8 +219,8 @@ export class InteriorApartmentComponent {
     };
 
     return Object.keys(properties)
-    .filter(key => properties[key] && featureNames[key]) // Check if true & in allowed list
-    .map(key => featureNames[key]); // Convert to readable names
+      .filter(key => properties[key] && featureNames[key]) // Check if true & in allowed list
+      .map(key => featureNames[key]); // Convert to readable names
   }
 
   getRowIndexes(featureCount: number): number[] {
