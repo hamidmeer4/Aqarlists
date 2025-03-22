@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { PropertyService } from '../services/property.service';
 import { ToastService } from '../services/toast.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,13 +8,16 @@ import { SideBarComponent } from '../side-bar/side-bar.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   selectedTab: string = 'buy';
   searchQuery: string = '';
   image: string = './assets/images/rounded.png';
   properties: any;
   allproperties: any[] = [];
   propertiesCountByCity: any[] = [];
+  @ViewChild('inputField')
+  inputField!: ElementRef;
+  autocomplete: google.maps.places.Autocomplete | undefined;
   apartmentTypes = [
     { img: 'assets/images/categories1.png', name: 'House', properties: 22 },
     { img: 'assets/images/categories2.png', name: 'Apartments', properties: 22 },
@@ -87,7 +90,20 @@ export class HomeComponent {
     });
   }
 
-
+  
+  ngAfterViewInit() {
+    this.autocomplete = new google.maps.places.Autocomplete(
+      this.inputField.nativeElement,
+      {
+        componentRestrictions: { country: 'SA' }
+      }
+    );
+  
+    this.autocomplete.addListener('place_changed', () => {
+      const place = this.autocomplete?.getPlace();
+    });
+  }
+  
   buttons = [
     { id: 0, label: 'All', active: true },
     { id: 2, label: 'House', active: false },
