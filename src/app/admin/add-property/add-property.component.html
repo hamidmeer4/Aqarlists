@@ -243,6 +243,8 @@
                                       [zoom]="zoom"
                                       (mapClick)="moveMap($event)"
                       >
+                      <map-marker *ngFor="let marker of markers" [position]="marker"></map-marker>
+
                           </google-map>
                             </div>
                             <div>
@@ -253,12 +255,12 @@
                         <div class="col-md-4">
                             <label for="latitude" class="form-label fw-bold">Latitude</label>
                             <input type="number" id="latitude" class="form-control" [(ngModel)]="propertyData.latitude"
-                                [ngModelOptions]="{standalone: true}">
+                                [ngModelOptions]="{standalone: true}"  (ngModelChange)="onCoordinatesChange()">
                         </div>
                         <div class="col-md-4">
                             <label for="longitude" class="form-label fw-bold">Longitude</label>
                             <input type="number" id="longitude" class="form-control"
-                                [(ngModel)]="propertyData.longitude" [ngModelOptions]="{standalone: true}">
+                                [(ngModel)]="propertyData.longitude" [ngModelOptions]="{standalone: true}"  (ngModelChange)="onCoordinatesChange()">
                         </div>
                     </div>
                     <div class="d-flex justify-content-between mt-4 mb-3">

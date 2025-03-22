@@ -13,6 +13,7 @@ import { ToastService } from 'src/app/services/toast.service';
 export class AddPropertyComponent {
   center: google.maps.LatLngLiteral = { lat: 24.4672, lng: 39.6024 };
   zoom = 14;
+  markers: any = [];
   categories = ['Residential', 'Commercial', 'Industrial'];
    cityNames = [
     "Riyadh",
@@ -209,8 +210,23 @@ export class AddPropertyComponent {
   
 
   moveMap(event: google.maps.MapMouseEvent) {
+    this.markers = [];
     this.propertyData.latitude = event.latLng?.lat() ? event.latLng?.lat() : 0;
     this.propertyData.longitude = event.latLng?.lng() ? event.latLng?.lng() : 0;
-    if (event.latLng != null) this.center = event.latLng.toJSON();
+    if (event.latLng != null)  this.center = event.latLng.toJSON();
+    this.markers.push({ lat: this.propertyData?.latitude, lng: this.propertyData?.longitude })
+  }
+
+  onCoordinatesChange()
+  {
+    if(this.isValidLatLng(this.propertyData.latitude,this.propertyData.longitude) && this.propertyData.latitude > 0 && this.propertyData.longitude > 0)
+    {
+      this.markers.push({ lat: this.propertyData?.latitude, lng: this.propertyData?.longitude })
+    }
+  }
+
+    
+  isValidLatLng(lat: number, lng: number): boolean {
+    return lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
   }
 }
