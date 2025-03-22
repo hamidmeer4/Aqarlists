@@ -9,7 +9,7 @@
   </div>
   <div class="container mx-3 mt-5 p-3">
     <div class="d-flex justify-content-between mt-4 mx-2 mb-2  w-75">
-      <p>Showing 1– {{properties?.length}} of {{properties?.length}} results</p>
+      <p>{{getPaginationMessage()}}</p>
       <div
       class="col-12 col-md-3 d-flex justify-content-md-end align-items-center" 
    style="position: relative; left: 7%;" >
@@ -18,7 +18,7 @@
     </div>
     </div>
     <div class="d-flex flex-wrap sale-card">
-      <div *ngFor="let property of properties; let i = index" class="card mb-4 card-flex">
+      <div *ngFor="let property of properties | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index" class="card mb-4 card-flex">
         <img 
         [src]="property.mainAttachment?.length ? property.mainAttachment[0].fileUrl : 'assets/images/prop1.jpg' "              class="card-img-top img-fluid"
         class="card-img-top img-fluid" alt="Property Image">
@@ -45,7 +45,12 @@
         </div>
       </div>
     </div>
+    <div class="paginator mt-3"  *ngIf="properties?.length > 6">
+        <pagination-controls (pageChange)="page = $event" ></pagination-controls>
+    </div>
+    <div class="paginator-text mb-0" *ngIf="properties?.length > 6">
+      <p class="property-range-text">{{ getPropertyRange() }}</p>
+    </div>
   </div>
 </div>
-<app-paginator [totalItems]="properties?.length" [pageSize]="10"></app-paginator>
 <app-footer></app-footer>

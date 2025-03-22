@@ -43,6 +43,7 @@ import { LoaderComponent } from './loader/loader.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -94,7 +95,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatProgressSpinnerModule,
     MatDialogModule,
     GoogleMapsModule,
-
+    NgxPaginationModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent],

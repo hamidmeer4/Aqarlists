@@ -45,6 +45,21 @@ body {
     font-family: "Poppins",serif !important;
   }
 
+  .ngx-pagination .current {
+    background-color:rgba(0, 47, 109, 1) !important;
+    color: white !important;
+    border-radius: 50%; 
+    width: 35px; 
+    height: 35px; 
+    align-items: center;
+    font-weight: bold;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+  }
+
   .btn-primary {
     background-color: #002F6D;
     color: white;
