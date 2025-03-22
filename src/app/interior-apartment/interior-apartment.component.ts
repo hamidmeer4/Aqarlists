@@ -174,10 +174,8 @@ export class InteriorApartmentComponent {
               videoId = videoUrl.split('youtu.be/')[1];
             }
             this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
-              videoId ? `https://www.youtube.com/embed/${videoId}` : "https://www.youtube.com/watch?v=2yuIByK7BSw"
+               `https://www.youtube.com/embed/${videoId}`
             );
-          } else {
-            this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/watch?v=2yuIByK7BSw");
           }
         },
 
